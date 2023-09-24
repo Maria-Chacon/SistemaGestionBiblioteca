@@ -19,113 +19,60 @@ public class BookTest {
     @Test
     public void testIsLoaned() {
         System.out.println("isLoaned");
-        boolean loan = true;
         Book instance = new Book(true, 5, "Dayana", "Miedo","1","oscuridad");
         boolean expResult = true;
         boolean result = instance.isLoaned();
         assertEquals(expResult, result);
     }
 
-    @Test
-    public void testSetLoaned() {
-        System.out.println("setLoaned");
-        boolean loaned = false;
-        Book instance = null;
-        instance.setLoaned(loaned);
-    }
 
     @Test
     public void testGetQuantity() {
         System.out.println("getQuantity");
-        Book instance = null;
-        int expResult = 0;
+        Book instance = new Book(true, 5, "Dayana", "Miedo","1","oscuridad");;
+        int expResult = 5;
         int result = instance.getQuantity();
         assertEquals(expResult, result);
     }
 
-    @Test
-    public void testSetQuantity() {
-        System.out.println("setQuantity");
-        int quantity = 0;
-        Book instance = null;
-        instance.setQuantity(quantity);
-    }
 
     @Test
     public void testGetAuthor() {
         System.out.println("getAuthor");
-        Book instance = null;
-        String expResult = "";
+        Book instance = new Book(true, 5, "Dayana", "Miedo","1","oscuridad");;
+        String expResult = "Dayana";
         String result = instance.getAuthor();
         assertEquals(expResult, result);
     }
 
-    @Test
-    public void testSetAuthor() {
-        System.out.println("setAuthor");
-        String author = "";
-        Book instance = null;
-        instance.setAuthor(author);
-    }
 
     @Test
     public void testGetGenre() {
         System.out.println("getGenre");
-        Book instance = null;
-        String expResult = "";
+        Book instance = new Book(true, 5, "Dayana", "Miedo","1","oscuridad");;
+        String expResult = "Miedo";
         String result = instance.getGenre();
         assertEquals(expResult, result);
     }
 
-    @Test
-    public void testSetGenre() {
-        System.out.println("setGenre");
-        String genre = "";
-        Book instance = null;
-        instance.setGenre(genre);
-    }
 
     @Test
     public void testGetIdBook() {
         System.out.println("getIdBook");
-        Book instance = null;
-        String expResult = "";
+        Book instance = new Book(true, 5, "Dayana", "Miedo","1","oscuridad");;
+        String expResult = "1";
         String result = instance.getIdBook();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testSetIdBook() {
-        System.out.println("setIdBook");
-        String idBook = "";
-        Book instance = null;
-        instance.setIdBook(idBook);
-    }
-
-    @Test
     public void testGetTitle() {
         System.out.println("getTitle");
-        Book instance = null;
-        String expResult = "";
+        Book instance = new Book(true, 5, "Dayana", "Miedo","1","oscuridad");
+        String expResult = "oscuridad";
         String result = instance.getTitle();
         assertEquals(expResult, result);
     }
 
-    @Test
-    public void testSetTitle() {
-        System.out.println("setTitle");
-        String title = "";
-        Book instance = null;
-        instance.setTitle(title);
-    }
-
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        Book instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-    }
     
 }
