@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.model">
+  <ClassDiagramComponents>
+    <Class name="Book" package="model" visibility="public" xPosition="44.0" yPosition="123.0">
+      <Fields>
+        <Field name="loaned" type="boolean" visibility="private"/>
+        <Field name="quantity" type="int" visibility="private"/>
+        <Field name="author" type="String" visibility="private"/>
+        <Field name="genre" type="String" visibility="private"/>
+        <Field name="idBook" type="String" visibility="private"/>
+        <Field name="title" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="boolean" name="loaned"/>
+          <Argument type="int" name="quantity"/>
+          <Argument type="String" name="author"/>
+          <Argument type="String" name="genre"/>
+          <Argument type="String" name="idBook"/>
+          <Argument type="String" name="title"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="isLoaned" returnType="boolean" visibility="public"/>
+        <Method name="setLoaned" returnType="void" visibility="public">
+          <Argument type="boolean" name="loaned"/>
+        </Method>
+        <Method name="getQuantity" returnType="int" visibility="public"/>
+        <Method name="setQuantity" returnType="void" visibility="public">
+          <Argument type="int" name="quantity"/>
+        </Method>
+        <Method name="getAuthor" returnType="String" visibility="public"/>
+        <Method name="setAuthor" returnType="void" visibility="public">
+          <Argument type="String" name="author"/>
+        </Method>
+        <Method name="getGenre" returnType="String" visibility="public"/>
+        <Method name="setGenre" returnType="void" visibility="public">
+          <Argument type="String" name="genre"/>
+        </Method>
+        <Method name="getIdBook" returnType="String" visibility="public"/>
+        <Method name="setIdBook" returnType="void" visibility="public">
+          <Argument type="String" name="idBook"/>
+        </Method>
+        <Method name="getTitle" returnType="String" visibility="public"/>
+        <Method name="setTitle" returnType="void" visibility="public">
+          <Argument type="String" name="title"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="BookCatalog" package="model" visibility="public" xPosition="1802.0" yPosition="25.0">
+      <Fields>
+        <Field name="books" type="ArrayList&lt;Book&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ArrayList&lt;Book&gt;" name="books"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getBooks" returnType="ArrayList&lt;Book&gt;" visibility="public"/>
+        <Method name="setBooks" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Book&gt;" name="books"/>
+        </Method>
+        <Method name="getBookLoaned" returnType="ArrayList&lt;Book&gt;" visibility="public"/>
+        <Method name="SearchBookByTitle" returnType="ArrayList&lt;Book&gt;" visibility="public">
+          <Argument type="String" name="title"/>
+        </Method>
+        <Method name="SearchBookByAuthor" returnType="ArrayList&lt;Book&gt;" visibility="public">
+          <Argument type="String" name="author"/>
+        </Method>
+        <Method name="SearchBookByGenre" returnType="ArrayList&lt;Book&gt;" visibility="public">
+          <Argument type="String" name="genre"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="BookLoan" package="model" visibility="public" xPosition="589.0" yPosition="776.0">
+      <Fields>
+        <Field name="idBookLoan" type="int" visibility="private"/>
+        <Field name="book" type="Book" visibility="private"/>
+        <Field name="devolutionDate" type="Date" visibility="private"/>
+        <Field name="loanedDate" type="Date" visibility="private"/>
+        <Field name="suspension" type="Suspension" visibility="private"/>
+        <Field name="user" type="User" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="idBookLoan"/>
+          <Argument type="Book" name="book"/>
+          <Argument type="Date" name="devolutionDate"/>
+          <Argument type="Date" name="loanedDate"/>
+          <Argument type="Suspension" name="suspension"/>
+          <Argument type="User" name="user"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIdBookLoan" returnType="int" visibility="public"/>
+        <Method name="setIdBookLoan" returnType="void" visibility="public">
+          <Argument type="int" name="idBookLoan"/>
+        </Method>
+        <Method name="getBook" returnType="Book" visibility="public"/>
+        <Method name="setBook" returnType="void" visibility="public">
+          <Argument type="Book" name="book"/>
+        </Method>
+        <Method name="getDevolutionDate" returnType="Date" visibility="public"/>
+        <Method name="setDevolutionDate" returnType="void" visibility="public">
+          <Argument type="Date" name="devolutionDate"/>
+        </Method>
+        <Method name="getLoanedDate" returnType="Date" visibility="public"/>
+        <Method name="setLoanedDate" returnType="void" visibility="public">
+          <Argument type="Date" name="loanedDate"/>
+        </Method>
+        <Method name="getSuspension" returnType="Suspension" visibility="public"/>
+        <Method name="setSuspension" returnType="void" visibility="public">
+          <Argument type="Suspension" name="suspension"/>
+        </Method>
+        <Method name="getUser" returnType="User" visibility="public"/>
+        <Method name="setUser" returnType="void" visibility="public">
+          <Argument type="User" name="user"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Devolution" package="model" visibility="public" xPosition="1137.0" yPosition="264.0">
+      <Fields>
+        <Field name="idDevolution" type="String" visibility="private"/>
+        <Field name="returnedBook" type="Book" visibility="private"/>
+        <Field name="returnDate" type="Date" visibility="private"/>
+        <Field name="user" type="User" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="idDevolution"/>
+          <Argument type="Book" name="returnedBook"/>
+          <Argument type="Date" name="returnDate"/>
+          <Argument type="User" name="user"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIdDevolution" returnType="String" visibility="public"/>
+        <Method name="setIdDevolution" returnType="void" visibility="public">
+          <Argument type="String" name="idDevolution"/>
+        </Method>
+        <Method name="getReturnedBook" returnType="Book" visibility="public"/>
+        <Method name="setReturnedBook" returnType="void" visibility="public">
+          <Argument type="Book" name="returnedBook"/>
+        </Method>
+        <Method name="getReturnDate" returnType="Date" visibility="public"/>
+        <Method name="setReturnDate" returnType="void" visibility="public">
+          <Argument type="Date" name="returnDate"/>
+        </Method>
+        <Method name="getUser" returnType="User" visibility="public"/>
+        <Method name="setUser" returnType="void" visibility="public">
+          <Argument type="User" name="user"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Equipment" package="model" visibility="public" xPosition="1588.0" yPosition="1391.0">
+      <Fields>
+        <Field name="availability" type="boolean" visibility="private"/>
+        <Field name="quantity" type="int" visibility="private"/>
+        <Field name="description" type="String" visibility="private"/>
+        <Field name="idEquipment" type="String" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="boolean" name="availability"/>
+          <Argument type="int" name="quantity"/>
+          <Argument type="String" name="description"/>
+          <Argument type="String" name="idEquipment"/>
+          <Argument type="String" name="name"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="isAvailability" returnType="boolean" visibility="public"/>
+        <Method name="setAvailability" returnType="void" visibility="public">
+          <Argument type="boolean" name="availability"/>
+        </Method>
+        <Method name="getQuantity" returnType="int" visibility="public"/>
+        <Method name="setQuantity" returnType="void" visibility="public">
+          <Argument type="int" name="quantity"/>
+        </Method>
+        <Method name="getDescription" returnType="String" visibility="public"/>
+        <Method name="setDescription" returnType="void" visibility="public">
+          <Argument type="String" name="description"/>
+        </Method>
+        <Method name="getIdEquipment" returnType="String" visibility="public"/>
+        <Method name="setIdEquipment" returnType="void" visibility="public">
+          <Argument type="String" name="idEquipment"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="EquipmentCatalog" package="model" visibility="public" xPosition="2586.0" yPosition="25.0">
+      <Fields>
+        <Field name="schoolEquipment" type="ArrayList&lt;SchoolEquipment&gt;" visibility="private"/>
+        <Field name="technologicalEquipment" type="ArrayList&lt;TechnologicalEquipment&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ArrayList&lt;SchoolEquipment&gt;" name="schoolEquipment"/>
+          <Argument type="ArrayList&lt;TechnologicalEquipment&gt;" name="technologicalEquipment"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getSchoolEquipment" returnType="ArrayList&lt;SchoolEquipment&gt;" visibility="public"/>
+        <Method name="setSchoolEquipment" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;SchoolEquipment&gt;" name="schoolEquipment"/>
+        </Method>
+        <Method name="getTechnologicalEquipment" returnType="ArrayList&lt;TechnologicalEquipment&gt;" visibility="public"/>
+        <Method name="setTechnologicalEquipment" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;TechnologicalEquipment&gt;" name="technologicalEquipment"/>
+        </Method>
+        <Method name="addEquipment" returnType="void" visibility="public">
+          <Argument type="Equipment" name="equipment"/>
+        </Method>
+        <Method name="removeEquipment" returnType="void" visibility="public">
+          <Argument type="Equipment" name="equipment"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Library" package="model" visibility="public" xPosition="3409.0" yPosition="473.0">
+      <Fields>
+        <Field name="bookCatalog" type="BookCatalog" visibility="private"/>
+        <Field name="equipmentCatalog" type="EquipmentCatalog" visibility="private"/>
+        <Field name="logBook" type="ArrayList&lt;LogBook&gt;" visibility="private"/>
+        <Field name="users" type="ArrayList&lt;User&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="BookCatalog" name="bookCatalog"/>
+          <Argument type="EquipmentCatalog" name="equipmentCatalog"/>
+          <Argument type="ArrayList&lt;LogBook&gt;" name="logBook"/>
+          <Argument type="ArrayList&lt;User&gt;" name="users"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getBookCatalog" returnType="BookCatalog" visibility="public"/>
+        <Method name="setBookCatalog" returnType="void" visibility="public">
+          <Argument type="BookCatalog" name="bookCatalog"/>
+        </Method>
+        <Method name="getEquipmentCatalog" returnType="EquipmentCatalog" visibility="public"/>
+        <Method name="setEquipmentCatalog" returnType="void" visibility="public">
+          <Argument type="EquipmentCatalog" name="equipmentCatalog"/>
+        </Method>
+        <Method name="getLogBook" returnType="ArrayList&lt;LogBook&gt;" visibility="public"/>
+        <Method name="setLogBook" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;LogBook&gt;" name="logBook"/>
+        </Method>
+        <Method name="getUsers" returnType="ArrayList&lt;User&gt;" visibility="public"/>
+        <Method name="setUsers" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;User&gt;" name="users"/>
+        </Method>
+        <Method name="registerDevolution" returnType="void" visibility="public">
+          <Argument type="Devolution" name="devolution"/>
+        </Method>
+        <Method name="registerBookLoan" returnType="void" visibility="public">
+          <Argument type="BookLoan" name="bookLoan"/>
+        </Method>
+        <Method name="addUser" returnType="void" visibility="public">
+          <Argument type="User" name="user"/>
+        </Method>
+        <Method name="removeUser" returnType="void" visibility="public">
+          <Argument type="User" name="user"/>
+        </Method>
+        <Method name="updateUser" returnType="void" visibility="public">
+          <Argument type="User" name="user"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LogBook" package="model" visibility="public" xPosition="3222.0" yPosition="1418.0">
+      <Fields>
+        <Field name="idLogBook" type="String" visibility="private"/>
+        <Field name="book" type="Book" visibility="private"/>
+        <Field name="bookLoan" type="BookLoan" visibility="private"/>
+        <Field name="registerDate" type="Date" visibility="private"/>
+        <Field name="devolution" type="Devolution" visibility="private"/>
+        <Field name="user" type="User" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="idLogBook"/>
+          <Argument type="Book" name="book"/>
+          <Argument type="BookLoan" name="bookLoan"/>
+          <Argument type="Date" name="registerDate"/>
+          <Argument type="Devolution" name="devolution"/>
+          <Argument type="User" name="user"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIdLogBook" returnType="String" visibility="public"/>
+        <Method name="setIdLogBook" returnType="void" visibility="public">
+          <Argument type="String" name="idLogBook"/>
+        </Method>
+        <Method name="getBook" returnType="Book" visibility="public"/>
+        <Method name="setBook" returnType="void" visibility="public">
+          <Argument type="Book" name="book"/>
+        </Method>
+        <Method name="getBookLoan" returnType="BookLoan" visibility="public"/>
+        <Method name="setBookLoan" returnType="void" visibility="public">
+          <Argument type="BookLoan" name="bookLoan"/>
+        </Method>
+        <Method name="getRegisterDate" returnType="Date" visibility="public"/>
+        <Method name="setRegisterDate" returnType="void" visibility="public">
+          <Argument type="Date" name="registerDate"/>
+        </Method>
+        <Method name="getDevolution" returnType="Devolution" visibility="public"/>
+        <Method name="setDevolution" returnType="void" visibility="public">
+          <Argument type="Devolution" name="devolution"/>
+        </Method>
+        <Method name="getUser" returnType="User" visibility="public"/>
+        <Method name="setUser" returnType="void" visibility="public">
+          <Argument type="User" name="user"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="SchoolEquipment" package="model" visibility="public" xPosition="99.0" yPosition="2361.0">
+      <Fields>
+        <Field name="area" type="String" visibility="private"/>
+        <Field name="material" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="area"/>
+          <Argument type="String" name="material"/>
+          <Argument type="boolean" name="availability"/>
+          <Argument type="int" name="quantity"/>
+          <Argument type="String" name="description"/>
+          <Argument type="String" name="idEquipment"/>
+          <Argument type="String" name="name"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getArea" returnType="String" visibility="public"/>
+        <Method name="setArea" returnType="void" visibility="public">
+          <Argument type="String" name="area"/>
+        </Method>
+        <Method name="getMaterial" returnType="String" visibility="public"/>
+        <Method name="setMaterial" returnType="void" visibility="public">
+          <Argument type="String" name="material"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Suspension" package="model" visibility="public" xPosition="19.0" yPosition="1069.0">
+      <Fields>
+        <Field name="enable" type="boolean" visibility="private"/>
+        <Field name="amount" type="float" visibility="private"/>
+        <Field name="daysLate" type="int" visibility="private"/>
+        <Field name="reason" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="boolean" name="enable"/>
+          <Argument type="float" name="amount"/>
+          <Argument type="int" name="daysLate"/>
+          <Argument type="String" name="reason"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="isEnable" returnType="boolean" visibility="public"/>
+        <Method name="setEnable" returnType="void" visibility="public">
+          <Argument type="boolean" name="enable"/>
+        </Method>
+        <Method name="getAmount" returnType="float" visibility="public"/>
+        <Method name="setAmount" returnType="void" visibility="public">
+          <Argument type="float" name="amount"/>
+        </Method>
+        <Method name="getDaysLate" returnType="int" visibility="public"/>
+        <Method name="setDaysLate" returnType="void" visibility="public">
+          <Argument type="int" name="daysLate"/>
+        </Method>
+        <Method name="getReason" returnType="String" visibility="public"/>
+        <Method name="setReason" returnType="void" visibility="public">
+          <Argument type="String" name="reason"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="TechnologicalEquipment" package="model" visibility="public" xPosition="2344.0" yPosition="2244.0">
+      <Fields>
+        <Field name="typeTechnologicalEquipment" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="typeTechnologicalEquipment"/>
+          <Argument type="boolean" name="availability"/>
+          <Argument type="int" name="quantity"/>
+          <Argument type="String" name="description"/>
+          <Argument type="String" name="idEquipment"/>
+          <Argument type="String" name="name"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTypeTechnologicalEquipment" returnType="String" visibility="public"/>
+        <Method name="setTypeTechnologicalEquipment" returnType="void" visibility="public">
+          <Argument type="String" name="typeTechnologicalEquipment"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="User" package="model" visibility="public" xPosition="1099.0" yPosition="2076.0">
+      <Fields>
+        <Field name="age" type="int" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="identification" type="String" visibility="private"/>
+        <Field name="lastName" type="String" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="phone" type="String" visibility="private"/>
+        <Field name="loanedBooks" type="ArrayList&lt;Book&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="age"/>
+          <Argument type="String" name="email"/>
+          <Argument type="String" name="identification"/>
+          <Argument type="String" name="lastName"/>
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="phone"/>
+          <Argument type="ArrayList&lt;Book&gt;" name="loanedBooks"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getAge" returnType="int" visibility="public"/>
+        <Method name="setAge" returnType="void" visibility="public">
+          <Argument type="int" name="age"/>
+        </Method>
+        <Method name="getEmail" returnType="String" visibility="public"/>
+        <Method name="setEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="getIdentification" returnType="String" visibility="public"/>
+        <Method name="setIdentification" returnType="void" visibility="public">
+          <Argument type="String" name="identification"/>
+        </Method>
+        <Method name="getLastName" returnType="String" visibility="public"/>
+        <Method name="setLastName" returnType="void" visibility="public">
+          <Argument type="String" name="lastName"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getPhone" returnType="String" visibility="public"/>
+        <Method name="setPhone" returnType="void" visibility="public">
+          <Argument type="String" name="phone"/>
+        </Method>
+        <Method name="getLoanedBooks" returnType="ArrayList&lt;Book&gt;" visibility="public"/>
+        <Method name="setLoanedBooks" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Book&gt;" name="loanedBooks"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="bookLoan" source="model.LogBook" target="model.BookLoan" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.EquipmentCatalog" target="model.TechnologicalEquipment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.BookLoan" target="model.Book" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="loanedBooks" source="model.User" target="model.Book" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Book&gt;"/>
+    <UseRelation source="model.Library" target="model.BookLoan" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="user" source="model.LogBook" target="model.User" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.User" target="model.Book" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.BookCatalog" target="model.Book" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.LogBook" target="model.Book" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="user" source="model.BookLoan" target="model.User" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.BookLoan" target="model.User" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="bookCatalog" source="model.Library" target="model.BookCatalog" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.LogBook" target="model.User" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.BookLoan" target="model.Suspension" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="model.TechnologicalEquipment" target="model.Equipment"/>
+    <UseRelation source="model.LogBook" target="model.BookLoan" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="logBook" source="model.Library" target="model.LogBook" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;LogBook&gt;"/>
+    <UseRelation source="model.Library" target="model.User" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="users" source="model.Library" target="model.User" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;User&gt;"/>
+    <UseRelation source="model.Library" target="model.EquipmentCatalog" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="book" source="model.LogBook" target="model.Book" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.Library" target="model.Devolution" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="technologicalEquipment" source="model.EquipmentCatalog" target="model.TechnologicalEquipment" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;TechnologicalEquipment&gt;"/>
+    <IsRelation name="is" source="model.SchoolEquipment" target="model.Equipment"/>
+    <UseRelation source="model.Devolution" target="model.Book" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="book" source="model.BookLoan" target="model.Book" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.LogBook" target="model.Devolution" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="devolution" source="model.LogBook" target="model.Devolution" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="equipmentCatalog" source="model.Library" target="model.EquipmentCatalog" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.Devolution" target="model.User" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="returnedBook" source="model.Devolution" target="model.Book" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.Library" target="model.BookCatalog" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="user" source="model.Devolution" target="model.User" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="books" source="model.BookCatalog" target="model.Book" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Book&gt;"/>
+    <HasRelation name="suspension" source="model.BookLoan" target="model.Suspension" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="schoolEquipment" source="model.EquipmentCatalog" target="model.SchoolEquipment" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;SchoolEquipment&gt;"/>
+    <UseRelation source="model.EquipmentCatalog" target="model.SchoolEquipment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.EquipmentCatalog" target="model.Equipment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="model.Library" target="model.LogBook" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
