@@ -45,7 +45,9 @@ public class LoginController implements Initializable {
 
     @FXML
     private void ActionNewAccount(ActionEvent event) throws IOException {
-        
+        Stage stage = (Stage) buttonNewAccount.getScene().getWindow();
+        stage.close();
+        App.setRoot("register", 530, 478);
     }
     
 }
