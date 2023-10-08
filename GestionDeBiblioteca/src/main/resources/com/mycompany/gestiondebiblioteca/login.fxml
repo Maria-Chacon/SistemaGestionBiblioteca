@@ -29,18 +29,18 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="377.0">
                <children>
-                  <Text layoutX="99.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIENVENIDO">
+                  <Text layoutX="74.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIENVENIDO">
                      <font>
-                        <Font name="System Bold" size="32.0" />
+                        <Font name="Georgia Bold" size="32.0" />
                      </font>
                   </Text>
-                  <Text layoutX="137.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa a tu cuenta">
+                  <Text layoutX="108.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa a tu cuenta">
                      <font>
                         <Font name="Barlow Condensed Regular" size="18.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="textFieldEmail" layoutX="74.0" layoutY="145.0" prefHeight="25.0" prefWidth="244.0" promptText="Correo Electrónico" />
-                  <TextField fx:id="textFieldPassword" layoutX="74.0" layoutY="189.0" prefHeight="25.0" prefWidth="244.0" promptText="Contraseña" />
+                  <TextField fx:id="textFieldEmail" layoutX="74.0" layoutY="145.0" prefHeight="25.0" prefWidth="244.0" promptText="Correo Electrónico" styleClass="username" stylesheets="@../../../css/styles.css" />
+                  <TextField fx:id="textFieldPassword" layoutX="74.0" layoutY="189.0" prefHeight="25.0" prefWidth="244.0" promptText="Contraseña" styleClass="username" stylesheets="@../../../css/styles.css" />
                   <ImageView fitHeight="33.0" fitWidth="35.0" layoutX="25.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/email.png" />
@@ -51,14 +51,14 @@
                         <Image url="@../../../images/password.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="buttonLogin" layoutX="74.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" text="Ingresar">
+                  <Button fx:id="buttonLogin" layoutX="48.0" layoutY="256.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" styleClass="btnPrincipal" stylesheets="@../../../css/styles.css" text="Ingresar">
                      <font>
-                        <Font name="Barlow Condensed Regular" size="13.0" />
+                        <Font name="Georgia Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="buttonNewAccount" layoutX="74.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" text="Crear Nueva Cuenta">
+                  <Button fx:id="buttonNewAccount" layoutX="48.0" layoutY="302.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="244.0" styleClass="btnPrincipal" stylesheets="@../../../css/styles.css" text="Crear Nueva Cuenta">
                      <font>
-                        <Font name="Barlow Condensed Regular" size="13.0" />
+                        <Font name="Georgia Bold" size="14.0" />
                      </font>
                   </Button>
                </children>

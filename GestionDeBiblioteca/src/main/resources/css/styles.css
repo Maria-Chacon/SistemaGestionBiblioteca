@@ -25,15 +25,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .username{
-    -fx-prompt-text-fill: white;
-    -fx-text-fill: white;
-    -fx-font-family: 'Oranienbaum', serif;
+    -fx-prompt-text-fill: black;
+    -fx-text-fill: black;
     -fx-background-color: transparent;
     -fx-border-width: 0px 0px 1px 0px;
-    -fx-border-color: #fff;
+    -fx-border-color: black;
 }
 
-#btnPrincipal{
+.btnPrincipal{
   -fx-color:white;
   -fx-background-color: black;
   -fx-padding: 10px;
