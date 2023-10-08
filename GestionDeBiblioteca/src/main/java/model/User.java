@@ -5,36 +5,26 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
  * @author monge
  */
-public class User {
-    private int age;
+public class User extends Person{
+   
     private String email;
-    private String identification;
-    private String lastName;
-    private String name;
-    private String phone;
+    private String password;
     private ArrayList<Book> loanedBooks;
 
-    public User(int age, String email, String identification, String lastName, String name, String phone, ArrayList<Book> loanedBooks) {
-        this.age = age;
+    public User() {
+    }
+
+    public User(String email, String password, ArrayList<Book> loanedBooks, Date birthDay, String identification, String lastName, String name, String phone) {
+        super(birthDay, identification, lastName, name, phone);
         this.email = email;
-        this.identification = identification;
-        this.lastName = lastName;
-        this.name = name;
-        this.phone = phone;
+        this.password = password;
         this.loanedBooks = loanedBooks;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getEmail() {
@@ -45,36 +35,12 @@ public class User {
         this.email = email;
     }
 
-    public String getIdentification() {
-        return identification;
+    public String getPassword() {
+        return password;
     }
 
-    public void setIdentification(String identification) {
-        this.identification = identification;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public ArrayList<Book> getLoanedBooks() {
@@ -87,8 +53,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "age=" + age + ", email=" + email + ", identification=" + identification + ", lastName=" + lastName + ", name=" + name + ", phone=" + phone + ", loanedBooks=" + loanedBooks + '}';
+        return "User{" + "email=" + email + ", password=" + password + ", loanedBooks=" + loanedBooks + '}';
     }
-    
+
     
 }

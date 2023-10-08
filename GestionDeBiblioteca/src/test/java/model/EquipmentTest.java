@@ -18,7 +18,6 @@ public class EquipmentTest {
 
     @Test
     public void testIsAvailability() {
-        System.out.println("isAvailability");
         Equipment instance = new Equipment(true,2,"equipo1","1","tec");
         boolean expResult = true;
         boolean result = instance.isAvailability();
@@ -27,7 +26,6 @@ public class EquipmentTest {
 
     @Test
     public void testGetQuantity() {
-        System.out.println("getQuantity");
         Equipment instance = new Equipment(true,2,"equipo1","1","tec");
         int expResult = 2;
         int result = instance.getQuantity();
@@ -37,7 +35,6 @@ public class EquipmentTest {
 
     @Test
     public void testGetDescription() {
-        System.out.println("getDescription");
         Equipment instance = new Equipment(true,2,"equipo1","1","tec");
         String expResult = "equipo1";
         String result = instance.getDescription();
@@ -46,7 +43,6 @@ public class EquipmentTest {
 
     @Test
     public void testGetIdEquipment() {
-        System.out.println("getIdEquipment");
         Equipment instance = new Equipment(true,2,"equipo1","1","tec");
         String expResult = "1";
         String result = instance.getIdEquipment();
@@ -56,7 +52,6 @@ public class EquipmentTest {
 
     @Test
     public void testGetName() {
-        System.out.println("getName");
         Equipment instance = new Equipment(true,2,"equipo1","1","tec");
         String expResult = "tec";
         String result = instance.getName();
