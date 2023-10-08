@@ -1,0 +1,78 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Oct 8, 2023, 4:19:25 PM
+    Author     : usuario
+*/
+
+
+#anchor1{
+    -fx-background-color: #3c6e71;
+}
+#anchor2{
+    -fx-background-color:#284b63 ;
+}
+
+#anchorGame{
+    -fx-background-color:#3c6e71 ;
+    -fx-background-radius: 10px;
+}
+
+#anchor3{
+    -fx-background-color:#d9d9d9 ;
+}
+
+.username{
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+    -fx-font-family: 'Oranienbaum', serif;
+    -fx-background-color: transparent;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-border-color: #fff;
+}
+
+#btnPrincipal{
+  -fx-color:white;
+  -fx-background-color: black;
+  -fx-padding: 10px;
+  -fx-background-radius:1em;
+  -fx-text-fill: #FFF;
+}
+
+#btnCerrar{
+    -fx-background-color:transparent;
+    -fx-background-size:stretch;
+    -fx-background-image:url("@../../../images/cancel.png");
+}
+
+#bntBack{
+    -fx-background-color:transparent;
+    -fx-background-size:stretch;
+    -fx-background-image:url("@../../../images/back.png");
+}
+
+.mazo {
+   -fx-background-size: stretch;
+    -fx-background-image:url("@../../../images/mazo.png");
+}
+
+.table{
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+}
+.fontext{
+    -fx-font-family: 'Oranienbaum', serif;
+}
+
+.carta1{
+    -fx-background-size: stretch;
+    -fx-background-image:url("@../../../cartas/1.png");
+}
+
+.carta1{
+    -fx-background-size: stretch;
+    -fx-background-image:url("@../../../cartas/1.png");
+}
+
