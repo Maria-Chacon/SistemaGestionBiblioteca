@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
  *
  * @author monge
  */
-public class HomeAdministratorController implements Initializable {
+public class RegisterEquipmentController implements Initializable {
 
     @FXML
     private Button bntBookLoan;
@@ -33,8 +33,6 @@ public class HomeAdministratorController implements Initializable {
     private TextField textFieldAuthor;
     @FXML
     private TextField textFieldGenre;
-    @FXML
-    private TextField textFieldTitle;
     @FXML
     private Button btnRegister;
 

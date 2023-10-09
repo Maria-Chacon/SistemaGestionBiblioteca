@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="controller.RegisterEquipmentController">
+   <children>
+      <VBox prefHeight="576.0" prefWidth="234.0" styleClass="anchor2" stylesheets="@../../../css/styles.css">
+         <children>
+            <Label alignment="CENTER" prefHeight="79.0" prefWidth="233.0" text="Bienvenido(a)" textAlignment="CENTER" textFill="#f8f6f6">
+               <font>
+                  <Font name="Georgia Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="44.0" prefWidth="233.0" text="Administrador" textAlignment="CENTER" textFill="#f8f6f6">
+               <font>
+                  <Font name="Georgia Bold" size="20.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="54.0" prefWidth="234.0" />
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
+               <children>
+                  <Button fx:id="bntBookLoan" mnemonicParsing="false" onAction="#bookLoan" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Registro de libros">
+                     <font>
+                        <Font name="Georgia Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="32.0" prefWidth="234.0" />
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
+               <children>
+                  <Button fx:id="bntEquipmentLoan" mnemonicParsing="false" onAction="#equipmentLoan" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Registro de equipos">
+                     <font>
+                        <Font name="Georgia Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="32.0" prefWidth="234.0" />
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
+               <children>
+                  <Button fx:id="btnSearchEquipment" mnemonicParsing="false" onAction="#searchEquipment" prefHeight="35.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Registro de Usuarios">
+                     <font>
+                        <Font name="Georgia Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="288.0" prefWidth="234.0">
+               <children>
+                  <Button fx:id="btnClose" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#close" prefHeight="36.0" prefWidth="222.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Cerrar Sesión">
+                     <font>
+                        <Font name="Georgia Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Label alignment="CENTER" layoutX="236.0" layoutY="7.0" prefHeight="29.0" prefWidth="481.0" text="Biblioteca  DayMar">
+         <font>
+            <Font name="Georgia Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldQuantity" layoutX="410.0" layoutY="197.0" prefHeight="26.0" prefWidth="222.0" promptText="Cantidad" styleClass="username" stylesheets="@../../../css/styles.css" />
+      <TextField fx:id="textFieldAuthor" layoutX="410.0" layoutY="251.0" prefHeight="26.0" prefWidth="222.0" promptText="Descripción" styleClass="username" stylesheets="@../../../css/styles.css" />
+      <TextField fx:id="textFieldGenre" layoutX="410.0" layoutY="302.0" prefHeight="26.0" prefWidth="222.0" promptText="Nombre" styleClass="username" stylesheets="@../../../css/styles.css" />
+      <Line endX="380.0" layoutX="337.0" layoutY="55.0" startX="-104.0" />
+      <Text layoutX="446.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro">
+         <font>
+            <Font name="Georgia Bold" size="21.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnRegister" alignment="CENTER" contentDisplay="BOTTOM" layoutX="381.0" layoutY="526.0" mnemonicParsing="false" onAction="#ActionRegister" prefHeight="36.0" prefWidth="222.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Registrar">
+         <font>
+            <Font name="Georgia Bold" size="14.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="44.0" fitWidth="49.0" layoutX="315.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/quantity.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="49.0" layoutX="315.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/author.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="49.0" layoutX="315.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/genre.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
