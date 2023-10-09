@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -7,6 +9,21 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.HomeController">
-    
+<AnchorPane id="AnchorPane" prefHeight="570.0" prefWidth="663.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.HomeController">
+   <children>
+      <VBox layoutX="-3.0" layoutY="-2.0" prefHeight="576.0" prefWidth="234.0" styleClass="anchor2" stylesheets="@../../../css/styles.css">
+         <children>
+            <Label alignment="CENTER" prefHeight="44.0" prefWidth="233.0" text="Bienvenido" textAlignment="CENTER" textFill="#f8f6f6">
+               <font>
+                  <Font name="Georgia Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="44.0" prefWidth="233.0" text="Usuario" textAlignment="CENTER" textFill="#f8f6f6">
+               <font>
+                  <Font name="Georgia Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

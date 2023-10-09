@@ -26,7 +26,6 @@ public class App extends Application {
     public static void setRoot(String fxml, int i, int y) throws IOException {
         scene = new Scene(loadFXML(fxml), i, y);
         Stage stage = new Stage();
-        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
     }
