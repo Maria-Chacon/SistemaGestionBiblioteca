@@ -4,6 +4,8 @@
  */
 package controller;
 
+import com.mycompany.gestiondebiblioteca.App;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -14,6 +16,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -56,7 +59,10 @@ public class EquipmentController implements Initializable {
     }    
 
     @FXML
-    private void bookLoan(ActionEvent event) {
+    private void bookLoan(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("home",  760, 576);
     }
 
     @FXML
@@ -68,7 +74,10 @@ public class EquipmentController implements Initializable {
     }
 
     @FXML
-    private void close(ActionEvent event) {
+    private void close(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("login", 600, 372);
     }
 
     @FXML

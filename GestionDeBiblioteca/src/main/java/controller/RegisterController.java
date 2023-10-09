@@ -56,5 +56,9 @@ public class RegisterController implements Initializable {
         stage.close();
         App.setRoot("login", 600, 372);
     }
+
+    @FXML
+    private void ActionRegister(ActionEvent event) {
+    }
     
 }
