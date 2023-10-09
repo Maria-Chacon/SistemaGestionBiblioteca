@@ -47,7 +47,7 @@ public class LoginController implements Initializable {
     private void ActionNewAccount(ActionEvent event) throws IOException {
         Stage stage = (Stage) buttonNewAccount.getScene().getWindow();
         stage.close();
-        App.setRoot("register", 530, 478);
+        App.setRoot("register", 610, 391);
     }
     
 }

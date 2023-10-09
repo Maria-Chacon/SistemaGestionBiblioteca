@@ -4,12 +4,17 @@
  */
 package controller;
 
+import com.mycompany.gestiondebiblioteca.App;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -26,6 +31,16 @@ public class RegisterController implements Initializable {
     private Button buttonRegister;
     @FXML
     private Button buttonExistAccount;
+    @FXML
+    private TextField textFieldIdentification;
+    @FXML
+    private TextField textFieldName;
+    @FXML
+    private TextField textFieldLastName;
+    @FXML
+    private TextField textFieldPhone;
+    @FXML
+    private DatePicker datePickerBirthDay;
 
     /**
      * Initializes the controller class.
@@ -34,5 +49,12 @@ public class RegisterController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void ActionExistingAccount(ActionEvent event) throws IOException {
+        Stage stage = (Stage) buttonExistAccount.getScene().getWindow();
+        stage.close();
+        App.setRoot("login", 600, 372);
+    }
     
 }
