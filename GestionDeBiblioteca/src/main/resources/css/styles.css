@@ -15,8 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color:#284b63 ;
 }
 
-#anchorGame{
-    -fx-background-color:#3c6e71 ;
+.anchor{
     -fx-background-radius: 10px;
 }
 
@@ -44,12 +43,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   -fx-text-fill: #FFF;
 }
 
+.btnPrincipal:hover{
+    -fx-opacity:0.5;
+    -fx-padding:10;
+}
+
 .btn{
   -fx-color:white;
   -fx-background-color: black;
   -fx-padding: 10px;
   -fx-background-radius: 10px;
   -fx-text-fill: #FFF;
+}
+
+.btn:hover{
+    -fx-opacity:0.5;
+    -fx-padding:10;
 }
 
 #btnCerrar{
