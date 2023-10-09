@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="574.0" prefWidth="768.0" styleClass="anchor1" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+   <children>
+      <VBox layoutX="-3.0" layoutY="-2.0" prefHeight="576.0" prefWidth="234.0" styleClass="anchor2" stylesheets="@../../../css/styles.css">
+         <children>
+            <Label alignment="CENTER" prefHeight="79.0" prefWidth="233.0" text="Bienvenido(a)" textAlignment="CENTER" textFill="#f8f6f6">
+               <font>
+                  <Font name="Georgia Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="44.0" prefWidth="233.0" text="Usuario" textAlignment="CENTER" textFill="#f8f6f6">
+               <font>
+                  <Font name="Georgia Bold" size="20.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="54.0" prefWidth="234.0" />
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
+               <children>
+                  <Button fx:id="bntBookLoan" mnemonicParsing="false" onAction="#bookLoan" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Préstamos de libros">
+                     <font>
+                        <Font name="Georgia Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="32.0" prefWidth="234.0" />
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
+               <children>
+                  <Button fx:id="bntEquipmentLoan" mnemonicParsing="false" onAction="#equipmentLoan" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Préstamos de equipos">
+                     <font>
+                        <Font name="Georgia Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="32.0" prefWidth="234.0" />
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
+               <children>
+                  <Button fx:id="btnSearchEquipment" mnemonicParsing="false" onAction="#searchEquipment" prefHeight="35.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Buscar equipos">
+                     <font>
+                        <Font name="Georgia Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="32.0" prefWidth="234.0" />
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
+               <children>
+                  <Button fx:id="btnSearchEquipment1" mnemonicParsing="false" onAction="#searchEquipment" prefHeight="35.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Buscar libros">
+                     <font>
+                        <Font name="Georgia Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="162.0" prefWidth="234.0">
+               <children>
+                  <Button fx:id="btnClose" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#close" prefHeight="36.0" prefWidth="222.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Cerrar Sesión">
+                     <font>
+                        <Font name="Georgia Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView fx:id="searchBook" layoutX="241.0" layoutY="88.0" prefHeight="396.0" prefWidth="519.0" styleClass="table" stylesheets="@../../../css/styles.css">
+         <columns>
+            <TableColumn fx:id="title" prefWidth="158.0" text="Libro " />
+            <TableColumn fx:id="author" prefWidth="185.0" text="Fecha de prestamo" />
+            <TableColumn fx:id="genre" prefWidth="174.0" text="Fecha devolucion" />
+         </columns>
+      </TableView>
+      <Label alignment="CENTER" layoutX="233.0" layoutY="5.0" prefHeight="29.0" prefWidth="532.0" text="Biblioteca  DayMar">
+         <font>
+            <Font name="Georgia Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="234.0" layoutY="49.0" prefHeight="29.0" prefWidth="532.0" text="Préstamos de libros">
+         <font>
+            <Font name="Georgia Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnClose1" alignment="CENTER" contentDisplay="BOTTOM" layoutX="610.0" layoutY="524.0" mnemonicParsing="false" onAction="#close" prefHeight="31.0" prefWidth="144.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Devolver libro">
+         <font>
+            <Font name="Georgia Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
