@@ -59,14 +59,17 @@ public class HomeController implements Initializable {
     }    
 
     @FXML
-    private void bookLoan(ActionEvent event) {
+    private void bookLoan(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("bookLoanUser", 768, 574);
     }
 
     @FXML
     private void equipmentLoan(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("equipment", 760, 576);
+        App.setRoot("equipmentLoanUser", 768, 574);
     }
 
     @FXML
