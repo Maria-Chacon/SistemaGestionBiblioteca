@@ -6,7 +6,9 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
 
 /**
  * FXML Controller class
@@ -14,6 +16,15 @@ import javafx.fxml.Initializable;
  * @author monge
  */
 public class HomeController implements Initializable {
+
+    @FXML
+    private TableColumn<?, ?> title;
+    @FXML
+    private TableColumn<?, ?> author;
+    @FXML
+    private TableColumn<?, ?> genre;
+    @FXML
+    private TableColumn<?, ?> quantity;
 
     /**
      * Initializes the controller class.

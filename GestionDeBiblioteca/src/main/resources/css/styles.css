@@ -8,8 +8,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 
 
-#anchor1{
-    -fx-background-color: #3c6e71;
+.anchor1{
+    -fx-background-color: #D9D9D9;
 }
 .anchor2{
     -fx-background-color:#284b63 ;
@@ -32,11 +32,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-color: black;
 }
 
+.table{
+    -fx-font-family: 'Georgia', Bold;
+}
+
 .btnPrincipal{
   -fx-color:white;
   -fx-background-color: black;
   -fx-padding: 10px;
   -fx-background-radius:1em;
+  -fx-text-fill: #FFF;
+}
+
+.btn{
+  -fx-color:white;
+  -fx-background-color: black;
+  -fx-padding: 10px;
+  -fx-background-radius: 10px;
   -fx-text-fill: #FFF;
 }
 
