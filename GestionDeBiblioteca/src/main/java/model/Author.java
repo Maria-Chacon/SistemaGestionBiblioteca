@@ -18,10 +18,12 @@ public class Author extends Person {
     public Author() {
     }
 
-    public Author(ArrayList<Book> books, Date birthDay, String identification, String lastName, String name, String phone) {
-        super(birthDay, identification, lastName, name, phone);
+    public Author(ArrayList<Book> books, int id, Date birthDay, String identification, String lastName, String name, String phone) {
+        super(id, birthDay, identification, lastName, name, phone);
         this.books = books;
     }
+
+   
 
     public ArrayList<Book> getBooks() {
         return books;

@@ -20,12 +20,15 @@ public class User extends Person{
     public User() {
     }
 
-    public User(String email, String password, ArrayList<Book> loanedBooks, Date birthDay, String identification, String lastName, String name, String phone) {
-        super(birthDay, identification, lastName, name, phone);
+
+    public User(String email, String password, ArrayList<Book> loanedBooks, int id, Date birthDay, String identification, String lastName, String name, String phone) {
+        super(id, birthDay, identification, lastName, name, phone);
         this.email = email;
         this.password = password;
         this.loanedBooks = loanedBooks;
     }
+
+    
 
     public String getEmail() {
         return email;

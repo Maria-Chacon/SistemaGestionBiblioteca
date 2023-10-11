@@ -29,7 +29,7 @@ public class AuthorTest {
         books.add(book2);
 
         
-        Author author = new Author(books, new Date(), "123456789", "De Cervantes", "Miguel", "123456789");
+        Author author = new Author(books, 1,new Date(), "123456789", "De Cervantes", "Miguel", "123456789");
 
         
         ArrayList<Book> resultBooks = author.getBooks();

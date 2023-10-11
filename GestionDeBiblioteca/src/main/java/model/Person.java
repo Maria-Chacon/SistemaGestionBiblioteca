@@ -12,6 +12,7 @@ import java.util.Date;
  * @author monge
  */
 public class Person {
+    private int id;
     private Date birthDay;
     private String identification;
     private String lastName;
@@ -21,13 +22,21 @@ public class Person {
     public Person() {
     }
 
-    
-    public Person(Date birthDay, String identification, String lastName, String name, String phone) {
+    public Person(int id, Date birthDay, String identification, String lastName, String name, String phone) {
+        this.id = id;
         this.birthDay = birthDay;
         this.identification = identification;
         this.lastName = lastName;
         this.name = name;
         this.phone = phone;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getBirthDay() {
@@ -72,8 +81,10 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" + "birthDay=" + birthDay + ", identification=" + identification + ", lastName=" + lastName + ", name=" + name + ", phone=" + phone + '}';
+        return "Person{" + "id=" + id + ", birthDay=" + birthDay + ", identification=" + identification + ", lastName=" + lastName + ", name=" + name + ", phone=" + phone + '}';
     }
+
+    
     
     
 }

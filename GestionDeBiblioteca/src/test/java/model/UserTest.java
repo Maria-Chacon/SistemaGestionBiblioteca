@@ -21,7 +21,7 @@ public class UserTest {
      @Test
     public void testGetEmail() {
         ArrayList<Book> loanedBooks = new ArrayList<>();
-        User instance = new User("maria@gmail.com", "password123", loanedBooks, new Date(), "12345", "chacon", "maria", "123456789");
+        User instance = new User("maria@gmail.com", "password123", loanedBooks,1, new Date(), "12345", "chacon", "maria", "123456789");
         String expResult = "maria@gmail.com";
         String result = instance.getEmail();
         assertEquals(expResult, result);
@@ -30,7 +30,7 @@ public class UserTest {
     @Test
     public void testGetPassword() {
         ArrayList<Book> loanedBooks = new ArrayList<>();
-        User instance = new User("dayana@gmail.com", "password123", loanedBooks, new Date(), "12345", "monge", "dayana", "123456789");
+        User instance = new User("dayana@gmail.com", "password123", loanedBooks,1, new Date(), "12345", "monge", "dayana", "123456789");
         String expResult = "password123";
         String result = instance.getPassword();
         assertEquals(expResult, result);
@@ -40,7 +40,7 @@ public class UserTest {
     public void testGetLoanedBooks() {
         ArrayList<Book> loanedBooks = new ArrayList<>();
         loanedBooks.add(new Book(true, 1, "Author1", "Genre1", "2", "Title1"));
-        User instance = new User("maria@gmail.com", "password123", loanedBooks, new Date(), "12345", "chacon", "maria", "123456789");
+        User instance = new User("maria@gmail.com", "password123", loanedBooks,1, new Date(), "12345", "chacon", "maria", "123456789");
         ArrayList<Book> expResult = loanedBooks;
         ArrayList<Book> result = instance.getLoanedBooks();
         assertEquals(expResult, result);

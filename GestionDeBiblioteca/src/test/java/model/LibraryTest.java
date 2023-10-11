@@ -59,8 +59,8 @@ public class LibraryTest {
 
         ArrayList<Book> loanedBooks1 = new ArrayList<>();
         ArrayList<Book> loanedBooks2 = new ArrayList<>();
-        User user1 = new User("maria@gmail.com", "password1", loanedBooks1, new Date(), "ID001", "chacon", "maria", "88888888");
-        User user2 = new User("dayana@gmail.com", "password2", loanedBooks2, new Date(), "ID002", "gamboa", "dayana", "77777777");
+        User user1 = new User("maria@gmail.com", "password1", loanedBooks1,1, new Date(), "ID001", "chacon", "maria", "88888888");
+        User user2 = new User("dayana@gmail.com", "password2", loanedBooks2,2, new Date(), "ID002", "gamboa", "dayana", "77777777");
 
         users = new ArrayList<>();
         users.add(user1);
