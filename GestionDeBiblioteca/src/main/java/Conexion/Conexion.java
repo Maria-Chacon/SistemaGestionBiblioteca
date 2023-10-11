@@ -20,9 +20,9 @@ public class Conexion {
     
     public Conexion(){
         dataSource = new MysqlDataSource();
-        dataSource.setURL("jdbc:mysql://localhost:3306/base_militar");
-        dataSource.setUser("root");
-        dataSource.setPassword("");
+        dataSource.setURL("jdbc:mysql://localhost/arboretum");
+        dataSource.setUser("server");
+        dataSource.setPassword("1234");
     }
     
     public static Conexion getInstance(){
@@ -34,7 +34,7 @@ public class Conexion {
     public void conectar()  {
        try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/base_militar", "root", "");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/arboretum", "root", "1234");
        }catch(Exception ex ){
              ex.printStackTrace();
        }
