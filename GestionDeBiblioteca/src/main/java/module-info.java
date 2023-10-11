@@ -11,4 +11,6 @@ module com.mycompany.gestiondebiblioteca {
     opens controller to javafx.fxml;
     exports controller;
     
+    exports Conexion;
+    exports services;
 }
