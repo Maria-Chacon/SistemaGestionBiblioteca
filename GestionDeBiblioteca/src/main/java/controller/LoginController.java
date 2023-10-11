@@ -56,18 +56,13 @@ public class LoginController implements Initializable {
             connection.conectar(); // Conecta a la base de datos
 
             // Crea una sentencia preparada con la consulta SQL para verificar las credenciales del usuario
-            PreparedStatement statement = connection.preparedStatement("SELECT id FROM usuarios WHERE email = ? AND password = ?");
+            PreparedStatement statement = connection.preparedStatement("SELECT id FROM bd_user WHERE email = ? AND password = ?");
             statement.setString(1, email);
             statement.setString(2, password);
 
             ResultSet result = statement.executeQuery(); // Ejecuta la consulta SQL
 
-            if (result.next()) {
-                return true; // Si se encuentra un usuario con las credenciales, retorna true
-            } else {
-                mostrarMensajeDeError("Credenciales incorrectas. Por favor, inténtelo de nuevo.");
-                return false;
-            }
+            return result.next(); // Si se encuentra un usuario con las credenciales, retorna true
         } catch (SQLException ex) {
 
             // Maneja las excepciones, por ejemplo, imprime el error
@@ -97,9 +92,20 @@ public class LoginController implements Initializable {
 
     @FXML
     private void ActionLogin(ActionEvent event) throws IOException {
-        Stage stage = (Stage) buttonLogin.getScene().getWindow();
-        stage.close();
-        App.setRoot("home", 768, 624);
+        String email = textFieldEmail.getText(); // Obtener el correo electrónico ingresado
+        String password = textFieldPassword.getText(); // Obtener la contraseña ingresada
+
+        boolean isAuthenticated = autenticarUsuarioEnBaseDeDatos(email, password);
+
+        if (isAuthenticated) {
+            // Si el usuario se autentica con éxito, redirigirlo a la pantalla de inicio (home)
+            Stage stage = (Stage) buttonLogin.getScene().getWindow();
+            stage.close();
+            App.setRoot("home", 768, 624);
+        } else {
+            // Si la autenticación falla, mostrar un mensaje de error al usuario
+            mostrarMensajeDeError("Credenciales inválidas. Verifica tu correo y contraseña.");
+        }
     }
 
 }

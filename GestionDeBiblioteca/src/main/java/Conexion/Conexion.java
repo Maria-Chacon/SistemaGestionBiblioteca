@@ -34,7 +34,7 @@ public class Conexion {
     public void conectar()  {
        try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mysql://localhost/arboretum", "root", "1234");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/arboretum", "server", "1234");
        }catch(Exception ex ){
              ex.printStackTrace();
        }
