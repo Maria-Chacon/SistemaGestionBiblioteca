@@ -146,7 +146,7 @@ public class UserBD {
 //
 //    public static Teacher getTeacher(String teacherId) {
 //        // Implementa la lógica para obtener un profesor por su identificador.
-//    }
+//    
 //
 //    // Otros métodos específicos para cada tipo de usuario, si es necesario.
 //    // Métodos para manejar libros prestados, si es relevante para tu aplicación.
