@@ -54,7 +54,7 @@ public class LoginController implements Initializable {
     private void ActionLogin(ActionEvent event) throws IOException {
         Stage stage = (Stage) buttonLogin.getScene().getWindow();
         stage.close();
-        App.setRoot("home", 768, 574);
+        App.setRoot("home", 768, 624);
     }
     
 }

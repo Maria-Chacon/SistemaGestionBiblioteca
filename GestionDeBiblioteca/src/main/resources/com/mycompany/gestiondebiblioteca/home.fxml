@@ -17,9 +17,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="574.0" prefWidth="768.0" styleClass="anchor1" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<AnchorPane id="AnchorPane" prefHeight="624.0" prefWidth="768.0" styleClass="anchor1" stylesheets="@../../../css/styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
-      <VBox layoutX="-3.0" layoutY="-2.0" prefHeight="576.0" prefWidth="234.0" styleClass="anchor2" stylesheets="@../../../css/styles.css">
+      <VBox layoutX="-3.0" layoutY="-2.0" prefHeight="632.0" prefWidth="234.0" styleClass="anchor2" stylesheets="@../../../css/styles.css">
          <children>
             <Label alignment="CENTER" prefHeight="79.0" prefWidth="233.0" text="Bienvenido(a)" textAlignment="CENTER" textFill="#f8f6f6">
                <font>
@@ -68,7 +68,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="BOTTOM_CENTER" prefHeight="162.0" prefWidth="234.0">
+            <HBox alignment="BOTTOM_CENTER" prefHeight="203.0" prefWidth="234.0">
                <children>
                   <Button fx:id="btnClose" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#close" prefHeight="36.0" prefWidth="222.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Cerrar Sesión">
                      <font>
@@ -86,7 +86,7 @@
          <font>
             <Font name="Georgia" size="14.0" />
          </font></TextField>
-      <Button fx:id="search" alignment="CENTER" layoutX="357.0" layoutY="120.0" mnemonicParsing="false" styleClass="btn" stylesheets="@../../../css/styles.css" text="Buscar">
+      <Button fx:id="btnSearch" alignment="CENTER" layoutX="357.0" layoutY="120.0" mnemonicParsing="false" onAction="#search" styleClass="btn" stylesheets="@../../../css/styles.css" text="Buscar">
          <font>
             <Font name="Georgia Bold" size="14.0" />
          </font>
@@ -114,5 +114,10 @@
             <Font name="Georgia Bold" size="24.0" />
          </font>
       </Label>
+      <Button fx:id="btnLoan" alignment="CENTER" layoutX="673.0" layoutY="586.0" mnemonicParsing="false" onAction="#loan" styleClass="btn" stylesheets="@../../../css/styles.css" text="Solicitar">
+         <font>
+            <Font name="Georgia Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

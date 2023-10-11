@@ -46,9 +46,13 @@ public class HomeController implements Initializable {
     @FXML
     private TextField name;
     @FXML
-    private Button search;
-    @FXML
     private TableView<?> searchBook;
+    @FXML
+    private Button btnSearchEquipment1;
+    @FXML
+    private Button btnSearch;
+    @FXML
+    private Button btnLoan;
 
     /**
      * Initializes the controller class.
@@ -81,6 +85,14 @@ public class HomeController implements Initializable {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
         App.setRoot("login", 600, 372);
+    }
+
+    @FXML
+    private void search(ActionEvent event) {
+    }
+
+    @FXML
+    private void loan(ActionEvent event) {
     }
     
 }
