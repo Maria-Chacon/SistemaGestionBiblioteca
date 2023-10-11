@@ -10,7 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 /**
@@ -18,7 +18,7 @@ import javafx.scene.control.TextField;
  *
  * @author monge
  */
-public class HomeAdministratorController implements Initializable {
+public class RegisterUserController implements Initializable {
 
     @FXML
     private Button bntBookLoan;
@@ -29,15 +29,21 @@ public class HomeAdministratorController implements Initializable {
     @FXML
     private Button btnClose;
     @FXML
-    private TextField textFieldQuantity;
-    @FXML
-    private TextField textFieldGenre;
-    @FXML
-    private TextField textFieldTitle;
-    @FXML
     private Button btnRegister;
     @FXML
-    private ComboBox<?> ComboBoxAuthor;
+    private TextField textFieldEmail;
+    @FXML
+    private TextField textFieldPassword;
+    @FXML
+    private TextField textFieldIdentification;
+    @FXML
+    private TextField textFieldName;
+    @FXML
+    private TextField textFieldLastName;
+    @FXML
+    private TextField textFieldPhone;
+    @FXML
+    private DatePicker datePickerBirthDay;
 
     /**
      * Initializes the controller class.
