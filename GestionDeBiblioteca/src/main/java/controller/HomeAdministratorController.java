@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 /**
@@ -30,13 +31,13 @@ public class HomeAdministratorController implements Initializable {
     @FXML
     private TextField textFieldQuantity;
     @FXML
-    private TextField textFieldAuthor;
-    @FXML
     private TextField textFieldGenre;
     @FXML
     private TextField textFieldTitle;
     @FXML
     private Button btnRegister;
+    @FXML
+    private ComboBox<?> ComboBoxAuthor;
 
     /**
      * Initializes the controller class.

@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -13,8 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="controller.HomeAdministratorController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeAdministratorController">
    <children>
       <VBox layoutX="-5.0" layoutY="-1.0" prefHeight="576.0" prefWidth="234.0" styleClass="anchor2" stylesheets="@../../../css/styles.css">
          <children>
@@ -78,7 +78,6 @@
          </font>
       </Label>
       <TextField fx:id="textFieldQuantity" layoutX="405.0" layoutY="196.0" prefHeight="26.0" prefWidth="222.0" promptText="Cantidad" styleClass="username" stylesheets="@../../../css/styles.css" />
-      <TextField fx:id="textFieldAuthor" layoutX="405.0" layoutY="250.0" prefHeight="26.0" prefWidth="222.0" promptText="Autor" styleClass="username" stylesheets="@../../../css/styles.css" />
       <TextField fx:id="textFieldGenre" layoutX="405.0" layoutY="301.0" prefHeight="26.0" prefWidth="222.0" promptText="Género" styleClass="username" stylesheets="@../../../css/styles.css" />
       <TextField fx:id="textFieldTitle" layoutX="405.0" layoutY="355.0" prefHeight="26.0" prefWidth="222.0" promptText="Título" styleClass="username" stylesheets="@../../../css/styles.css" />
       <Line endX="380.0" layoutX="332.0" layoutY="54.0" startX="-104.0" />
@@ -112,5 +111,6 @@
             <Image url="@../../../images/title.png" />
          </image>
       </ImageView>
+      <ComboBox fx:id="ComboBoxAuthor" layoutX="405.0" layoutY="251.0" prefHeight="25.0" prefWidth="222.0" promptText="Autor" styleClass="username" stylesheets="@../../../css/styles.css" />
    </children>
 </AnchorPane>
