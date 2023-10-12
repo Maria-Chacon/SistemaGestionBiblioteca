@@ -4,7 +4,13 @@
  */
 package controller;
 
+import Conexion.Conexion;
+import com.mycompany.gestiondebiblioteca.App;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +18,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import model.Author;
 
 /**
  * FXML Controller class
@@ -52,27 +60,86 @@ public class RegisterAuthorController implements Initializable {
     }    
 
     @FXML
-    private void actionRegisterBooks(ActionEvent event) {
+    private void actionRegisterBooks(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("homeAdministrator", 768, 574);
     }
 
     @FXML
-    private void actionRegisterEquipment(ActionEvent event) {
+    private void actionRegisterEquipment(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("registerEquipment", 768, 574);
     }
 
     @FXML
-    private void actionRegisterUsers(ActionEvent event) {
+    private void actionRegisterUsers(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("registerUser", 768, 574);
     }
 
     @FXML
-    private void actionRegisterAuthors(ActionEvent event) {
+    private void actionRegisterAuthors(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("registerAuthor", 768, 574);
     }
 
     @FXML
-    private void close(ActionEvent event) {
+    private void close(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("login", 768, 574);
     }
 
     @FXML
     private void ActionRegister(ActionEvent event) {
+        Conexion connection = new Conexion();
+        String name = textFieldName.getText();
+        String lastName = textFieldLastName.getText();
+        String identification = textFieldIdentification.getText();
+        String phone = textFieldPhone.getText();
+        LocalDate birthDay = datePickerBirthDay.getValue(); 
+        
+        java.sql.Date sqlBirthDay = java.sql.Date.valueOf(birthDay);
+ 
+      
+        Author newAuthor = new Author();
+        newAuthor.setName(name);
+        newAuthor.setLastName(lastName);
+        newAuthor.setIdentification(identification);
+        newAuthor.setPhone(phone);
+        newAuthor.setBirthDay(sqlBirthDay); // Convierte LocalDate a java.sql.Date
+        
+        String insertUserQuery = "INSERT INTO tbl_authors (name, lastName, identification, birthDay, phone) VALUES (?, ?, ?, ?, ?)";
+
+        try {
+            connection.conectar(); 
+            
+            PreparedStatement statement = connection.preparedStatement(insertUserQuery);
+            statement.setString(1, newAuthor.getName());
+            statement.setString(2, newAuthor.getLastName());
+            statement.setString(3, newAuthor.getIdentification());
+            statement.setDate(4, new java.sql.Date(newAuthor.getBirthDay().getTime()));
+            statement.setString(5, newAuthor.getPhone());
+
+            int rowsAffected = statement.executeUpdate(); 
+
+            if (rowsAffected > 0) {
+                
+                System.out.println("Autor registrado con éxito.");
+            } else {
+                
+                System.out.println("Error al registrar el autor.");
+            }
+        } catch (SQLException ex) {
+            
+            System.err.println("Error al insertar el autor: " + ex.getMessage());
+        } finally {
+            connection.desconectar(); 
+        }
     }
     
 }
