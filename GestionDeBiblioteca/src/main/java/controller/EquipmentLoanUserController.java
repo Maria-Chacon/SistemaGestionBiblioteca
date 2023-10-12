@@ -4,6 +4,8 @@
  */
 package controller;
 
+import com.mycompany.gestiondebiblioteca.App;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -12,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -27,8 +30,6 @@ public class EquipmentLoanUserController implements Initializable {
     @FXML
     private Button btnSearchEquipment;
     @FXML
-    private Button btnSearchEquipment1;
-    @FXML
     private Button btnClose;
     @FXML
     private TableView<?> searchBook;
@@ -40,6 +41,8 @@ public class EquipmentLoanUserController implements Initializable {
     private TableColumn<?, ?> genre;
     @FXML
     private Button btnClose1;
+    @FXML
+    private Button btnSearchBook;
 
     /**
      * Initializes the controller class.
@@ -50,19 +53,35 @@ public class EquipmentLoanUserController implements Initializable {
     }    
 
     @FXML
-    private void bookLoan(ActionEvent event) {
+    private void bookLoan(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("bookLoanUser", 768, 574);
     }
 
     @FXML
-    private void equipmentLoan(ActionEvent event) {
+    private void equipmentLoan(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("equipmentLoanUser", 768, 574);
     }
 
     @FXML
-    private void searchEquipment(ActionEvent event) {
+    private void searchEquipment(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("equipment", 768, 574);
     }
 
     @FXML
     private void close(ActionEvent event) {
+    }
+
+    @FXML
+    private void searchBook(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("home", 768, 574);
     }
     
 }
