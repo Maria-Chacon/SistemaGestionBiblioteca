@@ -15,6 +15,10 @@ public class Equipment {
     private String idEquipment;
     private String name;
 
+    public Equipment() {
+    }
+
+
     public Equipment(boolean availability, int quantity, String description, String idEquipment, String name) {
         this.availability = availability;
         this.quantity = quantity;

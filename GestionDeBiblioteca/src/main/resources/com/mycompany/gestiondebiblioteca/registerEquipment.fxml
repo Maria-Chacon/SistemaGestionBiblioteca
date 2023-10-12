@@ -90,11 +90,11 @@
          <font>
             <Font name="Georgia" size="12.0" />
          </font></TextField>
-      <TextField fx:id="textFieldAuthor" layoutX="410.0" layoutY="251.0" prefHeight="26.0" prefWidth="222.0" promptText="Descripción" styleClass="username" stylesheets="@../../../css/styles.css">
+      <TextField fx:id="textFieldDescription" layoutX="410.0" layoutY="251.0" prefHeight="26.0" prefWidth="222.0" promptText="Descripción" styleClass="username" stylesheets="@../../../css/styles.css">
          <font>
             <Font name="Georgia" size="12.0" />
          </font></TextField>
-      <TextField fx:id="textFieldGenre" layoutX="410.0" layoutY="302.0" prefHeight="26.0" prefWidth="222.0" promptText="Nombre" styleClass="username" stylesheets="@../../../css/styles.css">
+      <TextField fx:id="textFieldName" layoutX="410.0" layoutY="302.0" prefHeight="26.0" prefWidth="222.0" promptText="Nombre" styleClass="username" stylesheets="@../../../css/styles.css">
          <font>
             <Font name="Georgia" size="12.0" />
          </font></TextField>
@@ -120,6 +120,16 @@
          </image>
       </ImageView>
       <ImageView fitHeight="44.0" fitWidth="49.0" layoutX="315.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/genre.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="textFieldDisponible" layoutX="412.0" layoutY="352.0" prefHeight="26.0" prefWidth="222.0" promptText="Disponible? (True o False)" styleClass="username" stylesheets="@../../../css/styles.css">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="44.0" fitWidth="49.0" layoutX="317.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/genre.png" />
          </image>
