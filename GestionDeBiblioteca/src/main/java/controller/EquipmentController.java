@@ -49,6 +49,8 @@ public class EquipmentController implements Initializable {
     private TableColumn<?, ?> genre;
     @FXML
     private TableColumn<?, ?> quantity;
+    @FXML
+    private Button btnSearchEquipment1;
 
     /**
      * Initializes the controller class.
