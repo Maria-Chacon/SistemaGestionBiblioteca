@@ -98,7 +98,7 @@
             <HBox prefHeight="32.0" prefWidth="234.0" />
             <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
                <children>
-                  <Button fx:id="btnSearchEquipment1" mnemonicParsing="false" onAction="#searchEquipment" prefHeight="35.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Buscar libros">
+                  <Button fx:id="btnSearchBook" mnemonicParsing="false" onAction="#searchBook" prefHeight="35.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Buscar libros">
                      <font>
                         <Font name="Georgia Bold" size="14.0" />
                      </font>

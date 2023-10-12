@@ -32,8 +32,6 @@ public class HomeController implements Initializable {
     @FXML
     private TableColumn<?, ?> genre;
     @FXML
-    private TableColumn<?, ?> quantity;
-    @FXML
     private Button bntBookLoan;
     @FXML
     private Button bntEquipmentLoan;
@@ -42,17 +40,11 @@ public class HomeController implements Initializable {
     @FXML
     private Button btnClose;
     @FXML
-    private ComboBox<?> filter;
-    @FXML
-    private TextField name;
-    @FXML
     private TableView<?> searchBook;
     @FXML
     private Button btnSearchEquipment1;
     @FXML
-    private Button btnSearch;
-    @FXML
-    private Button btnLoan;
+    private Button btnClose1;
 
     /**
      * Initializes the controller class.
@@ -87,12 +79,5 @@ public class HomeController implements Initializable {
         App.setRoot("login", 600, 372);
     }
 
-    @FXML
-    private void search(ActionEvent event) {
-    }
-
-    @FXML
-    private void loan(ActionEvent event) {
-    }
     
 }

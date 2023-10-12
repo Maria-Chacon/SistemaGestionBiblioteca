@@ -94,7 +94,7 @@
             <Font name="Georgia Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnClose1" alignment="CENTER" contentDisplay="BOTTOM" layoutX="610.0" layoutY="524.0" mnemonicParsing="false" onAction="#close" prefHeight="31.0" prefWidth="144.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Devolver equipo">
+      <Button fx:id="btnClose1" alignment="CENTER" contentDisplay="BOTTOM" layoutX="604.0" layoutY="524.0" mnemonicParsing="false" onAction="#close" prefHeight="31.0" prefWidth="144.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Devolver equipo">
          <font>
             <Font name="Georgia Bold" size="14.0" />
          </font>
