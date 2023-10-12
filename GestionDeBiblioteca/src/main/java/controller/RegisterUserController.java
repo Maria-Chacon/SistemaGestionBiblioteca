@@ -63,7 +63,6 @@ public class RegisterUserController implements Initializable {
         // TODO
     }
 
-
     @FXML
     private void close(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
@@ -73,7 +72,7 @@ public class RegisterUserController implements Initializable {
 
     @FXML
     private void ActionRegister(ActionEvent event) {
-        
+
     }
 
     @FXML
@@ -98,7 +97,10 @@ public class RegisterUserController implements Initializable {
     }
 
     @FXML
-    private void actionRegisterAuthors(ActionEvent event) {
+    private void actionRegisterAuthors(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("registerAuthor", 768, 574);
     }
 
 }

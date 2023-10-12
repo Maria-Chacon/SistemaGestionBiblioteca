@@ -79,18 +79,18 @@ public class HomeAdministratorController implements Initializable {
         App.setRoot("registerEquipment", 768, 574);
     }
 
-    private void actionRegisterUser(ActionEvent event) throws IOException {
+    @FXML
+    private void actionRegisterUsers(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
         App.setRoot("registerUser", 768, 574);
     }
 
     @FXML
-    private void actionRegisterUsers(ActionEvent event) {
-    }
-
-    @FXML
-    private void actionRegisterAuthors(ActionEvent event) {
+    private void actionRegisterAuthors(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("registerAuthor", 768, 574);
     }
     
 }

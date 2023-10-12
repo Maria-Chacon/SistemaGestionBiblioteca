@@ -84,7 +84,10 @@ public class RegisterEquipmentController implements Initializable {
     }
 
     @FXML
-    private void actionRegisterAuthors(ActionEvent event) {
+    private void actionRegisterAuthors(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("registerAuthor", 768, 574);
     }
     
 }
