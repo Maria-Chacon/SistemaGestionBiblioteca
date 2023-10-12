@@ -13,8 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="controller.RegisterEquipmentController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterEquipmentController">
    <children>
       <VBox prefHeight="576.0" prefWidth="234.0" styleClass="anchor2" stylesheets="@../../../css/styles.css">
          <children>
@@ -77,9 +76,18 @@
             <Font name="Georgia Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldQuantity" layoutX="410.0" layoutY="197.0" prefHeight="26.0" prefWidth="222.0" promptText="Cantidad" styleClass="username" stylesheets="@../../../css/styles.css" />
-      <TextField fx:id="textFieldAuthor" layoutX="410.0" layoutY="251.0" prefHeight="26.0" prefWidth="222.0" promptText="Descripción" styleClass="username" stylesheets="@../../../css/styles.css" />
-      <TextField fx:id="textFieldGenre" layoutX="410.0" layoutY="302.0" prefHeight="26.0" prefWidth="222.0" promptText="Nombre" styleClass="username" stylesheets="@../../../css/styles.css" />
+      <TextField fx:id="textFieldQuantity" layoutX="410.0" layoutY="197.0" prefHeight="26.0" prefWidth="222.0" promptText="Cantidad" styleClass="username" stylesheets="@../../../css/styles.css">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="textFieldAuthor" layoutX="410.0" layoutY="251.0" prefHeight="26.0" prefWidth="222.0" promptText="Descripción" styleClass="username" stylesheets="@../../../css/styles.css">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="textFieldGenre" layoutX="410.0" layoutY="302.0" prefHeight="26.0" prefWidth="222.0" promptText="Nombre" styleClass="username" stylesheets="@../../../css/styles.css">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font></TextField>
       <Line endX="380.0" layoutX="337.0" layoutY="55.0" startX="-104.0" />
       <Text layoutX="446.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro">
          <font>

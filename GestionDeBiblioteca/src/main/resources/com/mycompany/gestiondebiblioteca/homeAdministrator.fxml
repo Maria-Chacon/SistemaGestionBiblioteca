@@ -77,9 +77,18 @@
             <Font name="Georgia Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldQuantity" layoutX="405.0" layoutY="196.0" prefHeight="26.0" prefWidth="222.0" promptText="Cantidad" styleClass="username" stylesheets="@../../../css/styles.css" />
-      <TextField fx:id="textFieldGenre" layoutX="405.0" layoutY="301.0" prefHeight="26.0" prefWidth="222.0" promptText="Género" styleClass="username" stylesheets="@../../../css/styles.css" />
-      <TextField fx:id="textFieldTitle" layoutX="405.0" layoutY="355.0" prefHeight="26.0" prefWidth="222.0" promptText="Título" styleClass="username" stylesheets="@../../../css/styles.css" />
+      <TextField fx:id="textFieldQuantity" layoutX="405.0" layoutY="196.0" prefHeight="26.0" prefWidth="222.0" promptText="Cantidad" styleClass="username" stylesheets="@../../../css/styles.css">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="textFieldGenre" layoutX="405.0" layoutY="301.0" prefHeight="26.0" prefWidth="222.0" promptText="Género" styleClass="username" stylesheets="@../../../css/styles.css">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="textFieldTitle" layoutX="405.0" layoutY="355.0" prefHeight="26.0" prefWidth="222.0" promptText="Título" styleClass="username" stylesheets="@../../../css/styles.css">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font></TextField>
       <Line endX="380.0" layoutX="332.0" layoutY="54.0" startX="-104.0" />
       <Text layoutX="441.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro">
          <font>
