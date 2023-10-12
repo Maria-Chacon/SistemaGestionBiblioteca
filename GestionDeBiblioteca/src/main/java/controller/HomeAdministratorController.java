@@ -4,6 +4,8 @@
  */
 package controller;
 
+import com.mycompany.gestiondebiblioteca.App;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -12,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -20,12 +23,6 @@ import javafx.scene.control.TextField;
  */
 public class HomeAdministratorController implements Initializable {
 
-    @FXML
-    private Button bntBookLoan;
-    @FXML
-    private Button bntEquipmentLoan;
-    @FXML
-    private Button btnSearchEquipment;
     @FXML
     private Button btnClose;
     @FXML
@@ -38,6 +35,12 @@ public class HomeAdministratorController implements Initializable {
     private Button btnRegister;
     @FXML
     private ComboBox<?> ComboBoxAuthor;
+    @FXML
+    private Button bntRegisterBooks;
+    @FXML
+    private Button bntRegisterEquipment;
+    @FXML
+    private Button btnRegisterUser;
 
     /**
      * Initializes the controller class.
@@ -47,24 +50,38 @@ public class HomeAdministratorController implements Initializable {
         // TODO
     }    
 
+
     @FXML
-    private void bookLoan(ActionEvent event) {
+    private void close(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("login", 768, 574);
     }
 
     @FXML
-    private void equipmentLoan(ActionEvent event) {
+    private void ActionRegister(ActionEvent event) throws IOException {
+        
     }
 
     @FXML
-    private void searchEquipment(ActionEvent event) {
+    private void actionRegisterBooks(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("homeAdministrator", 768, 574);
     }
 
     @FXML
-    private void close(ActionEvent event) {
+    private void actionRegisterEquipment(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("registerEquipment", 768, 574);
     }
 
     @FXML
-    private void ActionRegister(ActionEvent event) {
+    private void actionRegisterUser(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("registerUser", 768, 574);
     }
     
 }

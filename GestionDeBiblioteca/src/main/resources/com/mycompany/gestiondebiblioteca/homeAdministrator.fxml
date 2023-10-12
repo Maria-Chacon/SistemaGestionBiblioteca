@@ -31,7 +31,7 @@
             <HBox prefHeight="54.0" prefWidth="234.0" />
             <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
                <children>
-                  <Button fx:id="bntBookLoan" mnemonicParsing="false" onAction="#bookLoan" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Registro de libros">
+                  <Button fx:id="bntRegisterBooks" mnemonicParsing="false" onAction="#actionRegisterBooks" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Registro de libros">
                      <font>
                         <Font name="Georgia Bold" size="14.0" />
                      </font>
@@ -41,7 +41,7 @@
             <HBox prefHeight="32.0" prefWidth="234.0" />
             <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
                <children>
-                  <Button fx:id="bntEquipmentLoan" mnemonicParsing="false" onAction="#equipmentLoan" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Registro de equipos">
+                  <Button fx:id="bntRegisterEquipment" mnemonicParsing="false" onAction="#actionRegisterEquipment" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Registro de equipos">
                      <font>
                         <Font name="Georgia Bold" size="14.0" />
                      </font>
@@ -51,7 +51,7 @@
             <HBox prefHeight="32.0" prefWidth="234.0" />
             <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
                <children>
-                  <Button fx:id="btnSearchEquipment" mnemonicParsing="false" onAction="#searchEquipment" prefHeight="35.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Registro de Usuarios">
+                  <Button fx:id="btnRegisterUser" mnemonicParsing="false" onAction="#actionRegisterUser" prefHeight="35.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Registro de Usuarios">
                      <font>
                         <Font name="Georgia Bold" size="14.0" />
                      </font>
