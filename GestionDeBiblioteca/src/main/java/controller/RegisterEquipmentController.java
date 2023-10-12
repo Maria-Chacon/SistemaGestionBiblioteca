@@ -38,6 +38,8 @@ public class RegisterEquipmentController implements Initializable {
     private Button bntRegisterEquipment;
     @FXML
     private Button btnRegisterUsers;
+    @FXML
+    private Button btnRegisterAuthor;
 
     /**
      * Initializes the controller class.
@@ -79,6 +81,10 @@ public class RegisterEquipmentController implements Initializable {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
         App.setRoot("registerUser", 768, 574);
+    }
+
+    @FXML
+    private void actionRegisterAuthors(ActionEvent event) {
     }
     
 }

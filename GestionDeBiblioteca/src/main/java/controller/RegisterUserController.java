@@ -29,8 +29,6 @@ import model.User;
 public class RegisterUserController implements Initializable {
 
     @FXML
-    private Button btnSearchEquipment;
-    @FXML
     private Button btnClose;
     @FXML
     private Button btnRegister;
@@ -52,6 +50,10 @@ public class RegisterUserController implements Initializable {
     private Button bntRegisterBooks;
     @FXML
     private Button bntRegisterEquipment;
+    @FXML
+    private Button btnRegisterUsers;
+    @FXML
+    private Button btnRegisterAuthor;
 
     /**
      * Initializes the controller class.
@@ -93,6 +95,10 @@ public class RegisterUserController implements Initializable {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
         App.setRoot("registerUser", 768, 574);
+    }
+
+    @FXML
+    private void actionRegisterAuthors(ActionEvent event) {
     }
 
 }
