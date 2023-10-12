@@ -74,7 +74,10 @@ public class EquipmentLoanUserController implements Initializable {
     }
 
     @FXML
-    private void close(ActionEvent event) {
+    private void close(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("login", 600, 372);
     }
 
     @FXML
