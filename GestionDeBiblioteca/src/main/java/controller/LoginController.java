@@ -56,7 +56,7 @@ public class LoginController implements Initializable {
             connection.conectar(); // Conecta a la base de datos
 
             // Crea una sentencia preparada con la consulta SQL para verificar las credenciales del usuario
-            PreparedStatement statement = connection.preparedStatement("SELECT id FROM bd_user WHERE email = ? AND password = ?");
+            PreparedStatement statement = connection.preparedStatement("SELECT * FROM bd_user WHERE email = ? AND password = ?");
             statement.setString(1, email);
             statement.setString(2, password);
 
