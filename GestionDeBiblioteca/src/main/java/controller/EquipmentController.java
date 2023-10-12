@@ -50,7 +50,7 @@ public class EquipmentController implements Initializable {
     @FXML
     private TableColumn<?, ?> quantity;
     @FXML
-    private Button btnSearchEquipment1;
+    private Button btnSearchBook;
 
     /**
      * Initializes the controller class.
@@ -64,15 +64,21 @@ public class EquipmentController implements Initializable {
     private void bookLoan(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("home",  760, 576);
+        App.setRoot("bookLoanUser",  760, 576);
     }
 
     @FXML
-    private void equipmentLoan(ActionEvent event) {
+    private void equipmentLoan(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("equipmentLoanUser",  760, 576);
     }
 
     @FXML
-    private void searchEquipment(ActionEvent event) {
+    private void searchEquipment(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("equipment",  760, 576);
     }
 
     @FXML
@@ -84,6 +90,13 @@ public class EquipmentController implements Initializable {
 
     @FXML
     private void ActionSearch(ActionEvent event) {
+    }
+
+    @FXML
+    private void searchBook(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("home",  760, 576);
     }
     
 }
