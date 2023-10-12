@@ -94,18 +94,62 @@ public class LoginController implements Initializable {
     private void ActionLogin(ActionEvent event) throws IOException {
         String email = textFieldEmail.getText(); // Obtener el correo electrónico ingresado
         String password = textFieldPassword.getText(); // Obtener la contraseña ingresada
+        String userType = null;
 
         boolean isAuthenticated = autenticarUsuarioEnBaseDeDatos(email, password);
 
         if (isAuthenticated) {
-            // Si el usuario se autentica con éxito, redirigirlo a la pantalla de inicio (home)
-            Stage stage = (Stage) buttonLogin.getScene().getWindow();
-            stage.close();
-            App.setRoot("home", 768, 624);
+            userType = getUserType(email);
+
+        }
+        if (userType != null) {
+            // Verificar el tipo de usuario y abrir la ventana correspondiente
+            switch (userType) {
+                case "ad":
+                    {
+                        Stage stage = (Stage) buttonLogin.getScene().getWindow();
+                        stage.close();
+                        App.setRoot("homeAdministrator", 600, 400);
+                        break;
+                    }
+                case "us":
+                    {
+                        Stage stage = (Stage) buttonLogin.getScene().getWindow();
+                        stage.close();
+                        App.setRoot("home", 768, 624);
+                        break;
+                    }
+                default:
+                    mostrarMensajeDeError("Tipo de usuario desconocido.");
+                    break;
+            }
         } else {
-            // Si la autenticación falla, mostrar un mensaje de error al usuario
+            // Si la autenticación falla o el tipo de usuario es nulo, mostrar un mensaje de error al usuario
             mostrarMensajeDeError("Credenciales inválidas. Verifica tu correo y contraseña.");
         }
+    }
+
+    private String getUserType(String email) {
+        Conexion connection = new Conexion();
+        try {
+            connection.conectar(); // Conecta a la base de datos
+
+            // Crea una sentencia preparada con la consulta SQL para obtener el tipo de usuario
+            PreparedStatement statement = connection.preparedStatement("SELECT type FROM bd_user WHERE email = ?");
+            statement.setString(1, email);
+
+            ResultSet result = statement.executeQuery(); // Ejecuta la consulta SQL
+
+            if (result.next()) {
+                return result.getString("type");
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error al obtener el tipo de usuario: " + ex.getMessage());
+        } finally {
+            connection.desconectar(); // Desconecta de la base de datos
+        }
+
+        return null; // Si ocurre un error, retorna nulo
     }
 
 }
