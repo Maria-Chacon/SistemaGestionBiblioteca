@@ -58,7 +58,7 @@ public class EquipmentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void bookLoan(ActionEvent event) throws IOException {

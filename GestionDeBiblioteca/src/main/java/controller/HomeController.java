@@ -32,8 +32,6 @@ public class HomeController implements Initializable {
     @FXML
     private TableColumn<?, ?> genre;
     @FXML
-    private TableColumn<?, ?> quantity;
-    @FXML
     private Button bntBookLoan;
     @FXML
     private Button bntEquipmentLoan;
@@ -41,10 +39,6 @@ public class HomeController implements Initializable {
     private Button btnSearchEquipment;
     @FXML
     private Button btnClose;
-    @FXML
-    private ComboBox<?> filter;
-    @FXML
-    private TextField name;
     @FXML
     private TableView<?> searchBook;
     @FXML
