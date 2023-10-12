@@ -18,11 +18,11 @@ public class Administrator extends User{
     public Administrator() {
     }
 
-    public Administrator(String idAdmin, String email, String password, ArrayList<Book> loanedBooks, int id, Date birthDay, String identification, String lastName, String name, String phone) {
-        super(email, password, loanedBooks, id, birthDay, identification, lastName, name, phone);
+
+    public Administrator(String idAdmin, String email, String password, String type, ArrayList<Book> loanedBooks, int id, Date birthDay, String identification, String lastName, String name, String phone) {
+        super(email, password, type, loanedBooks, id, birthDay, identification, lastName, name, phone);
         this.idAdmin = idAdmin;
     }
-
 
 
     public String getIdAdmin() {

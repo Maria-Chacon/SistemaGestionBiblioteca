@@ -20,7 +20,7 @@ public class StudentTest {
 
     @Test
     public void testGetIdStudent() {
-        Student instance = new Student("S123", "student@gmail.com", "password123", new ArrayList<>(),1, new Date(), "12345", "Mora", "Maria", "123456789");
+        Student instance = new Student("S123", "student@gmail.com", "password123","Estudiante", new ArrayList<>(),1, new Date(), "12345", "Mora", "Maria", "123456789");
         String expResult = "S123";
         String result = instance.getIdStudent();
         assertEquals(expResult, result);

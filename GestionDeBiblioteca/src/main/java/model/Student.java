@@ -19,14 +19,11 @@ public class Student extends User{
     public Student() {
     }
 
-
-    public Student(String idStudent, String email, String password, ArrayList<Book> loanedBooks, int id, Date birthDay, String identification, String lastName, String name, String phone) {
-        super(email, password, loanedBooks, id, birthDay, identification, lastName, name, phone);
+    public Student(String idStudent, String email, String password, String type, ArrayList<Book> loanedBooks, int id, Date birthDay, String identification, String lastName, String name, String phone) {
+        super(email, password, type, loanedBooks, id, birthDay, identification, lastName, name, phone);
         this.idStudent = idStudent;
     }
 
-   
-    
 
     public String getIdStudent() {
         return idStudent;
