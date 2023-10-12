@@ -26,29 +26,29 @@ public class UserBD {
     private final static String deleteUserQuery = "DELETE FROM usuarios WHERE id = ?;";
     private final static String getUserByIdQuery = "SELECT id, name, lastName, identification, birthDay, phone, email, password FROM usuarios WHERE id = ?;";
 
-    // Métodos para obtener usuarios por ID, nombre de usuario, etc.
+    
     public User getUser(int id) {
         try {
-            connection.conectar(); // Conecta a la base de datos
+            connection.conectar(); 
 
-            // Crea una sentencia preparada con la consulta SQL para obtener un usuario por ID
+            
             PreparedStatement statement = connection.preparedStatement(getUserByIdQuery);
-            statement.setInt(1, id); // Asigna el valor del ID como parámetro
+            statement.setInt(1, id); 
 
-            ResultSet result = statement.executeQuery(); // Ejecuta la consulta SQL
+            ResultSet result = statement.executeQuery(); 
 
             if (result.next()) {
-                // Crea un objeto User o una subclase específica a partir de los resultados de la consulta
+                
                 User user = createUserFromResultSet(result);
                 return user;
             }
-            return null; // Si no se encuentra el usuario, retorna null
+            return null; 
         } catch (SQLException ex) {
-            // Maneja las excepciones, por ejemplo, imprime el error
+            
             System.err.println("Error al obtener el usuario por ID: " + ex.getMessage());
             return null;
         } finally {
-            connection.desconectar(); // Desconecta de la base de datos
+            connection.desconectar(); 
         }
     }
 
@@ -56,15 +56,15 @@ public class UserBD {
 //    public static ArrayList<User> getAllUsers() {
 //        // Implementa la lógica para obtener una lista de usuarios.
 //    }
-    // Métodos para crear y actualizar usuarios.
+    
     public static boolean createUser(User user) {
         try {
-            connection.conectar(); // Conecta a la base de datos
+            connection.conectar(); 
 
-            // Crea una sentencia preparada con la consulta SQL de inserción
+            
             PreparedStatement statement = connection.preparedStatement(createUserQuery);
 
-            // Establece los valores de los parámetros en la sentencia preparada
+           
             statement.setString(1, user.getName());
             statement.setString(2, user.getLastName());
             statement.setString(3, user.getIdentification());
@@ -74,25 +74,25 @@ public class UserBD {
             statement.setString(5, user.getPassword());
             // Establece otros atributos de User
 
-            int rowsAffected = statement.executeUpdate(); // Ejecuta la consulta de inserción
+            int rowsAffected = statement.executeUpdate(); 
 
-            return rowsAffected > 0; // Si se insertó al menos una fila, retorna true
+            return rowsAffected > 0; 
         } catch (SQLException ex) {
             System.err.println("Error al crear un usuario: " + ex.getMessage());
             return false;
         } finally {
-            connection.desconectar(); // Desconecta de la base de datos
+            connection.desconectar(); 
         }
     }
 
     public static boolean updateUser(User user) {
         try {
-            connection.conectar(); // Conecta a la base de datos
+            connection.conectar(); 
 
-            // Crea una sentencia preparada con la consulta SQL de actualización
+            
             PreparedStatement statement = connection.preparedStatement(updateUserQuery);
 
-            // Establece los valores de los parámetros en la sentencia preparada
+            
             statement.setString(1, user.getName());
             statement.setString(2, user.getLastName());
             statement.setString(3, user.getIdentification());
@@ -102,36 +102,36 @@ public class UserBD {
             statement.setString(5, user.getPassword());
             // Establece otros atributos de User
 
-            statement.setInt(6, user.getId()); // El ID del usuario que se va a actualizar
+            statement.setInt(6, user.getId()); 
 
-            int rowsAffected = statement.executeUpdate(); // Ejecuta la consulta de actualización
+            int rowsAffected = statement.executeUpdate(); 
 
-            return rowsAffected > 0; // Si se actualizó al menos una fila, retorna true
+            return rowsAffected > 0; 
         } catch (SQLException ex) {
             System.err.println("Error al actualizar un usuario: " + ex.getMessage());
             return false;
         } finally {
-            connection.desconectar(); // Desconecta de la base de datos
+            connection.desconectar(); 
         }
     }
 
-    // Método para eliminar un usuario por ID.
+   
     public static boolean deleteUser(int id) {
         try {
-            connection.conectar(); // Conecta a la base de datos
-            // Crea una sentencia preparada con la consulta SQL de eliminación
+            connection.conectar(); 
+            
             PreparedStatement statement = connection.preparedStatement(deleteUserQuery);
-            // Establece el valor del parámetro en la sentencia preparada
-            statement.setInt(1, id); // ID del usuario que se va a eliminar
+            
+            statement.setInt(1, id); 
 
-            int rowsAffected = statement.executeUpdate(); // Ejecuta la consulta de eliminación
+            int rowsAffected = statement.executeUpdate(); 
 
-            return rowsAffected > 0; // Si se eliminó al menos una fila, retorna true
+            return rowsAffected > 0; 
         } catch (SQLException ex) {
             System.err.println("Error al eliminar un usuario: " + ex.getMessage());
             return false;
         } finally {
-            connection.desconectar(); // Desconecta de la base de datos
+            connection.desconectar(); 
         }
     }
 

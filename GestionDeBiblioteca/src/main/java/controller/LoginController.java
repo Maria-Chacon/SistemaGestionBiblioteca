@@ -53,32 +53,32 @@ public class LoginController implements Initializable {
     private boolean autenticarUsuarioEnBaseDeDatos(String email, String password) {
         Conexion connection = new Conexion();
         try {
-            connection.conectar(); // Conecta a la base de datos
+            connection.conectar(); 
 
-            // Crea una sentencia preparada con la consulta SQL para verificar las credenciales del usuario
+            
             PreparedStatement statement = connection.preparedStatement("SELECT * FROM bd_user WHERE email = ? AND password = ?");
             statement.setString(1, email);
             statement.setString(2, password);
 
-            ResultSet result = statement.executeQuery(); // Ejecuta la consulta SQL
+            ResultSet result = statement.executeQuery(); 
 
-            return result.next(); // Si se encuentra un usuario con las credenciales, retorna true
+            return result.next(); 
         } catch (SQLException ex) {
 
-            // Maneja las excepciones, por ejemplo, imprime el error
+            
             System.err.println("Error al autenticar al usuario: " + ex.getMessage());
             return false;
         } finally {
-            connection.desconectar(); // Desconecta de la base de datos
+            connection.desconectar(); 
         }
     }
 
     @FXML
     private void mostrarMensajeDeError(String mensaje) {
-        Alert alert = new Alert(AlertType.ERROR); // Crear una instancia de Alert con tipo ERROR
-        alert.setTitle("Error"); // Establecer el título del mensaje de error
-        alert.setHeaderText(null); // Dejar el encabezado en null (puedes personalizarlo si es necesario)
-        alert.setContentText(mensaje); // Establecer el mensaje de error
+        Alert alert = new Alert(AlertType.ERROR); 
+        alert.setTitle("Error"); 
+        alert.setHeaderText(null); 
+        alert.setContentText(mensaje); 
 
         alert.showAndWait();
     }
@@ -92,8 +92,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private void ActionLogin(ActionEvent event) throws IOException {
-        String email = textFieldEmail.getText(); // Obtener el correo electrónico ingresado
-        String password = textFieldPassword.getText(); // Obtener la contraseña ingresada
+        String email = textFieldEmail.getText(); 
+        String password = textFieldPassword.getText(); 
         String userType = null;
 
         boolean isAuthenticated = autenticarUsuarioEnBaseDeDatos(email, password);
@@ -103,7 +103,7 @@ public class LoginController implements Initializable {
 
         }
         if (userType != null) {
-            // Verificar el tipo de usuario y abrir la ventana correspondiente
+            
             switch (userType) {
                 case "ad":
                     {
@@ -124,7 +124,7 @@ public class LoginController implements Initializable {
                     break;
             }
         } else {
-            // Si la autenticación falla o el tipo de usuario es nulo, mostrar un mensaje de error al usuario
+            
             mostrarMensajeDeError("Credenciales inválidas. Verifica tu correo y contraseña.");
         }
     }
@@ -132,13 +132,13 @@ public class LoginController implements Initializable {
     private String getUserType(String email) {
         Conexion connection = new Conexion();
         try {
-            connection.conectar(); // Conecta a la base de datos
+            connection.conectar(); 
 
-            // Crea una sentencia preparada con la consulta SQL para obtener el tipo de usuario
+            
             PreparedStatement statement = connection.preparedStatement("SELECT type FROM bd_user WHERE email = ?");
             statement.setString(1, email);
 
-            ResultSet result = statement.executeQuery(); // Ejecuta la consulta SQL
+            ResultSet result = statement.executeQuery(); 
 
             if (result.next()) {
                 return result.getString("type");
@@ -146,10 +146,10 @@ public class LoginController implements Initializable {
         } catch (SQLException ex) {
             System.err.println("Error al obtener el tipo de usuario: " + ex.getMessage());
         } finally {
-            connection.desconectar(); // Desconecta de la base de datos
+            connection.desconectar(); 
         }
 
-        return null; // Si ocurre un error, retorna nulo
+        return null; 
     }
 
 }

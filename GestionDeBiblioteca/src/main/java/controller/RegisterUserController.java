@@ -76,62 +76,7 @@ public class RegisterUserController implements Initializable {
 
     @FXML
     private void ActionRegister(ActionEvent event) {
-        Conexion connection = new Conexion();
-        String name = textFieldName.getText();
-        String lastName = textFieldLastName.getText();
-        String email = textFieldEmail.getText();
-        String password = textFieldPassword.getText();
-        String identification = textFieldIdentification.getText();
-        String phone = textFieldPhone.getText();
-        LocalDate birthDay = datePickerBirthDay.getValue(); // Obtén la fecha de nacimiento
         
-        java.sql.Date sqlBirthDay = java.sql.Date.valueOf(birthDay);
-
-        // Determina el tipo de usuario (puedes tener tu propia lógica)
-        String userType = "us"; // Por defecto, asumamos que es un usuario regular
-
-      
-        User newUser = new User();
-        newUser.setName(name);
-        newUser.setLastName(lastName);
-        newUser.setEmail(email);
-        newUser.setPassword(password);
-        newUser.setIdentification(identification);
-        newUser.setPhone(phone);
-        newUser.setBirthDay(sqlBirthDay); // Convierte LocalDate a java.sql.Date
-        newUser.setType(userType);
-        
-        String insertUserQuery = "INSERT INTO bd_user (name, lastName, identification, birthDay, phone, email, password, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-        try {
-            connection.conectar(); // Conecta a la base de datos
-
-            // Crea una sentencia preparada con la consulta SQL de inserción
-            PreparedStatement statement = connection.preparedStatement(insertUserQuery);
-            statement.setString(1, newUser.getName());
-            statement.setString(2, newUser.getLastName());
-            statement.setString(3, newUser.getIdentification());
-            statement.setDate(4, new java.sql.Date(newUser.getBirthDay().getTime()));
-            statement.setString(5, newUser.getPhone());
-            statement.setString(6, newUser.getEmail());
-            statement.setString(7, newUser.getPassword());
-            statement.setString(8, newUser.getType());
-
-            int rowsAffected = statement.executeUpdate(); // Ejecuta la consulta de inserción
-
-            if (rowsAffected > 0) {
-                
-                System.out.println("Usuario registrado con éxito.");
-            } else {
-                
-                System.out.println("Error al registrar el usuario.");
-            }
-        } catch (SQLException ex) {
-            
-            System.err.println("Error al insertar el usuario: " + ex.getMessage());
-        } finally {
-            connection.desconectar(); 
-        }
     }
 
 }
