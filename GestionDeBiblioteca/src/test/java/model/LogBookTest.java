@@ -31,7 +31,7 @@ public class LogBookTest {
         bookLoan = new BookLoan(1, book, new Date(), new Date(), null, null);
         registerDate = new Date();
         devolution = new Devolution("D001", book, new Date(), null);
-        user = new User("maria@gmail.com", "password", new ArrayList<>(),1, new Date(), "ID001", "chacon", "maria", "88888888");
+        user = new User("maria@gmail.com", "password","Estudiante", new ArrayList<>(),1, new Date(), "ID001", "chacon", "maria", "88888888");
         logBook = new LogBook("LB001", book, bookLoan, registerDate, devolution, user);
     }
 
@@ -48,7 +48,7 @@ public class LogBookTest {
         BookLoan newBookLoan = new BookLoan(2, newBook, new Date(), new Date(), null, null);
         Date newRegisterDate = new Date();
         Devolution newDevolution = new Devolution("D002", newBook, new Date(), null);
-        User newUser = new User("dayana@gmail.com", "password", new ArrayList<>(),1, new Date(), "ID002", "monge", "dayana", "88888888");
+        User newUser = new User("dayana@gmail.com", "password","Estudiante", new ArrayList<>(),1, new Date(), "ID002", "monge", "dayana", "88888888");
 
         logBook.setIdLogBook("LB002");
         logBook.setBook(newBook);

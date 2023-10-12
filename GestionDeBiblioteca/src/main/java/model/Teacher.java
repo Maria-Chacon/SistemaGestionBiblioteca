@@ -17,12 +17,12 @@ public class Teacher extends User{
     public Teacher() {
     }
 
-    public Teacher(String idTeacher, String email, String password, ArrayList<Book> loanedBooks, int id, Date birthDay, String identification, String lastName, String name, String phone) {
-        super(email, password, loanedBooks, id, birthDay, identification, lastName, name, phone);
+
+    public Teacher(String idTeacher, String email, String password, String type, ArrayList<Book> loanedBooks, int id, Date birthDay, String identification, String lastName, String name, String phone) {
+        super(email, password, type, loanedBooks, id, birthDay, identification, lastName, name, phone);
         this.idTeacher = idTeacher;
     }
 
-   
 
     public String getIdTeacher() {
         return idTeacher;

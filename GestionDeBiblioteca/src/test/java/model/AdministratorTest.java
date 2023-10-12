@@ -20,7 +20,7 @@ public class AdministratorTest {
 
         @Test
     public void testGetIdAdmin() {
-        Administrator instance = new Administrator("A123", "admin@gmail.com", "password123", new ArrayList<>(),1, new Date(), "12345", "noguera", "pablo", "123456789");
+        Administrator instance = new Administrator("A123", "admin@gmail.com", "password123","Administrador", new ArrayList<>(),1, new Date(), "12345", "noguera", "pablo", "123456789");
         String expResult = "A123";
         String result = instance.getIdAdmin();
         assertEquals(expResult, result);
