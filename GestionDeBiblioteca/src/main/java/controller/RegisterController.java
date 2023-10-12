@@ -88,7 +88,7 @@ public class RegisterController implements Initializable {
         newUser.setBirthDay(sqlBirthDay); // Convierte LocalDate a java.sql.Date
         newUser.setType(userType);
         
-        String insertUserQuery = "INSERT INTO bd_user (name, lastName, identification, birthDay, phone, email, password, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String insertUserQuery = "INSERT INTO tbl_users (name, lastName, identification, birthDay, phone, email, password, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             connection.conectar(); 

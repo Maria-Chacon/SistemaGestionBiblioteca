@@ -15,14 +15,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterEquipmentController">
    <children>
-      <VBox prefHeight="576.0" prefWidth="234.0" styleClass="anchor2" stylesheets="@../../../css/styles.css">
+      <VBox layoutY="-1.0" prefHeight="632.0" prefWidth="234.0" styleClass="anchor2" stylesheets="@../../../css/styles.css">
          <children>
             <Label alignment="CENTER" prefHeight="79.0" prefWidth="233.0" text="Bienvenido(a)" textAlignment="CENTER" textFill="#f8f6f6">
                <font>
                   <Font name="Georgia Bold" size="24.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="44.0" prefWidth="233.0" text="Administrador" textAlignment="CENTER" textFill="#f8f6f6">
+            <Label alignment="CENTER" prefHeight="44.0" prefWidth="233.0" text="Usuario" textAlignment="CENTER" textFill="#f8f6f6">
                <font>
                   <Font name="Georgia Bold" size="20.0" />
                </font>
@@ -57,7 +57,17 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="BOTTOM_CENTER" prefHeight="288.0" prefWidth="234.0">
+            <HBox prefHeight="32.0" prefWidth="234.0" />
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
+               <children>
+                  <Button fx:id="btnRegisterAuthor" mnemonicParsing="false" onAction="#actionRegisterAuthors" prefHeight="35.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Registro de Autores">
+                     <font>
+                        <Font name="Georgia Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="203.0" prefWidth="234.0">
                <children>
                   <Button fx:id="btnClose" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#close" prefHeight="36.0" prefWidth="222.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Cerrar Sesión">
                      <font>
