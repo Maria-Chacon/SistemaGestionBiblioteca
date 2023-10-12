@@ -48,11 +48,11 @@ public class HomeController implements Initializable {
     @FXML
     private TableView<?> searchBook;
     @FXML
-    private Button btnSearchEquipment1;
-    @FXML
     private Button btnSearch;
     @FXML
     private Button btnLoan;
+    @FXML
+    private Button btnSearchBook;
 
     /**
      * Initializes the controller class.
@@ -77,7 +77,10 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void searchEquipment(ActionEvent event) {
+    private void searchEquipment(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("equipment", 768, 574);
     }
 
     @FXML
@@ -93,6 +96,13 @@ public class HomeController implements Initializable {
 
     @FXML
     private void loan(ActionEvent event) {
+    }
+
+    @FXML
+    private void searchBook(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("home", 768, 574);
     }
     
 }
