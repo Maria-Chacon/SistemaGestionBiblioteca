@@ -8,6 +8,8 @@ import com.mycompany.gestiondebiblioteca.App;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +19,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Book;
+import model.Library;
 
 /**
  * FXML Controller class
@@ -40,21 +44,32 @@ public class HomeController implements Initializable {
     @FXML
     private Button btnClose;
     @FXML
-    private TableView<?> searchBook;
+    private TableView<Book> searchBook;
     @FXML
     private Button btnSearch;
     @FXML
     private Button btnLoan;
     @FXML
     private Button btnSearchBook;
+    @FXML
+    private ComboBox<String> filter;
+    @FXML
+    private TextField name;
+    @FXML
+    private TableColumn<?, ?> quantity;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        ObservableList<String> options = FXCollections.observableArrayList(
+                "Autor",
+                "Titulo",
+                "Genero"
+        );
+        filter.getItems().addAll(options);
+    }
 
     @FXML
     private void bookLoan(ActionEvent event) throws IOException {
@@ -86,6 +101,14 @@ public class HomeController implements Initializable {
 
     @FXML
     private void search(ActionEvent event) {
+         String searchTerm = name.getText(); // Término de búsqueda
+        String selectedFilter = filter.getValue(); // Tipo de búsqueda seleccionado
+
+     
+//        if (selectedFilter != null && searchTerm != null && !searchTerm.isEmpty()) {
+//            ObservableList<Book> searchResults = Library.searchBooks(selectedFilter, searchTerm);
+//            searchBook.setItems(searchResults);
+//        }
     }
 
     @FXML
@@ -98,5 +121,5 @@ public class HomeController implements Initializable {
         stage.close();
         App.setRoot("home", 768, 574);
     }
-    
+
 }
