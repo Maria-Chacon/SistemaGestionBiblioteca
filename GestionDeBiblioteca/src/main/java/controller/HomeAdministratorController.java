@@ -7,6 +7,7 @@ package controller;
 import com.mycompany.gestiondebiblioteca.App;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Author;
 
 /**
  * FXML Controller class
@@ -34,7 +36,7 @@ public class HomeAdministratorController implements Initializable {
     @FXML
     private Button btnRegister;
     @FXML
-    private ComboBox<?> ComboBoxAuthor;
+    private ComboBox<Author> ComboBoxAuthor;
     @FXML
     private Button bntRegisterBooks;
     @FXML
@@ -49,7 +51,8 @@ public class HomeAdministratorController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        ArrayList<Author> authors = Author.getAuthorsFromDatabase(); 
+        ComboBoxAuthor.getItems().addAll(authors);
     }    
 
 

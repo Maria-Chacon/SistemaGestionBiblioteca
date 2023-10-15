@@ -4,6 +4,10 @@
  */
 package model;
 
+import Conexion.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -32,10 +36,42 @@ public class Author extends Person {
     public void setBooks(ArrayList<Book> books) {
         this.books = books;
     }
+    
+    public static ArrayList<Author> getAuthorsFromDatabase() {
+        ArrayList<Author> authors = new ArrayList<>();
+
+        Conexion connection = Conexion.getInstance(); 
+
+        try {
+            connection.conectar(); 
+   
+            PreparedStatement statement = connection.preparedStatement("SELECT * FROM tbl_authors");
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                Author author = new Author();
+                author.setId(result.getInt("id"));
+                author.setName(result.getString("name"));
+                author.setLastName(result.getString("lastName"));
+                author.setBirthDay(result.getDate("birthDay"));
+                author.setIdentification(result.getString("identification"));
+                author.setPhone(result.getString("phone"));
+                
+                authors.add(author);
+            }
+        } catch (SQLException ex) {
+            
+            System.err.println("Error al obtener autores desde la base de datos: " + ex.getMessage());
+        } finally {
+            connection.desconectar(); 
+        }
+
+        return authors;
+    }
 
     @Override
     public String toString() {
-        return "Author{" + "books=" + books + '}';
+        return getName() + " " + getLastName();
     }
     
     

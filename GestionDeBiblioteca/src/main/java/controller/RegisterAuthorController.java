@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -129,10 +130,10 @@ public class RegisterAuthorController implements Initializable {
 
             if (rowsAffected > 0) {
                 
-                System.out.println("Autor registrado con éxito.");
+                showMessage("Autor registrado con éxito.", "Éxito");
             } else {
                 
-                System.out.println("Error al registrar el autor.");
+                showMessage("Error al registrar el autor.", "Error");
             }
         } catch (SQLException ex) {
             
@@ -140,6 +141,16 @@ public class RegisterAuthorController implements Initializable {
         } finally {
             connection.desconectar(); 
         }
+    }
+    
+    @FXML
+    private void showMessage(String message, String typeMessage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR); 
+        alert.setTitle(typeMessage); 
+        alert.setHeaderText(null); 
+        alert.setContentText(message); 
+
+        alert.showAndWait();
     }
     
 }
