@@ -17,6 +17,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Author;
+import model.Book;
 
 /**
  * FXML Controller class
@@ -51,10 +52,9 @@ public class HomeAdministratorController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ArrayList<Author> authors = Author.getAuthorsFromDatabase(); 
+        ArrayList<Author> authors = Author.getAuthorsFromDatabase();
         ComboBoxAuthor.getItems().addAll(authors);
-    }    
-
+    }
 
     @FXML
     private void close(ActionEvent event) throws IOException {
@@ -65,6 +65,19 @@ public class HomeAdministratorController implements Initializable {
 
     @FXML
     private void ActionRegister(ActionEvent event) throws IOException {
+        int quantity = Integer.parseInt(textFieldQuantity.getText());
+        String genre = textFieldGenre.getText();
+        String title = textFieldTitle.getText();
+        Author selectedAuthor = ComboBoxAuthor.getValue(); // Obtiene el autor seleccionado en el ComboBox
+
+        // Paso 2: Crear un nuevo objeto Book
+        Book newBook = new Book(quantity, selectedAuthor.getId(), genre, "", "", title, "", "", "", "");
+        
+        Book.insertBookIntoDatabase(newBook);
+        ArrayList<Book> booksFromDatabase = Book.getBooksFromDatabase();
+        ArrayList<Book> sortedBooks = Book.sortBooksByTitle(booksFromDatabase);
+        Book.updateBooksInDatabase(sortedBooks);
+        
         
     }
 
@@ -95,5 +108,5 @@ public class HomeAdministratorController implements Initializable {
         stage.close();
         App.setRoot("registerAuthor", 768, 574);
     }
-    
+
 }
