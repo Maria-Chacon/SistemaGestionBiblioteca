@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -124,15 +125,11 @@
             <Image url="@../../../images/genre.png" />
          </image>
       </ImageView>
-      <TextField fx:id="textFieldDisponible" layoutX="412.0" layoutY="352.0" prefHeight="26.0" prefWidth="222.0" promptText="Disponible? (True o False)" styleClass="username" stylesheets="@../../../css/styles.css">
-         <font>
-            <Font name="Georgia" size="12.0" />
-         </font>
-      </TextField>
       <ImageView fitHeight="44.0" fitWidth="49.0" layoutX="317.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/genre.png" />
          </image>
       </ImageView>
+      <ComboBox fx:id="comboBoxAvailability" layoutX="410.0" layoutY="365.0" prefHeight="25.0" prefWidth="222.0" promptText="Disponible" styleClass="username" stylesheets="@../../../css/styles.css" />
    </children>
 </AnchorPane>

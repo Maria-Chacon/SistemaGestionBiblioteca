@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Equipment;
@@ -45,8 +46,9 @@ public class RegisterEquipmentController implements Initializable {
     private TextField textFieldDescription;
     @FXML
     private TextField textFieldName;
-    @FXML
     private TextField textFieldDisponible;
+    @FXML
+    private ComboBox<String> comboBoxAvailability;
 
     /**
      * Initializes the controller class.
@@ -54,6 +56,7 @@ public class RegisterEquipmentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        comboBoxAvailability.getItems().addAll("Sí", "No");
     }
 
     @FXML
@@ -79,13 +82,23 @@ public class RegisterEquipmentController implements Initializable {
         String description = textFieldDescription.getText();
         String name = textFieldName.getText();
         // Parse availability as a boolean (assuming "true" or "false" as valid input)
-        boolean availability;
-        try {
-            availability = Boolean.parseBoolean(textFieldDisponible.getText());
-        } catch (NumberFormatException e) {
-            System.err.println("Error: Availability must be 'true' or 'false'.");
-            return;  // Stop processing if availability is not a valid boolean
+
+        String availabilityValue = (String) comboBoxAvailability.getValue();
+        if (availabilityValue == null) {
+            System.err.println("Error: Availability is null.");
+            return;
         }
+
+        boolean availability;
+        if (availabilityValue.equalsIgnoreCase("Sí")) {
+            availability = true;
+        } else if (availabilityValue.equalsIgnoreCase("No")) {
+            availability = false;
+        } else {
+            System.err.println("Error: Availability must be 'true' or 'false'.");
+            return;
+        }
+
 
         Equipment newEquipment = new Equipment();
         newEquipment.setQuantity(quantity);
