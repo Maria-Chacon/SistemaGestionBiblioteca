@@ -29,7 +29,7 @@
             <HBox prefHeight="54.0" prefWidth="234.0" />
             <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
                <children>
-                  <Button fx:id="bntBookLoan" mnemonicParsing="false" onAction="#bookLoan" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Préstamos de libros">
+                  <Button fx:id="btnBookLoan" mnemonicParsing="false" onAction="#bookLoan" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Préstamos de libros">
                      <font>
                         <Font name="Georgia Bold" size="14.0" />
                      </font></Button>
@@ -38,7 +38,7 @@
             <HBox prefHeight="32.0" prefWidth="234.0" />
             <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
                <children>
-                  <Button fx:id="bntEquipmentLoan" mnemonicParsing="false" onAction="#equipmentLoan" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Préstamos de equipos">
+                  <Button fx:id="btnEquipmentLoan" mnemonicParsing="false" onAction="#equipmentLoan" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Préstamos de equipos">
                      <font>
                         <Font name="Georgia Bold" size="14.0" />
                      </font></Button>
