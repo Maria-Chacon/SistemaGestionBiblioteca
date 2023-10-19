@@ -18,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -27,13 +28,11 @@ import model.EquipmentLoan;
 import model.User;
 import model.Verification;
 
-
 //Universidad Nacional, Coto
 //Desarrollado por:
 //María José Chacón Mora
 //Dayana Gamboa Monge
 //2023
-
 public class EquipmentLoanUserController implements Initializable {
 
     @FXML
@@ -132,7 +131,7 @@ public class EquipmentLoanUserController implements Initializable {
         if (selectedLoan != null) {
             String equipmentName = selectedLoan.getNameEquipment();
             Date loanDate = (Date) selectedLoan.getLoanDate();
-            Date returnedDate = new Date(System.currentTimeMillis()); 
+            Date returnedDate = new Date(System.currentTimeMillis());
 
             if (returnEquipmentToInventory(equipmentName) && deleteEquipmentLoan(identification, equipmentName, loanDate)) {
                 if (saveEquipmentDevolution(identification, equipmentName, returnedDate)) {
@@ -191,33 +190,36 @@ public class EquipmentLoanUserController implements Initializable {
     }
 
     private boolean saveEquipmentDevolution(String userIdentification, String equipmentName, Date returnedDate) {
-    Conexion connection = new Conexion();
+        Conexion connection = new Conexion();
 
-    try {
-        connection.conectar();
+        String insertUserQuery = "INSERT INTO tbl_equipmentdevolution (returnedEquipment, returnedDate, identificationUser) VALUES (?, ?, ?)";
 
-        String insertQuery = "INSERT INTO tbl_equipmentdevolution (identificationUser, returnedEquipment, returnedDate) VALUES (?, ?, ?)";
-        PreparedStatement insertStatement = connection.preparedStatement(insertQuery);
-        insertStatement.setString(1, userIdentification);
-        insertStatement.setString(2, equipmentName);
-        insertStatement.setDate(3, returnedDate);
+        try {
+            connection.conectar();
 
-        int rowsAffected = insertStatement.executeUpdate();
+            PreparedStatement statement = connection.preparedStatement(insertUserQuery);
+            statement.setString(1, equipmentName);
+            statement.setDate(2, returnedDate);
+            statement.setString(3, userIdentification);
 
-        if (rowsAffected > 0) {
-            System.out.println("Equipo devuelto con éxito.");
-            return true;
-        } else {
-            System.out.println("Error al registrar la devolución del equipo.");
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Equipo devuelto con éxito.");
+                showMessage("Equipo devuelto con éxito.", "Éxito");
+                return true;
+            } else {
+                System.out.println("Error al registrar la devolución del equipo.");
+                showMessage("Error al registrar la devolución del equipo.", "Error");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error al guardar el registro de devolución de equipo: " + ex.getMessage());
             return false;
+        } finally {
+            connection.desconectar();
         }
-    } catch (SQLException ex) {
-        System.err.println("Error al guardar el registro de devolución de equipo: " + ex.getMessage());
-        return false;
-    } finally {
-        connection.desconectar();
     }
-}
 
     public ObservableList<EquipmentLoan> getUserEquipmentLoans(String userIdentification) {
         ObservableList<EquipmentLoan> userLoans = FXCollections.observableArrayList();
@@ -254,6 +256,16 @@ public class EquipmentLoanUserController implements Initializable {
             // Llamada recursiva para procesar el siguiente resultado
             processResults(resultSet, userLoans);
         }
+    }
+
+    @FXML
+    private void showMessage(String message, String typeMessage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(typeMessage);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        alert.showAndWait();
     }
 
 }
