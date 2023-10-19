@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import Conexion.Conexion;
@@ -11,14 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-/**
- *
- * @author maria
- */
 public class Book {
 
-    private int quantity;
-    private int author;
+    private String quantity; // Cambiado a String
+    private String nameAuthor;
     private String genre;
     private String loaned;
     private String idBook;
@@ -31,9 +23,9 @@ public class Book {
     public Book() {
     }
 
-    public Book(int quantity, int author, String genre, String loaned, String idBook, String title, String reproduction, String publication, String url, String permanenLink) {
+    public Book(String quantity, String nameAuthor, String genre, String loaned, String idBook, String title, String reproduction, String publication, String url, String permanenLink) {
         this.quantity = quantity;
-        this.author = author;
+        this.nameAuthor = nameAuthor;
         this.genre = genre;
         this.loaned = loaned;
         this.idBook = idBook;
@@ -44,20 +36,20 @@ public class Book {
         this.permanenLink = permanenLink;
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
-    public int getAuthor() {
-        return author;
+    public String getNameAuthor() {
+        return nameAuthor;
     }
 
-    public void setAuthor(int author) {
-        this.author = author;
+    public void setNameAuthor(String nameAuthor) {
+        this.nameAuthor = nameAuthor;
     }
 
     public String getGenre() {
@@ -126,7 +118,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" + "quantity=" + quantity + ", author=" + author + ", genre=" + genre + ", loaned=" + loaned + ", idBook=" + idBook + ", title=" + title + ", reproduction=" + reproduction + ", publication=" + publication + ", url=" + url + ", permanenLink=" + permanenLink + '}';
+        return "Book{" + "quantity=" + quantity + ", nameAuthor=" + nameAuthor + ", genre=" + genre + ", loaned=" + loaned + ", idBook=" + idBook + ", title=" + title + ", reproduction=" + reproduction + ", publication=" + publication + ", url=" + url + ", permanenLink=" + permanenLink + '}';
     }
 
     public static ArrayList<Book> getBooksFromDatabase() {
@@ -141,16 +133,19 @@ public class Book {
 
             while (result.next()) {
                 Book book = new Book();
-                book.setLoaned(result.getString("loaned"));
-                book.setQuantity(result.getInt("quantity"));
-                book.setAuthor(result.getInt("idAuthor"));
-                book.setGenre(result.getString("genre"));
-                book.setIdBook(result.getString("id"));
+
                 book.setTitle(result.getString("title"));
                 book.setReproduction(result.getString("reproduction"));
                 book.setPublication(result.getString("publication"));
                 book.setUrl(result.getString("url"));
                 book.setPermanenLink(result.getString("permanenLink"));
+                book.setLoaned(result.getString("loaned"));
+
+                book.setQuantity(result.getString("quantity")); // Se obtiene como String
+
+                book.setNameAuthor(result.getString("nameAuthor"));
+                book.setGenre(result.getString("genre"));
+                book.setIdBook(result.getString("id"));
 
                 books.add(book);
             }
@@ -169,21 +164,25 @@ public class Book {
             connection.conectar();
 
             // Inserta el libro en la base de datos
-            String query = "INSERT INTO tbl_books (title, reproduction, publication, url,permanenLink, loaned, quantity, idAuthor, genre) "
+            String query = "INSERT INTO tbl_books (title, reproduction, publication, url, permanenLink, loaned, quantity, nameAuthor, genre) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.preparedStatement(query);
 
             statement.setString(1, book.getTitle());
-            statement.setString(2, book.getReproduction());
-            statement.setString(3, book.getPublication());
-            statement.setString(4, book.getUrl());
-            statement.setString(5, book.getPermanenLink());
-            statement.setString(6, book.getLoaned());
-            statement.setInt(7, book.getQuantity());
-            statement.setInt(8, book.getAuthor());
+            statement.setString(2, (book.getReproduction() == null || book.getReproduction().isEmpty()) ? "indefinido" : book.getReproduction());
+            statement.setString(3, (book.getPublication() == null || book.getPublication().isEmpty()) ? "indefinido" : book.getPublication());
+            statement.setString(4, (book.getUrl() == null || book.getUrl().isEmpty()) ? "indefinido" : book.getUrl());
+            statement.setString(5, (book.getPermanenLink() == null || book.getPermanenLink().isEmpty()) ? "indefinido" : book.getPermanenLink());
+            statement.setString(6, (book.getLoaned() == null || book.getLoaned().isEmpty()) ? "indefinido" : book.getLoaned());
+
+            // Se establece la cantidad como String
+            statement.setString(7, book.getQuantity());
+
+            statement.setString(8, book.getNameAuthor());
             statement.setString(9, book.getGenre());
 
             statement.executeUpdate();
+            System.out.println("Registro de libro exitoso");
         } catch (SQLException ex) {
             System.err.println("Error al insertar el libro en la base de datos: " + ex.getMessage());
         } finally {

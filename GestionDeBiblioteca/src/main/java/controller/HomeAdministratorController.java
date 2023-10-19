@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package controller;
 
 import com.mycompany.gestiondebiblioteca.App;
@@ -29,7 +25,7 @@ public class HomeAdministratorController implements Initializable {
     @FXML
     private Button btnClose;
     @FXML
-    private TextField textFieldQuantity;
+    private TextField textFieldQuantity; // Cambiado a String
     @FXML
     private TextField textFieldGenre;
     @FXML
@@ -65,20 +61,26 @@ public class HomeAdministratorController implements Initializable {
 
     @FXML
     private void ActionRegister(ActionEvent event) throws IOException {
-        int quantity = Integer.parseInt(textFieldQuantity.getText());
+        String quantity = textFieldQuantity.getText();
         String genre = textFieldGenre.getText();
         String title = textFieldTitle.getText();
-        Author selectedAuthor = ComboBoxAuthor.getValue(); // Obtiene el autor seleccionado en el ComboBox
 
-        // Paso 2: Crear un nuevo objeto Book
-        Book newBook = new Book(quantity, selectedAuthor.getId(), genre, "", "", title, "", "", "", "");
-        
+        // Validación para evitar ingreso duplicado basado en el título
+        if (isBookDuplicate(title)) {
+            System.out.println("El libro con el título '" + title + "' ya está ingresado en la base de datos.");
+            return;
+        }
+
+        Author selectedAuthor = ComboBoxAuthor.getValue();
+
+        // Crear un nuevo objeto Book
+        Book newBook = new Book(quantity, selectedAuthor.getName(), genre, "", "", title, "", "", "", "");
+
+        // Insertar el libro en la base de datos
         Book.insertBookIntoDatabase(newBook);
         ArrayList<Book> booksFromDatabase = Book.getBooksFromDatabase();
         ArrayList<Book> sortedBooks = Book.sortBooksByTitle(booksFromDatabase);
         Book.updateBooksInDatabase(sortedBooks);
-        
-        
     }
 
     @FXML
@@ -109,4 +111,11 @@ public class HomeAdministratorController implements Initializable {
         App.setRoot("registerAuthor", 768, 574);
     }
 
+    private boolean isBookDuplicate(String title) {
+        ArrayList<Book> booksFromDatabase = Book.getBooksFromDatabase();
+
+        // Utilizamos Java Streams para hacer la validación
+        return booksFromDatabase.stream()
+            .anyMatch(book -> book.getTitle().equalsIgnoreCase(title) && book.getNameAuthor().equalsIgnoreCase(book.getNameAuthor()));
+    }
 }
