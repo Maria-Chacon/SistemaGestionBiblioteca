@@ -54,7 +54,7 @@ public class EquipmentLoanUserController implements Initializable {
     private TableColumn<EquipmentLoan, Date> devolutionDate;
     @FXML
     private TableView<EquipmentLoan> equipmentLoans;
-    
+
     String identification = "";
 
     /**
@@ -64,7 +64,7 @@ public class EquipmentLoanUserController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         identification = User.getUserIdentificationByEmail(Verification.getId());
-        
+
         equipmentLoans.setItems(getUserEquipmentLoans(identification));
         ConfigTableView();
     }
@@ -125,6 +125,63 @@ public class EquipmentLoanUserController implements Initializable {
 
     @FXML
     private void actionReturnEquipment(ActionEvent event) {
+         EquipmentLoan selectedLoan = equipmentLoans.getSelectionModel().getSelectedItem();
+
+        if (selectedLoan != null) {
+            String equipmentName = selectedLoan.getNameEquipment();
+            Date loanDate = (Date) selectedLoan.getLoanDate();
+
+            if (returnEquipmentToInventory(equipmentName) && deleteEquipmentLoan(identification, equipmentName, loanDate)) {
+                
+                equipmentLoans.getItems().remove(selectedLoan);
+            } else {
+                System.err.println("Error al devolver el equipo.");
+            }
+        }
+    }
+
+    private boolean returnEquipmentToInventory(String equipmentName) {
+        Conexion connection = new Conexion();
+
+        try {
+            connection.conectar();
+
+            String updateQuery = "UPDATE tbl_equipments SET quantity = quantity + 1 WHERE name = ?";
+            PreparedStatement updateStatement = connection.preparedStatement(updateQuery);
+            updateStatement.setString(1, equipmentName);
+
+            int rowsAffected = updateStatement.executeUpdate();
+
+            return rowsAffected > 0; 
+        } catch (SQLException ex) {
+            System.err.println("Error al actualizar la cantidad de equipo: " + ex.getMessage());
+            return false;
+        } finally {
+            connection.desconectar();
+        }
+    }
+
+    private boolean deleteEquipmentLoan(String userIdentification, String equipmentName, Date loanDate) {
+        Conexion connection = new Conexion();
+
+        try {
+            connection.conectar();
+
+            String deleteQuery = "DELETE FROM tbl_equipmentLoan WHERE identificationUser = ? AND nameEquipment = ? AND loanDate = ?";
+            PreparedStatement deleteStatement = connection.preparedStatement(deleteQuery);
+            deleteStatement.setString(1, userIdentification);
+            deleteStatement.setString(2, equipmentName);
+            deleteStatement.setDate(3, loanDate);
+
+            int rowsAffected = deleteStatement.executeUpdate();
+
+            return rowsAffected > 0; 
+        } catch (SQLException ex) {
+            System.err.println("Error al eliminar el préstamo de equipo: " + ex.getMessage());
+            return false;
+        } finally {
+            connection.desconectar();
+        }
     }
 
     public ObservableList<EquipmentLoan> getUserEquipmentLoans(String userIdentification) {
