@@ -78,12 +78,11 @@
             </HBox>
          </children>
       </VBox>
-      <TableView fx:id="searchBook" layoutX="241.0" layoutY="88.0" prefHeight="396.0" prefWidth="519.0" styleClass="table" stylesheets="@../../../css/styles.css">
+      <TableView fx:id="equipmentLoans" layoutX="241.0" layoutY="88.0" prefHeight="396.0" prefWidth="519.0" styleClass="table" stylesheets="@../../../css/styles.css">
          <columns>
-            <TableColumn fx:id="title" prefWidth="120.0" text="Nombre" />
-            <TableColumn prefWidth="124.0" text="Tipo" />
-            <TableColumn fx:id="author" prefWidth="134.0" text="Fecha de prestamo" />
-            <TableColumn fx:id="genre" prefWidth="139.0" text="Fecha devolucion" />
+            <TableColumn fx:id="title" prefWidth="207.0" text="Nombre" />
+            <TableColumn fx:id="loanDate" prefWidth="148.0" text="Fecha de prestamo" />
+            <TableColumn fx:id="devolutionDate" prefWidth="161.0" text="Fecha devolucion" />
          </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="233.0" layoutY="5.0" prefHeight="29.0" prefWidth="532.0" text="Biblioteca  DayMar">

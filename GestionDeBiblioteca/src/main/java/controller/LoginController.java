@@ -59,7 +59,7 @@ public class LoginController implements Initializable {
             connection.conectar(); 
 
             
-            PreparedStatement statement = connection.preparedStatement("SELECT * FROM bd_user WHERE email = ? AND password = ?");
+            PreparedStatement statement = connection.preparedStatement("SELECT * FROM tbl_users WHERE email = ? AND password = ?");
             statement.setString(1, email);
             statement.setString(2, password);
 
@@ -141,7 +141,7 @@ public class LoginController implements Initializable {
             connection.conectar(); 
 
             
-            PreparedStatement statement = connection.preparedStatement("SELECT type FROM bd_user WHERE email = ?");
+            PreparedStatement statement = connection.preparedStatement("SELECT type FROM tbl_users WHERE email = ?");
             statement.setString(1, email);
 
             ResultSet result = statement.executeQuery(); 
