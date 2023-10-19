@@ -4,6 +4,10 @@
  */
 package model;
 
+import Conexion.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -60,6 +64,31 @@ public class User extends Person{
 
     public void setLoanedBooks(ArrayList<Book> loanedBooks) {
         this.loanedBooks = loanedBooks;
+    }
+    
+    public static String getUserIdentificationByEmail(String email) {
+        String userIdentification = "";
+
+        // Realizar la consulta a la base de datos para obtener la identificación del usuario
+        Conexion connection = Conexion.getInstance(); 
+        try {
+            connection.conectar();
+
+            PreparedStatement statement = connection.preparedStatement("SELECT * FROM tbl_users WHERE email = ?");
+            statement.setString(1, email);
+
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                userIdentification = result.getString("identification");
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error al obtener la identificación del usuario por correo electrónico: " + ex.getMessage());
+        } finally {
+            connection.desconectar();
+        }
+
+        return userIdentification;
     }
 
     @Override

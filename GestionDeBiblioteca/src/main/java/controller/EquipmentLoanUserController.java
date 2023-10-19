@@ -24,6 +24,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.EquipmentLoan;
+import model.User;
+import model.Verification;
 
 /**
  * FXML Controller class
@@ -41,17 +43,19 @@ public class EquipmentLoanUserController implements Initializable {
     @FXML
     private Button btnClose;
     @FXML
-    private TableColumn<?, ?> title;
+    private TableColumn<EquipmentLoan, String> title;
     @FXML
     private Button btnSearchBook;
     @FXML
     private Button btnReturnEquipment;
     @FXML
-    private TableColumn<?, ?> loanDate;
+    private TableColumn<EquipmentLoan, Date> loanDate;
     @FXML
-    private TableColumn<?, ?> devolutionDate;
+    private TableColumn<EquipmentLoan, Date> devolutionDate;
     @FXML
     private TableView<EquipmentLoan> equipmentLoans;
+    
+    String identification = "";
 
     /**
      * Initializes the controller class.
@@ -59,15 +63,18 @@ public class EquipmentLoanUserController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        identification = User.getUserIdentificationByEmail(Verification.getId());
+        
+        equipmentLoans.setItems(getUserEquipmentLoans(identification));
         ConfigTableView();
     }
 
     private void ConfigTableView() {
         equipmentLoans.getColumns().clear();
 
-        TableColumn<EquipmentLoan, String> titleCol = new TableColumn<>("Título");
+        TableColumn<EquipmentLoan, String> titleCol = new TableColumn<>("Nombre");
         titleCol.setMinWidth(130);
-        titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("nameEquipment"));
 
         TableColumn<EquipmentLoan, Date> loanDateCol = new TableColumn<>("Fecha de Prestamo");
         loanDateCol.setMinWidth(118);
