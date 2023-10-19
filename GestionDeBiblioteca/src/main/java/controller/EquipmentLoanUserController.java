@@ -125,15 +125,19 @@ public class EquipmentLoanUserController implements Initializable {
 
     @FXML
     private void actionReturnEquipment(ActionEvent event) {
-         EquipmentLoan selectedLoan = equipmentLoans.getSelectionModel().getSelectedItem();
+        EquipmentLoan selectedLoan = equipmentLoans.getSelectionModel().getSelectedItem();
 
         if (selectedLoan != null) {
             String equipmentName = selectedLoan.getNameEquipment();
             Date loanDate = (Date) selectedLoan.getLoanDate();
+            Date returnedDate = new Date(System.currentTimeMillis()); 
 
             if (returnEquipmentToInventory(equipmentName) && deleteEquipmentLoan(identification, equipmentName, loanDate)) {
-                
-                equipmentLoans.getItems().remove(selectedLoan);
+                if (saveEquipmentDevolution(identification, equipmentName, returnedDate)) {
+                    equipmentLoans.getItems().remove(selectedLoan);
+                } else {
+                    System.err.println("Error al guardar el registro de devolución de equipo.");
+                }
             } else {
                 System.err.println("Error al devolver el equipo.");
             }
@@ -152,7 +156,7 @@ public class EquipmentLoanUserController implements Initializable {
 
             int rowsAffected = updateStatement.executeUpdate();
 
-            return rowsAffected > 0; 
+            return rowsAffected > 0;
         } catch (SQLException ex) {
             System.err.println("Error al actualizar la cantidad de equipo: " + ex.getMessage());
             return false;
@@ -175,7 +179,7 @@ public class EquipmentLoanUserController implements Initializable {
 
             int rowsAffected = deleteStatement.executeUpdate();
 
-            return rowsAffected > 0; 
+            return rowsAffected > 0;
         } catch (SQLException ex) {
             System.err.println("Error al eliminar el préstamo de equipo: " + ex.getMessage());
             return false;
@@ -183,6 +187,35 @@ public class EquipmentLoanUserController implements Initializable {
             connection.desconectar();
         }
     }
+
+    private boolean saveEquipmentDevolution(String userIdentification, String equipmentName, Date returnedDate) {
+    Conexion connection = new Conexion();
+
+    try {
+        connection.conectar();
+
+        String insertQuery = "INSERT INTO tbl_equipmentdevolution (identificationUser, returnedEquipment, returnedDate) VALUES (?, ?, ?)";
+        PreparedStatement insertStatement = connection.preparedStatement(insertQuery);
+        insertStatement.setString(1, userIdentification);
+        insertStatement.setString(2, equipmentName);
+        insertStatement.setDate(3, returnedDate);
+
+        int rowsAffected = insertStatement.executeUpdate();
+
+        if (rowsAffected > 0) {
+            System.out.println("Equipo devuelto con éxito.");
+            return true;
+        } else {
+            System.out.println("Error al registrar la devolución del equipo.");
+            return false;
+        }
+    } catch (SQLException ex) {
+        System.err.println("Error al guardar el registro de devolución de equipo: " + ex.getMessage());
+        return false;
+    } finally {
+        connection.desconectar();
+    }
+}
 
     public ObservableList<EquipmentLoan> getUserEquipmentLoans(String userIdentification) {
         ObservableList<EquipmentLoan> userLoans = FXCollections.observableArrayList();
