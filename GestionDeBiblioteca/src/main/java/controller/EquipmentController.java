@@ -32,6 +32,7 @@ import model.Equipment;
 import model.EquipmentLoan;
 import model.Person;
 import model.User;
+import model.Verification;
 
 /**
  * FXML Controller class
@@ -70,11 +71,12 @@ public class EquipmentController implements Initializable {
     private TextField nameSearch;
     @FXML
     private Button btnLoan;
+
+    String userIdentification;
+
     /**
      * Initializes the controller class.
      */
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -84,7 +86,19 @@ public class EquipmentController implements Initializable {
         );
         filter.getItems().addAll(options);
         ConfigTableView();
-       
+
+        String email = Verification.getId();
+
+        if (email != null) {
+            // Realizar una consulta a la base de datos para obtener la identificación del usuario
+            userIdentification = getUserIdentificationByEmail(email);
+
+            if (userIdentification != null) {
+                // Ahora tienes la identificación del usuario y puedes usarla según tus necesidades
+                System.out.println("Identificación del usuario: " + userIdentification);
+            }
+        }
+
     }
 
     private void ConfigTableView() {
@@ -224,11 +238,10 @@ public class EquipmentController implements Initializable {
             System.err.println("No hay suficiente cantidad disponible para el equipo seleccionado.");
             return;
         }
-        
 
         Conexion connection = new Conexion();
         try {
-            
+
             connection.conectar();
 
             String updateQuery = "UPDATE tbl_equipments SET quantity = ? WHERE id = ?";
@@ -251,8 +264,8 @@ public class EquipmentController implements Initializable {
             insertStatement.setDate(2, sqlDevolutionDate);
             insertStatement.setDate(3, sqlLoanDate);
             insertStatement.setString(4, "Sin penalización");
-             
-            insertStatement.setString(5, "604720910");
+
+            insertStatement.setString(5, userIdentification);
 
             insertStatement.executeUpdate();
 
@@ -266,6 +279,30 @@ public class EquipmentController implements Initializable {
             connection.desconectar();
         }
     }
-   
+
+    private String getUserIdentificationByEmail(String email) {
+        String userIdentification = null;
+
+        // Realizar la consulta a la base de datos para obtener la identificación del usuario
+        Conexion connection = new Conexion();
+        try {
+            connection.conectar();
+
+            PreparedStatement statement = connection.preparedStatement("SELECT identification FROM bd_user WHERE email = ?");
+            statement.setString(1, email);
+
+            ResultSet result = statement.executeQuery();
+
+            if (result.next()) {
+                userIdentification = result.getString("identification");
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error al obtener la identificación del usuario por correo electrónico: " + ex.getMessage());
+        } finally {
+            connection.desconectar();
+        }
+
+        return userIdentification;
+    }
 
 }

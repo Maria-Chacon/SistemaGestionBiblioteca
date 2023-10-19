@@ -24,6 +24,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Verification;
 
 /**
  * FXML Controller class
@@ -40,6 +41,8 @@ public class LoginController implements Initializable {
     private Button buttonLogin;
     @FXML
     private Button buttonNewAccount;
+    
+    Verification verification;
 
     /**
      * Initializes the controller class.
@@ -100,6 +103,9 @@ public class LoginController implements Initializable {
 
         if (isAuthenticated) {
             userType = getUserType(email);
+            
+            Verification.setId(email);
+            System.out.println(Verification.getId());
 
         }
         if (userType != null) {
