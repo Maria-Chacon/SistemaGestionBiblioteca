@@ -12,17 +12,20 @@ import java.util.Date;
  */
 public class BookLoan {
     private int idBookLoan;
-    private Book book;
+    private String title;
     private Date devolutionDate;
-    private Date loanedDate;
+    private Date loanDate;
     private Suspension suspension;
     private User user;
 
-    public BookLoan(int idBookLoan, Book book, Date devolutionDate, Date loanedDate, Suspension suspension, User user) {
+    public BookLoan() {
+    }
+
+    public BookLoan(int idBookLoan, String title, Date devolutionDate, Date loanDate, Suspension suspension, User user) {
         this.idBookLoan = idBookLoan;
-        this.book = book;
+        this.title = title;
         this.devolutionDate = devolutionDate;
-        this.loanedDate = loanedDate;
+        this.loanDate = loanDate;
         this.suspension = suspension;
         this.user = user;
     }
@@ -35,12 +38,12 @@ public class BookLoan {
         this.idBookLoan = idBookLoan;
     }
 
-    public Book getBook() {
-        return book;
+    public String getTitle() {
+        return title;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Date getDevolutionDate() {
@@ -51,12 +54,12 @@ public class BookLoan {
         this.devolutionDate = devolutionDate;
     }
 
-    public Date getLoanedDate() {
-        return loanedDate;
+    public Date getLoanDate() {
+        return loanDate;
     }
 
-    public void setLoanedDate(Date loanedDate) {
-        this.loanedDate = loanedDate;
+    public void setLoanDate(Date loanDate) {
+        this.loanDate = loanDate;
     }
 
     public Suspension getSuspension() {
@@ -77,7 +80,7 @@ public class BookLoan {
 
     @Override
     public String toString() {
-        return "BookLoan{" + "idBookLoan=" + idBookLoan + ", book=" + book + ", devolutionDate=" + devolutionDate + ", loanedDate=" + loanedDate + ", suspension=" + suspension + ", user=" + user + '}';
+        return "BookLoan{" + "idBookLoan=" + idBookLoan + ", title=" + title + ", devolutionDate=" + devolutionDate + ", loanDate=" + loanDate + ", suspension=" + suspension + ", user=" + user + '}';
     }
     
 }

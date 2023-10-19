@@ -78,7 +78,7 @@
             </HBox>
          </children>
       </VBox>
-      <TableView fx:id="searchBook" layoutX="241.0" layoutY="88.0" prefHeight="396.0" prefWidth="519.0" styleClass="table" stylesheets="@../../../css/styles.css">
+      <TableView fx:id="bookLoans" layoutX="241.0" layoutY="88.0" prefHeight="396.0" prefWidth="519.0" styleClass="table" stylesheets="@../../../css/styles.css">
          <columns>
             <TableColumn fx:id="title" prefWidth="158.0" text="Libro " />
             <TableColumn fx:id="author" prefWidth="185.0" text="Fecha de prestamo" />
