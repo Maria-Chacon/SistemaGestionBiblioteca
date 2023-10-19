@@ -94,11 +94,9 @@ public class Library {
     public ArrayList<Book> searchBooks(String searchBy, String searchTerm) {
         ArrayList<Book> searchResults = new ArrayList<>();
         bookCatalog.loadBooksFromDatabase();
-        System.out.println(searchBy);
-        System.out.println(searchTerm);
 
         if (bookCatalog != null) {
-            // Ordena la lista de libros según el criterio de búsqueda
+
             if ("Autor".equals(searchBy)) {
                 Collections.sort(bookCatalog.getBooks(), Comparator.comparing(Book::getNameAuthor));
             } else if ("Género".equals(searchBy)) {
@@ -107,7 +105,6 @@ public class Library {
                 Collections.sort(bookCatalog.getBooks(), Comparator.comparing(Book::getTitle));
             }
 
-            // Realiza la búsqueda usando recursión
             recursiveSearch(bookCatalog.getBooks(), searchResults, searchBy, searchTerm, 0, bookCatalog.getBooks().size() - 1);
         }
 
@@ -122,47 +119,44 @@ public class Library {
         int mid = left + (right - left) / 2;
 
         if (searchBy.equals("Titulo")) {
-            System.out.println("entro en titulo");
+
             int titleComparison = books.get(mid).getTitle().compareToIgnoreCase(searchTerm);
             if (titleComparison == 0) {
-                System.out.println("entro en if");
+
                 searchResults.add(books.get(mid));
-                // Busca en la izquierda y derecha
-                System.out.println("entro en 1");
+
                 recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
-                System.out.println("entro en 12");
+
                 recursiveSearch(books, searchResults, searchBy, searchTerm, mid + 1, right);
-                System.out.println("entro en 13");
+
             } else if (titleComparison < 0) {
-                System.out.println("entro en 2");
+
                 recursiveSearch(books, searchResults, searchBy, searchTerm, mid + 1, right);
-                System.out.println("entro en 21");
+
             } else {
-                System.out.println("entro en 3");
+
                 recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
-                System.out.println("entro en 31");
+
             }
         } else {
             if ("Autor".equals(searchBy)) {
                 System.out.println("entro en autor");
                 int authorComparison = books.get(mid).getNameAuthor().compareToIgnoreCase(searchTerm);
                 if (authorComparison == 0) {
-                    System.out.println("entro en if");
+
                     searchResults.add(books.get(mid));
 
                 }
-                // Ahora, realiza la búsqueda en la parte izquierda y derecha
+
                 recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
                 recursiveSearch(books, searchResults, searchBy, searchTerm, mid + 1, right);
             } else if ("Género".equals(searchBy)) {
-                System.out.println("entro en genero");
+
                 int genreComparison = books.get(mid).getGenre().compareToIgnoreCase(searchTerm);
                 if (genreComparison == 0) {
                     searchResults.add(books.get(mid));
-                    System.out.println("entro en if");
-                }
 
-                // Ahora, realiza la búsqueda en la parte izquierda y derecha
+                }
                 recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
                 recursiveSearch(books, searchResults, searchBy, searchTerm, mid + 1, right);
             }
