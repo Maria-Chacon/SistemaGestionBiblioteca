@@ -291,7 +291,7 @@ public class EquipmentController implements Initializable {
         try {
             connection.conectar();
 
-            PreparedStatement statement = connection.preparedStatement("SELECT * FROM bd_user WHERE email = ?");
+            PreparedStatement statement = connection.preparedStatement("SELECT * FROM tbl_users WHERE email = ?");
             statement.setString(1, email);
 
             ResultSet result = statement.executeQuery();
