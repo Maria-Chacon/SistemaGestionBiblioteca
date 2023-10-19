@@ -11,6 +11,7 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -28,6 +29,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Book;
 import model.Equipment;
+import model.EquipmentLoan;
+import model.Person;
+import model.User;
 
 /**
  * FXML Controller class
@@ -64,10 +68,13 @@ public class EquipmentController implements Initializable {
     private TableColumn<Equipment, String> name;
     @FXML
     private TextField nameSearch;
-
+    @FXML
+    private Button btnLoan;
     /**
      * Initializes the controller class.
      */
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -77,7 +84,7 @@ public class EquipmentController implements Initializable {
         );
         filter.getItems().addAll(options);
         ConfigTableView();
-
+       
     }
 
     private void ConfigTableView() {
@@ -134,7 +141,6 @@ public class EquipmentController implements Initializable {
         App.setRoot("login", 600, 372);
     }
 
-
     private void processResults(ResultSet resultSet, ObservableList<Equipment> searchResults) throws SQLException {
 
         // Si no hay más resultados, termina la recursión
@@ -179,7 +185,7 @@ public class EquipmentController implements Initializable {
             searchQuery = baseQuery + "description LIKE ?";
         } else {
             System.err.println("Invalid search filter.");
-            return; 
+            return;
         }
         ObservableList<Equipment> searchResults = FXCollections.observableArrayList();
 
@@ -204,5 +210,62 @@ public class EquipmentController implements Initializable {
 
         searchEquipment.setItems(searchResults);
     }
+
+    @FXML
+    private void loan(ActionEvent event) {
+        Equipment selectedEquipment = searchEquipment.getSelectionModel().getSelectedItem();
+        if (selectedEquipment == null) {
+            System.err.println("No se seleccionó ningún equipo.");
+            return;
+        }
+
+        int updatedQuantity = selectedEquipment.getQuantity() - 1;
+        if (updatedQuantity < 0) {
+            System.err.println("No hay suficiente cantidad disponible para el equipo seleccionado.");
+            return;
+        }
+        
+
+        Conexion connection = new Conexion();
+        try {
+            
+            connection.conectar();
+
+            String updateQuery = "UPDATE tbl_equipments SET quantity = ? WHERE id = ?";
+            PreparedStatement updateStatement = connection.preparedStatement(updateQuery);
+            updateStatement.setInt(1, updatedQuantity);
+            updateStatement.setString(2, selectedEquipment.getIdEquipment());
+            updateStatement.executeUpdate();
+
+            // Calcular las fechas de préstamo y devolución
+            LocalDate loanDate = LocalDate.now();
+            LocalDate devolutionDate = loanDate.plusDays(7);
+
+            // Convertir las fechas a objetos Date de SQL
+            java.sql.Date sqlLoanDate = java.sql.Date.valueOf(loanDate);
+            java.sql.Date sqlDevolutionDate = java.sql.Date.valueOf(devolutionDate);
+
+            String insertQuery = "INSERT INTO tbl_equipmentLoan (nameEquipment, devolutionDate, loanDate, penalty, identificationUser) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement insertStatement = connection.preparedStatement(insertQuery);
+            insertStatement.setString(1, selectedEquipment.getName());
+            insertStatement.setDate(2, sqlDevolutionDate);
+            insertStatement.setDate(3, sqlLoanDate);
+            insertStatement.setString(4, "Sin penalización");
+             
+            insertStatement.setString(5, "604720910");
+
+            insertStatement.executeUpdate();
+
+            // Actualizar la vista
+            searchEquipment.getItems().remove(selectedEquipment);
+
+            System.out.println("Préstamo realizado con éxito.");
+        } catch (SQLException ex) {
+            System.err.println("Error al realizar el préstamo: " + ex.getMessage());
+        } finally {
+            connection.desconectar();
+        }
+    }
+   
 
 }
