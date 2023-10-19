@@ -34,11 +34,13 @@ import model.Person;
 import model.User;
 import model.Verification;
 
-/**
- * FXML Controller class
- *
- * @author monge
- */
+
+//Universidad Nacional, Coto
+//Desarrollado por:
+//María José Chacón Mora
+//Dayana Gamboa Monge
+//2023
+
 public class EquipmentController implements Initializable {
 
     @FXML

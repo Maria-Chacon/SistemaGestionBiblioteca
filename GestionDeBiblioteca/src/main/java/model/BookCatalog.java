@@ -6,10 +6,13 @@ package model;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author monge
- */
+
+//Universidad Nacional, Coto
+//Desarrollado por:
+//María José Chacón Mora
+//Dayana Gamboa Monge
+//2023
+
 public class BookCatalog {
     private ArrayList<Book> books;
 

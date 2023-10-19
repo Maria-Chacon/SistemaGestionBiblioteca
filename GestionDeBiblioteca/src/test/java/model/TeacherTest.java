@@ -9,10 +9,13 @@ import java.util.Date;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author monge
- */
+
+//Universidad Nacional, Coto
+//Desarrollado por:
+//María José Chacón Mora
+//Dayana Gamboa Monge
+//2023
+
 public class TeacherTest {
     
     public TeacherTest() {
