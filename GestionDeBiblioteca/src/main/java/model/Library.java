@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -99,38 +101,40 @@ public class Library {
                 Collections.sort(bookCatalog.getBooks(), Comparator.comparing(Book::getNameAuthor));
             } else if ("Género".equals(searchBy)) {
                 Collections.sort(bookCatalog.getBooks(), Comparator.comparing(Book::getGenre));
-            } else if ("Título".equals(searchBy)) {
+            } else if ("Titulo".equals(searchBy)) {
                 Collections.sort(bookCatalog.getBooks(), Comparator.comparing(Book::getTitle));
             }
 
-            // Realiza la búsqueda binaria
-            Book bookToSearch = new Book();
-            bookToSearch.setTitle(searchTerm);
-            int index = Collections.binarySearch(bookCatalog.getBooks(), bookToSearch, Comparator.comparing(Book::getTitle));
-
-            if (index >= 0) {
-                // Se encontró un libro con el título buscado
-                searchResults.add(bookCatalog.getBooks().get(index));
-
-                // Busca otros libros con el mismo título
-                int leftIndex = index - 1;
-                int rightIndex = index + 1;
-
-                while (leftIndex >= 0 && searchBy.equals("Título") && bookCatalog.getBooks().get(leftIndex).getTitle().equalsIgnoreCase(searchTerm)) {
-                    searchResults.add(bookCatalog.getBooks().get(leftIndex));
-                    leftIndex--;
-                }
-                while (rightIndex < bookCatalog.getBooks().size() && searchBy.equals("Título") && bookCatalog.getBooks().get(rightIndex).getTitle().equalsIgnoreCase(searchTerm)) {
-                    searchResults.add(bookCatalog.getBooks().get(rightIndex));
-                    rightIndex++;
-                }
-            }
-            else{
-                System.out.println("Es nulo");
-            }
+            // Realiza la búsqueda usando recursión
+            recursiveSearch(bookCatalog.getBooks(), searchResults, searchBy, searchTerm, 0, bookCatalog.getBooks().size() - 1);
         }
 
         return searchResults;
+    }
+
+    private void recursiveSearch(List<Book> books, List<Book> searchResults, String searchBy, String searchTerm, int left, int right) {
+        if (left > right) {
+            return;
+        }
+
+        int mid = left + (right - left) / 2;
+
+        if (searchBy.equals("Titulo")) {
+            int titleComparison = books.get(mid).getTitle().compareToIgnoreCase(searchTerm);
+            if (titleComparison == 0) {
+                searchResults.add(books.get(mid));
+                // Busca en la izquierda y derecha
+                recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
+                recursiveSearch(books, searchResults, searchBy, searchTerm, mid + 1, right);
+            } else if (titleComparison < 0) {
+                recursiveSearch(books, searchResults, searchBy, searchTerm, mid + 1, right);
+            } else {
+                recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
+            }
+        } else {
+            // Lógica similar para otros criterios de búsqueda (Autor, Género)
+            // Añade la lógica de comparación y búsqueda aquí
+        }
     }
 
     @Override

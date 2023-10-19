@@ -86,19 +86,19 @@ public class EquipmentController implements Initializable {
         );
         filter.getItems().addAll(options);
         ConfigTableView();
-        System.out.println(Verification.getId());
-
-        String email = Verification.getId();
-
-        if (email != null) {
-            // Realizar una consulta a la base de datos para obtener la identificación del usuario
-            userIdentification = getUserIdentificationByEmail(email);
-
-            if (userIdentification != null) {
-                // Ahora tienes la identificación del usuario y puedes usarla según tus necesidades
-                System.out.println("Identificación del usuario: " + userIdentification);
-            }
-        }
+//        System.out.println(Verification.getId());
+//
+//        String email = Verification.getId();
+//
+//        if (email != null) {
+//            // Realizar una consulta a la base de datos para obtener la identificación del usuario
+//            userIdentification = getUserIdentificationByEmail(email);
+//
+//            if (userIdentification != null) {
+//                // Ahora tienes la identificación del usuario y puedes usarla según tus necesidades
+//                System.out.println("Identificación del usuario: " + userIdentification);
+//            }
+//        }
 
     }
 
@@ -298,7 +298,6 @@ public class EquipmentController implements Initializable {
 
             if (result.next()) {
                 userIdentification = result.getString("identification");
-                System.out.println("Usuaro "+ userIdentification);
             }
         } catch (SQLException ex) {
             System.err.println("Error al obtener la identificación del usuario por correo electrónico: " + ex.getMessage());

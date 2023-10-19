@@ -66,10 +66,10 @@ public class HomeAdministratorController implements Initializable {
         String title = textFieldTitle.getText();
 
         // Validación para evitar ingreso duplicado basado en el título
-        if (isBookDuplicate(title)) {
-            System.out.println("El libro con el título '" + title + "' ya está ingresado en la base de datos.");
-            return;
-        }
+//        if (isBookDuplicate(title)) {
+//            System.out.println("El libro con el título '" + title + "' ya está ingresado en la base de datos.");
+//            return;
+//        }
 
         Author selectedAuthor = ComboBoxAuthor.getValue();
 
@@ -111,11 +111,11 @@ public class HomeAdministratorController implements Initializable {
         App.setRoot("registerAuthor", 768, 574);
     }
 
-    private boolean isBookDuplicate(String title) {
-        ArrayList<Book> booksFromDatabase = Book.getBooksFromDatabase();
-
-        // Utilizamos Java Streams para hacer la validación
-        return booksFromDatabase.stream()
-            .anyMatch(book -> book.getTitle().equalsIgnoreCase(title) && book.getNameAuthor().equalsIgnoreCase(book.getNameAuthor()));
-    }
+//    private boolean isBookDuplicate(String title) {
+//        ArrayList<Book> booksFromDatabase = Book.getBooksFromDatabase();
+//
+//        // Utilizamos Java Streams para hacer la validación
+//        return booksFromDatabase.stream()
+//            .anyMatch(book -> book.getTitle().equalsIgnoreCase(title) && book.getNameAuthor().equalsIgnoreCase(book.getNameAuthor()));
+//    }
 }
