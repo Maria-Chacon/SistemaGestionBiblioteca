@@ -133,7 +133,7 @@ public class EquipmentLoanUserController implements Initializable {
 
             ResultSet resultSet = statement.executeQuery();
 
-//            processResults(resultSet, userLoans);
+            processResults(resultSet, userLoans);
         } catch (SQLException ex) {
             System.err.println("Error al obtener préstamos del usuario: " + ex.getMessage());
         } finally {
@@ -143,18 +143,18 @@ public class EquipmentLoanUserController implements Initializable {
         return userLoans;
     }
 
-//    private void processResults(ResultSet resultSet, ObservableList<EquipmentLoan> userLoans) throws SQLException {
-//        if (resultSet.next()) {
-//            EquipmentLoan loan = new EquipmentLoan();
-//            loan.setNameEquipment(resultSet.getString("nameEquipment"));
-//            loan.setLoanDate(resultSet.getDate("loanDate").toLocalDate());
-//            loan.setDevolutionDate(resultSet.getDate("devolutionDate").toLocalDate());
-//
-//            userLoans.add(loan);
-//
-//            // Llamada recursiva para procesar el siguiente resultado
-//            processResults(resultSet, userLoans);
-//        }
-//    }
+    private void processResults(ResultSet resultSet, ObservableList<EquipmentLoan> userLoans) throws SQLException {
+        if (resultSet.next()) {
+            EquipmentLoan loan = new EquipmentLoan();
+            loan.setNameEquipment(resultSet.getString("nameEquipment"));
+            loan.setLoanDate(resultSet.getDate("loanDate"));
+            loan.setDevolutionDate(resultSet.getDate("devolutionDate"));
+
+            userLoans.add(loan);
+
+            // Llamada recursiva para procesar el siguiente resultado
+            processResults(resultSet, userLoans);
+        }
+    }
 
 }

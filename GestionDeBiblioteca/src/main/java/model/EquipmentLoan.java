@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class EquipmentLoan {
     private int idEquipmentLoan;
-    private Equipment nameEquipment;
+    private String nameEquipment;
     private Date devolutionDate;
     private Date loanDate;
     private Suspension suspension;
@@ -21,7 +21,7 @@ public class EquipmentLoan {
     public EquipmentLoan() {
     }
 
-    public EquipmentLoan(int idEquipmentLoan, Equipment nameEquipment, Date devolutionDate, Date loanDate, Suspension suspension, User identificationUser) {
+    public EquipmentLoan(int idEquipmentLoan, String nameEquipment, Date devolutionDate, Date loanDate, Suspension suspension, User identificationUser) {
         this.idEquipmentLoan = idEquipmentLoan;
         this.nameEquipment = nameEquipment;
         this.devolutionDate = devolutionDate;
@@ -38,11 +38,11 @@ public class EquipmentLoan {
         this.idEquipmentLoan = idEquipmentLoan;
     }
 
-    public Equipment getNameEquipment() {
+    public String getNameEquipment() {
         return nameEquipment;
     }
 
-    public void setNameEquipment(Equipment nameEquipment) {
+    public void setNameEquipment(String nameEquipment) {
         this.nameEquipment = nameEquipment;
     }
 
