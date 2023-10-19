@@ -13,6 +13,11 @@ public class EquipmentCatalog {
     private ArrayList<SchoolEquipment> schoolEquipment;
     private ArrayList<TechnologicalEquipment> technologicalEquipment;
 
+    public EquipmentCatalog() {
+    }
+    
+    
+
     public EquipmentCatalog(ArrayList<SchoolEquipment> schoolEquipment, ArrayList<TechnologicalEquipment> technologicalEquipment) {
         this.schoolEquipment = schoolEquipment;
         this.technologicalEquipment = technologicalEquipment;

@@ -7,6 +7,7 @@ package controller;
 import com.mycompany.gestiondebiblioteca.App;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,8 +19,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Book;
+import model.Equipment;
 import model.Library;
 
 /**
@@ -30,11 +33,11 @@ import model.Library;
 public class HomeController implements Initializable {
 
     @FXML
-    private TableColumn<?, ?> title;
+    private TableColumn<Book, String> title;
     @FXML
-    private TableColumn<?, ?> author;
+    private TableColumn<Book, String> author;
     @FXML
-    private TableColumn<?, ?> genre;
+    private TableColumn<Book, String> genre;
     @FXML
     private Button bntBookLoan;
     @FXML
@@ -56,7 +59,9 @@ public class HomeController implements Initializable {
     @FXML
     private TextField name;
     @FXML
-    private TableColumn<?, ?> quantity;
+    private TableColumn<Book, String> quantity;
+
+    Library bookCatalog = new Library();
 
     /**
      * Initializes the controller class.
@@ -69,6 +74,30 @@ public class HomeController implements Initializable {
                 "Genero"
         );
         filter.getItems().addAll(options);
+        ConfigTableView();
+    }
+
+    private void ConfigTableView() {
+        searchBook.getColumns().clear();
+
+        TableColumn<Book, String> titleCol = new TableColumn<>("Título");
+        titleCol.setMinWidth(130);
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+
+        TableColumn<Book, String> authorCol = new TableColumn<>("Autor");
+        authorCol.setMinWidth(118);
+        authorCol.setCellValueFactory(new PropertyValueFactory<>("nameAuthor"));
+
+        TableColumn<Book, String> genreCol = new TableColumn<>("Género");
+        genreCol.setMinWidth(125);
+        genreCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
+
+        TableColumn<Book, String> quantityCol = new TableColumn<>("Disponibilidad");
+        quantityCol.setMinWidth(144);
+        quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+
+        searchBook.getColumns().addAll(titleCol, authorCol, genreCol, quantityCol);
+
     }
 
     @FXML
@@ -101,14 +130,15 @@ public class HomeController implements Initializable {
 
     @FXML
     private void search(ActionEvent event) {
-         String searchTerm = name.getText(); // Término de búsqueda
-        String selectedFilter = filter.getValue(); // Tipo de búsqueda seleccionado
+        String searchTerm = name.getText(); 
+        String selectedFilter = filter.getValue(); 
 
-     
-//        if (selectedFilter != null && searchTerm != null && !searchTerm.isEmpty()) {
-//            ObservableList<Book> searchResults = Library.searchBooks(selectedFilter, searchTerm);
-//            searchBook.setItems(searchResults);
-//        }
+        if (selectedFilter != null && searchTerm != null && !searchTerm.isEmpty()) {
+            ArrayList<Book> searchResults = bookCatalog.searchBooks(selectedFilter, searchTerm);
+            searchBook.setItems(FXCollections.observableArrayList(searchResults));
+
+        }
+
     }
 
     @FXML
