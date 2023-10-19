@@ -86,6 +86,7 @@ public class EquipmentController implements Initializable {
         );
         filter.getItems().addAll(options);
         ConfigTableView();
+        System.out.println(Verification.getId());
 
         String email = Verification.getId();
 
@@ -227,6 +228,8 @@ public class EquipmentController implements Initializable {
 
     @FXML
     private void loan(ActionEvent event) {
+        userIdentification = getUserIdentificationByEmail(Verification.getId());
+        System.out.println("Identificación del usuario: " + userIdentification);
         Equipment selectedEquipment = searchEquipment.getSelectionModel().getSelectedItem();
         if (selectedEquipment == null) {
             System.err.println("No se seleccionó ningún equipo.");
@@ -281,20 +284,21 @@ public class EquipmentController implements Initializable {
     }
 
     private String getUserIdentificationByEmail(String email) {
-        String userIdentification = null;
+        String userIdentification = "";
 
         // Realizar la consulta a la base de datos para obtener la identificación del usuario
-        Conexion connection = new Conexion();
+        Conexion connection = Conexion.getInstance(); 
         try {
             connection.conectar();
 
-            PreparedStatement statement = connection.preparedStatement("SELECT identification FROM bd_user WHERE email = ?");
+            PreparedStatement statement = connection.preparedStatement("SELECT * FROM bd_user WHERE email = ?");
             statement.setString(1, email);
 
             ResultSet result = statement.executeQuery();
 
             if (result.next()) {
                 userIdentification = result.getString("identification");
+                System.out.println("Usuaro "+ userIdentification);
             }
         } catch (SQLException ex) {
             System.err.println("Error al obtener la identificación del usuario por correo electrónico: " + ex.getMessage());
