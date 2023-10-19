@@ -39,10 +39,6 @@ public class HomeController implements Initializable {
     @FXML
     private TableColumn<Book, String> genre;
     @FXML
-    private Button bntBookLoan;
-    @FXML
-    private Button bntEquipmentLoan;
-    @FXML
     private Button btnSearchEquipment;
     @FXML
     private Button btnClose;
@@ -62,6 +58,10 @@ public class HomeController implements Initializable {
     private TableColumn<Book, String> quantity;
 
     Library bookCatalog = new Library();
+    @FXML
+    private Button btnBookLoan;
+    @FXML
+    private Button btnEquipmentLoan;
 
     /**
      * Initializes the controller class.
@@ -71,7 +71,7 @@ public class HomeController implements Initializable {
         ObservableList<String> options = FXCollections.observableArrayList(
                 "Autor",
                 "Titulo",
-                "Genero"
+                "Género"
         );
         filter.getItems().addAll(options);
         ConfigTableView();

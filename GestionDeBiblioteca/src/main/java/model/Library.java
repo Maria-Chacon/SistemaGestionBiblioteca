@@ -132,8 +132,33 @@ public class Library {
                 recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
             }
         } else {
-            // Lógica similar para otros criterios de búsqueda (Autor, Género)
-            // Añade la lógica de comparación y búsqueda aquí
+            if (searchBy.equals("Autor")) {
+                int authorComparison = books.get(mid).getNameAuthor().compareToIgnoreCase(searchTerm);
+                if (authorComparison == 0) {
+                    searchResults.add(books.get(mid));
+                    // Busca en la izquierda y derecha
+                    recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
+                    recursiveSearch(books, searchResults, searchBy, searchTerm, mid + 1, right);
+                } else if (authorComparison < 0) {
+                    recursiveSearch(books, searchResults, searchBy, searchTerm, mid + 1, right);
+                } else {
+                    recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
+                }
+            } else {
+                if (searchBy.equals("Género")) {
+                    int genreComparison = books.get(mid).getGenre().compareToIgnoreCase(searchTerm);
+                    if (genreComparison == 0) {
+                        searchResults.add(books.get(mid));
+                        // Busca en la izquierda y derecha
+                        recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
+                        recursiveSearch(books, searchResults, searchBy, searchTerm, mid + 1, right);
+                    } else if (genreComparison < 0) {
+                        recursiveSearch(books, searchResults, searchBy, searchTerm, mid + 1, right);
+                    } else {
+                        recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
+                    }
+                }
+            }
         }
     }
 
