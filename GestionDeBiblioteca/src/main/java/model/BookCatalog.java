@@ -13,6 +13,12 @@ import java.util.ArrayList;
 public class BookCatalog {
     private ArrayList<Book> books;
 
+    public BookCatalog() {
+        this.books = new ArrayList<>();
+    }
+    
+    
+
     public BookCatalog(ArrayList<Book> books) {
         this.books = books;
     }
@@ -43,6 +49,10 @@ public class BookCatalog {
         
         return null;
         
+    }
+    
+    public void loadBooksFromDatabase() {
+        this.books = Book.getBooksFromDatabase();
     }
 
     @Override
