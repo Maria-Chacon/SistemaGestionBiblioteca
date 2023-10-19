@@ -115,5 +115,10 @@
             </HBox>
          </children>
       </VBox>
+      <Button fx:id="btnLoan" alignment="CENTER" layoutX="682.0" layoutY="597.0" mnemonicParsing="false" onAction="#loan" styleClass="btn" stylesheets="@../../../css/styles.css" text="Solicitar">
+         <font>
+            <Font name="Georgia Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -42,7 +42,7 @@ public class BookLoanUserController implements Initializable {
     @FXML
     private TableColumn<?, ?> genre;
     @FXML
-    private Button btnClose1;
+    private Button btnReturnBook;
 
     /**
      * Initializes the controller class.
@@ -78,6 +78,10 @@ public class BookLoanUserController implements Initializable {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
         App.setRoot("login", 600, 372);
+    }
+
+    @FXML
+    private void actionReturnBook(ActionEvent event) {
     }
     
 }

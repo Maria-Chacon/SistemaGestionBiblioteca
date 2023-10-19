@@ -109,7 +109,7 @@
             <Font name="Georgia Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="btnLoan" alignment="CENTER" layoutX="673.0" layoutY="586.0" mnemonicParsing="false" onAction="#loan" styleClass="btn" stylesheets="@../../../css/styles.css" text="Solicitar">
+      <Button fx:id="btnLoan" alignment="CENTER" layoutX="672.0" layoutY="587.0" mnemonicParsing="false" onAction="#loan" styleClass="btn" stylesheets="@../../../css/styles.css" text="Solicitar">
          <font>
             <Font name="Georgia Bold" size="14.0" />
          </font>

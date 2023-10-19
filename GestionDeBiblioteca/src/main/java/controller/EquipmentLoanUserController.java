@@ -40,9 +40,9 @@ public class EquipmentLoanUserController implements Initializable {
     @FXML
     private TableColumn<?, ?> genre;
     @FXML
-    private Button btnClose1;
-    @FXML
     private Button btnSearchBook;
+    @FXML
+    private Button btnReturnEquipment;
 
     /**
      * Initializes the controller class.
@@ -85,6 +85,10 @@ public class EquipmentLoanUserController implements Initializable {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
         App.setRoot("home", 768, 574);
+    }
+
+    @FXML
+    private void actionReturnEquipment(ActionEvent event) {
     }
     
 }
