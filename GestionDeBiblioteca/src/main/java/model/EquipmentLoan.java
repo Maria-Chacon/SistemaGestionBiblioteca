@@ -6,10 +6,13 @@ package model;
 
 import java.util.Date;
 
-/**
- *
- * @author monge
- */
+
+//Universidad Nacional, Coto
+//Desarrollado por:
+//María José Chacón Mora
+//Dayana Gamboa Monge
+//2023
+
 public class EquipmentLoan {
     private int idEquipmentLoan;
     private String nameEquipment;

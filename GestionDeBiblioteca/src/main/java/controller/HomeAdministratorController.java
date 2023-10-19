@@ -15,11 +15,13 @@ import javafx.stage.Stage;
 import model.Author;
 import model.Book;
 
-/**
- * FXML Controller class
- *
- * @author monge
- */
+
+//Universidad Nacional, Coto
+//Desarrollado por:
+//María José Chacón Mora
+//Dayana Gamboa Monge
+//2023
+
 public class HomeAdministratorController implements Initializable {
 
     @FXML

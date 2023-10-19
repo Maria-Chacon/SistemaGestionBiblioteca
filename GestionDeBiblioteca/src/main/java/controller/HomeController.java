@@ -25,11 +25,13 @@ import model.Book;
 import model.Equipment;
 import model.Library;
 
-/**
- * FXML Controller class
- *
- * @author monge
- */
+
+//Universidad Nacional, Coto
+//Desarrollado por:
+//María José Chacón Mora
+//Dayana Gamboa Monge
+//2023
+
 public class HomeController implements Initializable {
 
     @FXML

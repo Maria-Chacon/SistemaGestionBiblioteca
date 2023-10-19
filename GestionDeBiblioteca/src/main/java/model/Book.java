@@ -7,6 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+
+//Universidad Nacional, Coto
+//Desarrollado por:
+//María José Chacón Mora
+//Dayana Gamboa Monge
+//2023
+
 public class Book {
 
     private String quantity; // Cambiado a String

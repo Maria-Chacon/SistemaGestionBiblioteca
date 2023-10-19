@@ -13,10 +13,13 @@ import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-/**
- *
- * @author monge
- */
+
+//Universidad Nacional, Coto
+//Desarrollado por:
+//María José Chacón Mora
+//Dayana Gamboa Monge
+//2023
+
 public class Library {
 
     private BookCatalog bookCatalog;

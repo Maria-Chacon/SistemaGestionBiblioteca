@@ -4,10 +4,13 @@
  */
 package model;
 
-/**
- *
- * @author usuario
- */
+
+//Universidad Nacional, Coto
+//Desarrollado por:
+//María José Chacón Mora
+//Dayana Gamboa Monge
+//2023
+
 public class Verification {  
     private static String id;
 
