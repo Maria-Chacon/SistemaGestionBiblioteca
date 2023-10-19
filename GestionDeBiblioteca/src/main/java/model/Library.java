@@ -149,14 +149,11 @@ public class Library {
                 if (authorComparison == 0) {
                     System.out.println("entro en if");
                     searchResults.add(books.get(mid));
-                    // Busca en la izquierda y derecha
-                    recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
-                    recursiveSearch(books, searchResults, searchBy, searchTerm, mid + 1, right);
-                } else if (authorComparison < 0) {
-                    recursiveSearch(books, searchResults, searchBy, searchTerm, mid + 1, right);
-                } else {
-                    recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
+
                 }
+                // Ahora, realiza la búsqueda en la parte izquierda y derecha
+                recursiveSearch(books, searchResults, searchBy, searchTerm, left, mid - 1);
+                recursiveSearch(books, searchResults, searchBy, searchTerm, mid + 1, right);
             } else if ("Género".equals(searchBy)) {
                 System.out.println("entro en genero");
                 int genreComparison = books.get(mid).getGenre().compareToIgnoreCase(searchTerm);
