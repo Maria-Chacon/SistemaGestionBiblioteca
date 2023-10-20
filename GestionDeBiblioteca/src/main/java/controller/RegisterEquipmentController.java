@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -125,8 +126,10 @@ public class RegisterEquipmentController implements Initializable {
             int rowsAffected = statement.executeUpdate();
 
             if (rowsAffected > 0) {
+                showWarningMessage("Equipo registrado con éxito.");
                 System.out.println("Equipo registrado con éxito.");
             } else {
+                showWarningMessage("Error al registrar el equipo.");
                 System.out.println("Error al registrar el equipo.");
             }
         } catch (SQLException ex) {
@@ -162,6 +165,15 @@ public class RegisterEquipmentController implements Initializable {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
         App.setRoot("registerAuthor", 712, 632);
+    }
+    
+    private void showWarningMessage(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Aviso");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+
+        alert.showAndWait();
     }
 
 }

@@ -25,6 +25,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -235,9 +236,11 @@ public class BookLoanUserController implements Initializable {
             int rowsAffected = statement.executeUpdate();
 
             if (rowsAffected > 0) {
+                showWarningMessage("Libro devuelto con éxito.");
                 System.out.println("Libro devuelto con éxito.");
                 return true;
             } else {
+                showWarningMessage("Error al registrar la devolución del libro.");
                 System.err.println("Error al registrar la devolución del libro.");
                 return false;
             }
@@ -254,6 +257,15 @@ public class BookLoanUserController implements Initializable {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
         App.setRoot("home", 768, 624);
+    }
+    
+    private void showWarningMessage(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Aviso");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+
+        alert.showAndWait();
     }
 
 }

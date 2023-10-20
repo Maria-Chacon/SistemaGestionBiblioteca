@@ -23,13 +23,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Author;
 
-
 //Universidad Nacional, Coto
 //Desarrollado por:
 //María José Chacón Mora
 //Dayana Gamboa Monge
 //2023
-
 public class RegisterAuthorController implements Initializable {
 
     @FXML
@@ -63,7 +61,7 @@ public class RegisterAuthorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void actionRegisterBooks(ActionEvent event) throws IOException {
@@ -107,23 +105,22 @@ public class RegisterAuthorController implements Initializable {
         String lastName = textFieldLastName.getText();
         String identification = textFieldIdentification.getText();
         String phone = textFieldPhone.getText();
-        LocalDate birthDay = datePickerBirthDay.getValue(); 
-        
+        LocalDate birthDay = datePickerBirthDay.getValue();
+
         java.sql.Date sqlBirthDay = java.sql.Date.valueOf(birthDay);
- 
-      
+
         Author newAuthor = new Author();
         newAuthor.setName(name);
         newAuthor.setLastName(lastName);
         newAuthor.setIdentification(identification);
         newAuthor.setPhone(phone);
         newAuthor.setBirthDay(sqlBirthDay); // Convierte LocalDate a java.sql.Date
-        
+
         String insertUserQuery = "INSERT INTO tbl_authors (name, lastName, identification, birthDay, phone) VALUES (?, ?, ?, ?, ?)";
 
         try {
-            connection.conectar(); 
-            
+            connection.conectar();
+
             PreparedStatement statement = connection.preparedStatement(insertUserQuery);
             statement.setString(1, newAuthor.getName());
             statement.setString(2, newAuthor.getLastName());
@@ -131,30 +128,30 @@ public class RegisterAuthorController implements Initializable {
             statement.setDate(4, new java.sql.Date(newAuthor.getBirthDay().getTime()));
             statement.setString(5, newAuthor.getPhone());
 
-            int rowsAffected = statement.executeUpdate(); 
+            int rowsAffected = statement.executeUpdate();
 
             if (rowsAffected > 0) {
-                
-                showMessage("Autor registrado con éxito.", "Éxito");
+
+                showWarningMessage("Autor registrado con éxito.");
             } else {
-                
-                showMessage("Error al registrar el autor.", "Error");
+
+                showWarningMessage("Error al registrar el autor.");
             }
         } catch (SQLException ex) {
-            
+
             System.err.println("Error al insertar el autor: " + ex.getMessage());
         } finally {
-            connection.desconectar(); 
+            connection.desconectar();
         }
     }
-    
-    private void showMessage(String message, String typeMessage) {
-        Alert alert = new Alert(Alert.AlertType.ERROR); 
-        alert.setTitle(typeMessage); 
-        alert.setHeaderText(null); 
-        alert.setContentText(message); 
+
+    private void showWarningMessage(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Aviso");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
 
         alert.showAndWait();
     }
-    
+
 }

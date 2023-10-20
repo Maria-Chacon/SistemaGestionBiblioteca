@@ -184,7 +184,7 @@ public class Book {
             connection.desconectar();
         }
 
-        return new ArrayList<>(); // Devuelve un ArrayList vacío si hay un error
+        return new ArrayList<>(); 
     }
 
     public static void insertBookIntoDatabase(Book book) {
@@ -192,7 +192,6 @@ public class Book {
         try {
             connection.conectar();
 
-            // Inserta el libro en la base de datos
             String query = "INSERT INTO tbl_books (title, reproduction, publication, url, permanenLink, loaned, quantity, nameAuthor, genre) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.preparedStatement(query);
@@ -204,7 +203,6 @@ public class Book {
             statement.setString(5, (book.getPermanenLink() == null || book.getPermanenLink().isEmpty()) ? "indefinido" : book.getPermanenLink());
             statement.setString(6, (book.getLoaned() == null || book.getLoaned().isEmpty()) ? "indefinido" : book.getLoaned());
 
-            // Se establece la cantidad como String
             statement.setString(7, book.getQuantity());
 
             statement.setString(8, book.getNameAuthor());
@@ -230,12 +228,10 @@ public class Book {
         try {
             connection.conectar();
 
-            // Utiliza TRUNCATE para eliminar todos los datos de la tabla de libros
             String truncateQuery = "TRUNCATE TABLE tbl_books";
             PreparedStatement truncateStatement = connection.preparedStatement(truncateQuery);
             truncateStatement.executeUpdate();
 
-            // Inserta la lista de libros ordenada en la base de datos sin bucles
             insertBooksRecursively(connection, books, 0);
         } catch (SQLException ex) {
             System.err.println("Error al actualizar la base de datos: " + ex.getMessage());

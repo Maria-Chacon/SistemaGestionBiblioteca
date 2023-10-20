@@ -121,10 +121,10 @@ public class RegisterUserController implements Initializable {
 
             if (rowsAffected > 0) {
                 
-                showMessage("Usuario registrado con éxito.", "Éxito");
+                showWarningMessage("Usuario registrado con éxito.");
             } else {
                 
-                showMessage("Error al registrar el usuario.", "Error");
+                showWarningMessage("Error al registrar el usuario.");
             }
         } catch (SQLException ex) {
             
@@ -163,11 +163,11 @@ public class RegisterUserController implements Initializable {
         App.setRoot("registerAuthor", 712, 632);
     }
     
-    private void showMessage(String message, String typeMessage) {
-        Alert alert = new Alert(Alert.AlertType.ERROR); 
-        alert.setTitle(typeMessage); 
-        alert.setHeaderText(null); 
-        alert.setContentText(message); 
+    private void showWarningMessage(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Aviso");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
 
         alert.showAndWait();
     }

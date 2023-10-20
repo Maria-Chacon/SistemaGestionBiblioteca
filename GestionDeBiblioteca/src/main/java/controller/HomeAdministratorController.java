@@ -8,6 +8,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -15,13 +17,11 @@ import javafx.stage.Stage;
 import model.Author;
 import model.Book;
 
-
 //Universidad Nacional, Coto
 //Desarrollado por:
 //María José Chacón Mora
 //Dayana Gamboa Monge
 //2023
-
 public class HomeAdministratorController implements Initializable {
 
     @FXML
@@ -67,12 +67,6 @@ public class HomeAdministratorController implements Initializable {
         String genre = textFieldGenre.getText();
         String title = textFieldTitle.getText();
 
-        // Validación para evitar ingreso duplicado basado en el título
-//        if (isBookDuplicate(title)) {
-//            System.out.println("El libro con el título '" + title + "' ya está ingresado en la base de datos.");
-//            return;
-//        }
-
         Author selectedAuthor = ComboBoxAuthor.getValue();
 
         // Crear un nuevo objeto Book
@@ -83,6 +77,8 @@ public class HomeAdministratorController implements Initializable {
         ArrayList<Book> booksFromDatabase = Book.getBooksFromDatabase();
         ArrayList<Book> sortedBooks = Book.sortBooksByTitle(booksFromDatabase);
         Book.updateBooksInDatabase(sortedBooks);
+        showWarningMessage("El libro se ha registrado con éxito");
+
     }
 
     @FXML
@@ -113,11 +109,13 @@ public class HomeAdministratorController implements Initializable {
         App.setRoot("registerAuthor", 717, 631);
     }
 
-//    private boolean isBookDuplicate(String title) {
-//        ArrayList<Book> booksFromDatabase = Book.getBooksFromDatabase();
-//
-//        // Utilizamos Java Streams para hacer la validación
-//        return booksFromDatabase.stream()
-//            .anyMatch(book -> book.getTitle().equalsIgnoreCase(title) && book.getNameAuthor().equalsIgnoreCase(book.getNameAuthor()));
-//    }
+    private void showWarningMessage(String mensaje) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Aviso");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+
+        alert.showAndWait();
+    }
+
 }
