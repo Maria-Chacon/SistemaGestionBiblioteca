@@ -78,6 +78,9 @@ public class HomeAdministratorController implements Initializable {
         ArrayList<Book> sortedBooks = Book.sortBooksByTitle(booksFromDatabase);
         Book.updateBooksInDatabase(sortedBooks);
         showWarningMessage("El libro se ha registrado con éxito");
+        textFieldQuantity.setText("");
+        textFieldGenre.setText("");
+        textFieldTitle.setText("");
 
     }
 

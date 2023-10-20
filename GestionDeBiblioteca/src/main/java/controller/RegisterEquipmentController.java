@@ -23,13 +23,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Equipment;
 
-
 //Universidad Nacional, Coto
 //Desarrollado por:
 //María José Chacón Mora
 //Dayana Gamboa Monge
 //2023
-
 public class RegisterEquipmentController implements Initializable {
 
     @FXML
@@ -105,7 +103,6 @@ public class RegisterEquipmentController implements Initializable {
             return;
         }
 
-
         Equipment newEquipment = new Equipment();
         newEquipment.setQuantity(quantity);
         newEquipment.setDescription(description);
@@ -127,6 +124,9 @@ public class RegisterEquipmentController implements Initializable {
 
             if (rowsAffected > 0) {
                 showWarningMessage("Equipo registrado con éxito.");
+                textFieldQuantity.setText("");
+                textFieldDescription.setText("");
+                textFieldName.setText("");
                 System.out.println("Equipo registrado con éxito.");
             } else {
                 showWarningMessage("Error al registrar el equipo.");
@@ -166,7 +166,7 @@ public class RegisterEquipmentController implements Initializable {
         stage.close();
         App.setRoot("registerAuthor", 712, 632);
     }
-    
+
     private void showWarningMessage(String mensaje) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Aviso");

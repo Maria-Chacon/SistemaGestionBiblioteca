@@ -133,6 +133,10 @@ public class RegisterAuthorController implements Initializable {
             if (rowsAffected > 0) {
 
                 showWarningMessage("Autor registrado con éxito.");
+                textFieldName.setText("");
+                textFieldLastName.setText("");
+                textFieldIdentification.setText("");
+                textFieldPhone.setText("");
             } else {
 
                 showWarningMessage("Error al registrar el autor.");

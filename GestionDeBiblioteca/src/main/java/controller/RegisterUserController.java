@@ -122,6 +122,12 @@ public class RegisterUserController implements Initializable {
             if (rowsAffected > 0) {
                 
                 showWarningMessage("Usuario registrado con éxito.");
+                textFieldName.setText("");
+                textFieldLastName.setText("");
+                textFieldEmail.setText("");
+                textFieldPassword.setText("");
+                textFieldIdentification.setText("");
+                textFieldPhone.setText("");
             } else {
                 
                 showWarningMessage("Error al registrar el usuario.");
