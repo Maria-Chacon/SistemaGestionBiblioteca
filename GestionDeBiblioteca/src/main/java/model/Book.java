@@ -5,15 +5,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
-
+import java.util.Iterator;
+import java.util.List;
+import java.util.Spliterator;
+import java.util.Spliterators;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 //Universidad Nacional, Coto
 //Desarrollado por:
 //María José Chacón Mora
 //Dayana Gamboa Monge
 //2023
-
 public class Book {
 
     private String quantity; // Cambiado a String
@@ -129,8 +135,6 @@ public class Book {
     }
 
     public static ArrayList<Book> getBooksFromDatabase() {
-        ArrayList<Book> books = new ArrayList<>();
-
         Conexion connection = Conexion.getInstance();
 
         try {
@@ -138,31 +142,49 @@ public class Book {
             PreparedStatement statement = connection.preparedStatement("SELECT * FROM tbl_books");
             ResultSet result = statement.executeQuery();
 
-            while (result.next()) {
-                Book book = new Book();
+            return StreamSupport.stream(
+                    Spliterators.spliteratorUnknownSize(
+                            new Iterator<Book>() {
+                        @Override
+                        public boolean hasNext() {
+                            try {
+                                return result.next();
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
 
-                book.setTitle(result.getString("title"));
-                book.setReproduction(result.getString("reproduction"));
-                book.setPublication(result.getString("publication"));
-                book.setUrl(result.getString("url"));
-                book.setPermanenLink(result.getString("permanenLink"));
-                book.setLoaned(result.getString("loaned"));
-
-                book.setQuantity(result.getString("quantity")); // Se obtiene como String
-
-                book.setNameAuthor(result.getString("nameAuthor"));
-                book.setGenre(result.getString("genre"));
-                book.setIdBook(result.getString("id"));
-
-                books.add(book);
-            }
+                        @Override
+                        public Book next() {
+                            Book book = new Book();
+                            try {
+                                book.setTitle(result.getString("title"));
+                                book.setReproduction(result.getString("reproduction"));
+                                book.setPublication(result.getString("publication"));
+                                book.setUrl(result.getString("url"));
+                                book.setPermanenLink(result.getString("permanenLink"));
+                                book.setLoaned(result.getString("loaned"));
+                                book.setQuantity(result.getString("quantity"));
+                                book.setNameAuthor(result.getString("nameAuthor"));
+                                book.setGenre(result.getString("genre"));
+                                book.setIdBook(result.getString("id"));
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+                            return book;
+                        }
+                    },
+                            Spliterator.ORDERED
+                    ),
+                    false
+            ).collect(Collectors.toCollection(ArrayList::new));
         } catch (SQLException ex) {
             System.err.println("Error al obtener libros desde la base de datos: " + ex.getMessage());
         } finally {
             connection.desconectar();
         }
 
-        return books;
+        return new ArrayList<>(); // Devuelve un ArrayList vacío si hay un error
     }
 
     public static void insertBookIntoDatabase(Book book) {
@@ -223,7 +245,5 @@ public class Book {
             connection.desconectar();
         }
     }
-    
-    
 
 }
