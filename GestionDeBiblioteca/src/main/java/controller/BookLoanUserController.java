@@ -25,6 +25,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 //Universidad Nacional, Coto
@@ -55,6 +56,8 @@ public class BookLoanUserController implements Initializable {
     String identification = "";
     @FXML
     private TableView<BookLoan> bookLoans;
+    @FXML
+    private Label labelUser;
 
     /**
      * Initializes the controller class.

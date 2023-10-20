@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.User;
@@ -57,6 +58,8 @@ public class RegisterUserController implements Initializable {
     private Button btnRegisterUsers;
     @FXML
     private Button btnRegisterAuthor;
+    @FXML
+    private Label labelUser;
 
     /**
      * Initializes the controller class.
@@ -160,7 +163,6 @@ public class RegisterUserController implements Initializable {
         App.setRoot("registerAuthor", 768, 574);
     }
     
-    @FXML
     private void showMessage(String message, String typeMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR); 
         alert.setTitle(typeMessage); 

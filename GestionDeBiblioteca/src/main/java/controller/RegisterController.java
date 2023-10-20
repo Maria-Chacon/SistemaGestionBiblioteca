@@ -123,7 +123,6 @@ public class RegisterController implements Initializable {
         }
     }
     
-    @FXML
     private void showMessage(String message, String typeMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR); 
         alert.setTitle(typeMessage); 
