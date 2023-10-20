@@ -22,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Verification;
@@ -39,13 +40,13 @@ public class LoginController implements Initializable {
     @FXML
     private TextField textFieldEmail;
     @FXML
-    private TextField textFieldPassword;
-    @FXML
     private Button buttonLogin;
     @FXML
     private Button buttonNewAccount;
     
     Verification verification;
+    @FXML
+    private PasswordField passwordField;
 
     /**
      * Initializes the controller class.
@@ -55,7 +56,6 @@ public class LoginController implements Initializable {
         // TODO
     }
 
-    @FXML
     private boolean autenticarUsuarioEnBaseDeDatos(String email, String password) {
         Conexion connection = new Conexion();
         try {
@@ -79,7 +79,6 @@ public class LoginController implements Initializable {
         }
     }
 
-    @FXML
     private void mostrarMensajeDeError(String mensaje) {
         Alert alert = new Alert(AlertType.ERROR); 
         alert.setTitle("Error"); 
@@ -99,7 +98,7 @@ public class LoginController implements Initializable {
     @FXML
     private void ActionLogin(ActionEvent event) throws IOException {
         String email = textFieldEmail.getText(); 
-        String password = textFieldPassword.getText(); 
+        String password = passwordField.getText(); 
         String userType = null;
 
         boolean isAuthenticated = autenticarUsuarioEnBaseDeDatos(email, password);
