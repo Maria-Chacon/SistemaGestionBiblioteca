@@ -62,5 +62,9 @@ public class Devolution {
     public String toString() {
         return "Devolution{" + "idDevolution=" + idDevolution + ", returnedBook=" + returnedBook + ", returnDate=" + returnDate + ", user=" + user + '}';
     }
+
+    java.sql.Date getReturnedDate() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

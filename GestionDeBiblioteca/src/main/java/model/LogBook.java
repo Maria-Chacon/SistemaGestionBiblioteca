@@ -4,38 +4,32 @@
  */
 package model;
 
+import Conexion.Conexion;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Date;
-
+import javafx.scene.control.Alert;
 
 //Universidad Nacional, Coto
 //Desarrollado por:
 //María José Chacón Mora
 //Dayana Gamboa Monge
 //2023
-
 public class LogBook {
-    private String idLogBook;
-    private Book book;
-    private BookLoan bookLoan;
-    private Date registerDate;
-    private Devolution devolution;
-    private User user;
 
-    public LogBook(String idLogBook, Book book, BookLoan bookLoan, Date registerDate, Devolution devolution, User user) {
-        this.idLogBook = idLogBook;
+    private Book book;
+    private int bookLoan;
+    private Date registerDate;
+    private Date devolution;
+    private String identificationUser;
+
+    public LogBook(Book book, int bookLoan, Date registerDate, Date devolution, String identificationUser) {
+
         this.book = book;
         this.bookLoan = bookLoan;
         this.registerDate = registerDate;
         this.devolution = devolution;
-        this.user = user;
-    }
-
-    public String getIdLogBook() {
-        return idLogBook;
-    }
-
-    public void setIdLogBook(String idLogBook) {
-        this.idLogBook = idLogBook;
+        this.identificationUser = identificationUser;
     }
 
     public Book getBook() {
@@ -46,11 +40,11 @@ public class LogBook {
         this.book = book;
     }
 
-    public BookLoan getBookLoan() {
+    public int getBookLoan() {
         return bookLoan;
     }
 
-    public void setBookLoan(BookLoan bookLoan) {
+    public void setBookLoan(int bookLoan) {
         this.bookLoan = bookLoan;
     }
 
@@ -62,25 +56,51 @@ public class LogBook {
         this.registerDate = registerDate;
     }
 
-    public Devolution getDevolution() {
+    public Date getDevolution() {
         return devolution;
     }
 
-    public void setDevolution(Devolution devolution) {
+    public void setDevolution(Date devolution) {
         this.devolution = devolution;
     }
 
-    public User getUser() {
-        return user;
+    public String getIdentificationUser() {
+        return identificationUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setIdentificationUser(String identificationUser) {
+        this.identificationUser = identificationUser;
     }
 
     @Override
     public String toString() {
-        return "LogBook{" + "idLogBook=" + idLogBook + ", book=" + book + ", bookLoan=" + bookLoan + ", registerDate=" + registerDate + ", devolution=" + devolution + ", user=" + user + '}';
+        return "LogBook{" + ", book=" + book + ", bookLoan=" + bookLoan + ", registerDate=" + registerDate + ", devolution=" + devolution + ", user=" + identificationUser + '}';
     }
-    
+
+    public static void insertLogBookIntoDatabase(LogBook logBook) {
+        Conexion connection = Conexion.getInstance();
+
+        try {
+            connection.conectar();
+
+            String insertLogBookQuery = "INSERT INTO tbl_logBook (title, idBookLoan, loanDate, devolutionDate, identificationUser)"
+                    + "VALUES (?, ?, ?, ?, ?)";
+
+            PreparedStatement statement = connection.preparedStatement(insertLogBookQuery);
+
+            statement.setString(1, logBook.getBook().getTitle()); 
+            statement.setInt(2, logBook.getBookLoan());
+            statement.setDate(3, (java.sql.Date) logBook.getRegisterDate());
+            statement.setDate(4, (java.sql.Date) logBook.getDevolution());
+            statement.setString(5, logBook.getIdentificationUser());
+
+            statement.executeUpdate();
+            System.out.println("Registro de prestamo de libro en bitácora éxitoso.");
+        } catch (SQLException ex) {
+            System.err.println("Error al insertar el prestamo de libro en bitácora: " + ex.getMessage());
+        } finally {
+            connection.desconectar();
+        }
+    }
+
 }

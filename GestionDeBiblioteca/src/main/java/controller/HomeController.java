@@ -9,6 +9,7 @@ import com.mycompany.gestiondebiblioteca.App;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -30,16 +31,15 @@ import javafx.stage.Stage;
 import model.Book;
 import model.Equipment;
 import model.Library;
+import model.LogBook;
 import static model.User.getUserIdentificationByEmail;
 import model.Verification;
-
 
 //Universidad Nacional, Coto
 //Desarrollado por:
 //María José Chacón Mora
 //Dayana Gamboa Monge
 //2023
-
 public class HomeController implements Initializable {
 
     @FXML
@@ -193,7 +193,7 @@ public class HomeController implements Initializable {
 
             String insertQuery = "INSERT INTO tbl_bookLoan (title, devolutionDate, loanDate, penalty, identificationUser) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement insertStatement = connection.preparedStatement(insertQuery);
-            insertStatement.setString(1, selectedBook.getTitle()); 
+            insertStatement.setString(1, selectedBook.getTitle());
             insertStatement.setDate(2, sqlDevolutionDate);
             insertStatement.setDate(3, sqlLoanDate);
             insertStatement.setString(4, "Sin penalización");
@@ -202,7 +202,17 @@ public class HomeController implements Initializable {
 
             insertStatement.executeUpdate();
 
+            int bookLoanId = getLastBookLoanId(connection);
+
+            if (bookLoanId != -1) {
+                LogBook logBook = new LogBook(selectedBook, bookLoanId, sqlLoanDate, sqlDevolutionDate, userIdentification);
+                LogBook.insertLogBookIntoDatabase(logBook);
+            } else {
+                System.err.println("No se pudo obtener el ID del último préstamo.");
+            }
+
             searchBook.getItems().remove(selectedBook);
+
             showWarningMessage("Préstamo de libro realizado con éxito.");
             System.out.println("Préstamo de libro realizado con éxito.");
         } catch (SQLException ex) {
@@ -218,7 +228,7 @@ public class HomeController implements Initializable {
         stage.close();
         App.setRoot("home", 768, 624);
     }
-    
+
     private void showWarningMessage(String mensaje) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Aviso");
@@ -226,6 +236,24 @@ public class HomeController implements Initializable {
         alert.setContentText(mensaje);
 
         alert.showAndWait();
+    }
+
+    private int getLastBookLoanId(Conexion connection) {
+        int bookLoanId = -1; // Valor predeterminado en caso de que no se pueda obtener el ID
+
+        try {
+            String query = "SELECT id FROM tbl_bookLoan ORDER BY id DESC LIMIT 1";
+            PreparedStatement statement = connection.preparedStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                bookLoanId = resultSet.getInt("id");
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error al obtener el ID del último préstamo: " + ex.getMessage());
+        }
+
+        return bookLoanId;
     }
 
 }
