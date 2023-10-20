@@ -209,11 +209,11 @@ public class EquipmentLoanUserController implements Initializable {
 
             if (rowsAffected > 0) {
                 System.out.println("Equipo devuelto con éxito.");
-                showMessage("Equipo devuelto con éxito.", "Éxito");
+                showWarningMessage("Equipo devuelto con éxito.");
                 return true;
             } else {
                 System.out.println("Error al registrar la devolución del equipo.");
-                showMessage("Error al registrar la devolución del equipo.", "Error");
+                showWarningMessage("Error al registrar la devolución del equipo.");
                 return false;
             }
         } catch (SQLException ex) {
@@ -261,11 +261,11 @@ public class EquipmentLoanUserController implements Initializable {
         }
     }
     
-    private void showMessage(String message, String typeMessage) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(typeMessage);
+    private void showWarningMessage(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Aviso");
         alert.setHeaderText(null);
-        alert.setContentText(message);
+        alert.setContentText(mensaje);
 
         alert.showAndWait();
     }

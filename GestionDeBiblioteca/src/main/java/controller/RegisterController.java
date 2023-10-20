@@ -22,13 +22,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.User;
 
-
 //Universidad Nacional, Coto
 //Desarrollado por:
 //María José Chacón Mora
 //Dayana Gamboa Monge
 //2023
-
 public class RegisterController implements Initializable {
 
     @FXML
@@ -56,7 +54,7 @@ public class RegisterController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void ActionExistingAccount(ActionEvent event) throws IOException {
@@ -74,13 +72,12 @@ public class RegisterController implements Initializable {
         String password = textFieldPassword.getText();
         String identification = textFieldIdentification.getText();
         String phone = textFieldPhone.getText();
-        LocalDate birthDay = datePickerBirthDay.getValue(); 
-        
-        java.sql.Date sqlBirthDay = java.sql.Date.valueOf(birthDay);
- 
-        String userType = "us"; 
+        LocalDate birthDay = datePickerBirthDay.getValue();
 
-      
+        java.sql.Date sqlBirthDay = java.sql.Date.valueOf(birthDay);
+
+        String userType = "us";
+
         User newUser = new User();
         newUser.setName(name);
         newUser.setLastName(lastName);
@@ -90,12 +87,12 @@ public class RegisterController implements Initializable {
         newUser.setPhone(phone);
         newUser.setBirthDay(sqlBirthDay); // Convierte LocalDate a java.sql.Date
         newUser.setType(userType);
-        
+
         String insertUserQuery = "INSERT INTO tbl_users (name, lastName, identification, birthDay, phone, email, password, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
-            connection.conectar(); 
-            
+            connection.conectar();
+
             PreparedStatement statement = connection.preparedStatement(insertUserQuery);
             statement.setString(1, newUser.getName());
             statement.setString(2, newUser.getLastName());
@@ -106,30 +103,37 @@ public class RegisterController implements Initializable {
             statement.setString(7, newUser.getPassword());
             statement.setString(8, newUser.getType());
 
-            int rowsAffected = statement.executeUpdate(); 
+            int rowsAffected = statement.executeUpdate();
 
             if (rowsAffected > 0) {
-                
+
                 showMessage("Usuario registrado con éxito.", "Éxito");
-            } else {
                 
+                textFieldName.setText("");
+                textFieldLastName.setText("");
+                textFieldEmail.setText("");
+                textFieldPassword.setText("");
+                textFieldIdentification.setText("");
+                textFieldPhone.setText("");
+            } else {
+
                 showMessage("Error al registrar el usuario.", "Error");
             }
         } catch (SQLException ex) {
-            
+
             System.err.println("Error al insertar el usuario: " + ex.getMessage());
         } finally {
-            connection.desconectar(); 
+            connection.desconectar();
         }
     }
-    
+
     private void showMessage(String message, String typeMessage) {
-        Alert alert = new Alert(Alert.AlertType.ERROR); 
-        alert.setTitle(typeMessage); 
-        alert.setHeaderText(null); 
-        alert.setContentText(message); 
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(typeMessage);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
 
         alert.showAndWait();
     }
-    
+
 }

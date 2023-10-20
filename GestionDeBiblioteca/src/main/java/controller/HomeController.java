@@ -18,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -190,7 +191,7 @@ public class HomeController implements Initializable {
             java.sql.Date sqlLoanDate = java.sql.Date.valueOf(loanDate);
             java.sql.Date sqlDevolutionDate = java.sql.Date.valueOf(devolutionDate);
 
-            String insertQuery = "INSERT INTO tbl_bookLoan (nameBook, devolutionDate, loanDate, penalty, identificationUser) VALUES (?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO tbl_bookLoan (title, devolutionDate, loanDate, penalty, identificationUser) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement insertStatement = connection.preparedStatement(insertQuery);
             insertStatement.setString(1, selectedBook.getTitle()); 
             insertStatement.setDate(2, sqlDevolutionDate);
@@ -202,7 +203,7 @@ public class HomeController implements Initializable {
             insertStatement.executeUpdate();
 
             searchBook.getItems().remove(selectedBook);
-
+            showWarningMessage("Préstamo de libro realizado con éxito.");
             System.out.println("Préstamo de libro realizado con éxito.");
         } catch (SQLException ex) {
             System.err.println("Error al realizar el préstamo: " + ex.getMessage());
@@ -216,6 +217,15 @@ public class HomeController implements Initializable {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
         App.setRoot("home", 768, 624);
+    }
+    
+    private void showWarningMessage(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Aviso");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+
+        alert.showAndWait();
     }
 
 }
