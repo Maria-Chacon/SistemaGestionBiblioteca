@@ -32,7 +32,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 //María José Chacón Mora
 //Dayana Gamboa Monge
 //2023
-
 public class BookLoanUserController implements Initializable {
 
     @FXML
@@ -154,6 +153,97 @@ public class BookLoanUserController implements Initializable {
 
     @FXML
     private void actionReturnBook(ActionEvent event) {
+        BookLoan selectedLoan = bookLoans.getSelectionModel().getSelectedItem();
+
+        if (selectedLoan != null) {
+            String bookTitle = selectedLoan.getTitle();
+            Date loanDate = (Date) selectedLoan.getLoanDate();
+            Date returnedDate = new Date(System.currentTimeMillis());
+
+            if (returnBookToInventory(bookTitle) && deleteBookLoan(identification, bookTitle, loanDate)) {
+                if (saveBookDevolution(identification, bookTitle, returnedDate)) {
+                    bookLoans.getItems().remove(selectedLoan);
+                } else {
+                    System.err.println("Error al guardar el registro de devolución del libro.");
+                }
+            } else {
+                System.err.println("Error al devolver el libro.");
+            }
+        }
+    }
+
+    private boolean returnBookToInventory(String bookTitle) {
+        Conexion connection = new Conexion();
+
+        try {
+            connection.conectar();
+
+            String updateQuery = "UPDATE tbl_books SET quantity = quantity + 1 WHERE title = ?";
+            PreparedStatement updateStatement = connection.preparedStatement(updateQuery);
+            updateStatement.setString(1, bookTitle);
+
+            int rowsAffected = updateStatement.executeUpdate();
+
+            return rowsAffected > 0;
+        } catch (SQLException ex) {
+            System.err.println("Error al actualizar la cantidad de libros en inventario: " + ex.getMessage());
+            return false;
+        } finally {
+            connection.desconectar();
+        }
+    }
+
+    private boolean deleteBookLoan(String userIdentification, String bookTitle, Date loanDate) {
+        Conexion connection = new Conexion();
+
+        try {
+            connection.conectar();
+
+            String deleteQuery = "DELETE FROM tbl_bookloan WHERE identificationUser = ? AND title = ? AND loanDate = ?";
+            PreparedStatement deleteStatement = connection.preparedStatement(deleteQuery);
+            deleteStatement.setString(1, userIdentification);
+            deleteStatement.setString(2, bookTitle);
+            deleteStatement.setDate(3, loanDate);
+
+            int rowsAffected = deleteStatement.executeUpdate();
+
+            return rowsAffected > 0;
+        } catch (SQLException ex) {
+            System.err.println("Error al eliminar el préstamo de libro: " + ex.getMessage());
+            return false;
+        } finally {
+            connection.desconectar();
+        }
+    }
+
+    private boolean saveBookDevolution(String userIdentification, String bookTitle, Date returnedDate) {
+        Conexion connection = new Conexion();
+
+        String insertDevolutionQuery = "INSERT INTO tbl_bookdevolution (returnedBook, returnedDate, identificationUser) VALUES (?, ?, ?)";
+
+        try {
+            connection.conectar();
+
+            PreparedStatement statement = connection.preparedStatement(insertDevolutionQuery);
+            statement.setString(1, bookTitle);
+            statement.setDate(2, returnedDate);
+            statement.setString(3, userIdentification);
+
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Libro devuelto con éxito.");
+                return true;
+            } else {
+                System.err.println("Error al registrar la devolución del libro.");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error al guardar el registro de devolución de libro: " + ex.getMessage());
+            return false;
+        } finally {
+            connection.desconectar();
+        }
     }
 
 }
