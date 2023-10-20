@@ -120,7 +120,7 @@ public class HomeController implements Initializable {
     private void searchEquipment(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("equipment", 768, 574);
+        App.setRoot("equipment", 600, 400);
     }
 
     @FXML
@@ -151,7 +151,7 @@ public class HomeController implements Initializable {
     private void searchBook(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("home", 768, 574);
+        App.setRoot("home", 768, 624);
     }
 
 }
