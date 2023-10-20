@@ -44,6 +44,8 @@ public class HomeAdministratorController implements Initializable {
     private Button btnRegisterUsers;
     @FXML
     private Button btnRegisterAuthor;
+    @FXML
+    private Button bntLogBokk;
 
     /**
      * Initializes the controller class.
@@ -119,6 +121,13 @@ public class HomeAdministratorController implements Initializable {
         alert.setContentText(mensaje);
 
         alert.showAndWait();
+    }
+
+    @FXML
+    private void LogBokk(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("logBook", 978, 642);
     }
 
 }

@@ -38,6 +38,16 @@
             <HBox prefHeight="54.0" prefWidth="234.0" />
             <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
                <children>
+                  <Button fx:id="bntLogBokk" mnemonicParsing="false" onAction="#LogBokk" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Bitácora">
+                     <font>
+                        <Font name="Georgia Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="32.0" prefWidth="234.0" />
+            <HBox alignment="CENTER" prefHeight="39.0" prefWidth="234.0">
+               <children>
                   <Button fx:id="bntRegisterBooks" mnemonicParsing="false" onAction="#actionRegisterBooks" prefHeight="36.0" prefWidth="206.0" styleClass="btn" stylesheets="@../../../css/styles.css" text="Registro de libros">
                      <font>
                         <Font name="Georgia Bold" size="14.0" />

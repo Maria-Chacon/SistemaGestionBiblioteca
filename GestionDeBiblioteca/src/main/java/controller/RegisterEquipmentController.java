@@ -53,6 +53,8 @@ public class RegisterEquipmentController implements Initializable {
     private ComboBox<String> comboBoxAvailability;
     @FXML
     private Label labelUser;
+    @FXML
+    private Button bntLogBokk;
 
     /**
      * Initializes the controller class.
@@ -174,6 +176,13 @@ public class RegisterEquipmentController implements Initializable {
         alert.setContentText(mensaje);
 
         alert.showAndWait();
+    }
+
+    @FXML
+    private void LogBokk(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("logBook", 978, 642);
     }
 
 }

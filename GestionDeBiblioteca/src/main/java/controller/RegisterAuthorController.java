@@ -54,6 +54,8 @@ public class RegisterAuthorController implements Initializable {
     private DatePicker datePickerBirthDay;
     @FXML
     private Label labelUser;
+    @FXML
+    private Button bntLogBokk;
 
     /**
      * Initializes the controller class.
@@ -156,6 +158,13 @@ public class RegisterAuthorController implements Initializable {
         alert.setContentText(mensaje);
 
         alert.showAndWait();
+    }
+
+    @FXML
+    private void LogBokk(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("logBook", 978, 642);
     }
 
 }
