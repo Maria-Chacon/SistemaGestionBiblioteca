@@ -235,14 +235,20 @@ public class Book {
             PreparedStatement truncateStatement = connection.preparedStatement(truncateQuery);
             truncateStatement.executeUpdate();
 
-            // Inserta la lista de libros ordenada en la base de datos
-            for (Book book : books) {
-                insertBookIntoDatabase(book);
-            }
+            // Inserta la lista de libros ordenada en la base de datos sin bucles
+            insertBooksRecursively(connection, books, 0);
         } catch (SQLException ex) {
             System.err.println("Error al actualizar la base de datos: " + ex.getMessage());
         } finally {
             connection.desconectar();
+        }
+    }
+
+    private static void insertBooksRecursively(Conexion connection, ArrayList<Book> books, int index) {
+        if (index < books.size()) {
+            Book book = books.get(index);
+            insertBookIntoDatabase(book);
+            insertBooksRecursively(connection, books, index + 1);
         }
     }
 
