@@ -89,7 +89,7 @@ public class HomeAdministratorController implements Initializable {
     private void actionRegisterBooks(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("homeAdministrator", 768, 574);
+        App.setRoot("homeAdministrator", 712, 630);
     }
 
     @FXML
@@ -103,14 +103,14 @@ public class HomeAdministratorController implements Initializable {
     private void actionRegisterUsers(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("registerUser", 768, 574);
+        App.setRoot("registerUser", 717, 631);
     }
 
     @FXML
     private void actionRegisterAuthors(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("registerAuthor", 768, 574);
+        App.setRoot("registerAuthor", 717, 631);
     }
 
 //    private boolean isBookDuplicate(String title) {

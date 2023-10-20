@@ -139,7 +139,7 @@ public class RegisterUserController implements Initializable {
     private void actionRegisterBooks(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("homeAdministrator", 768, 574);
+        App.setRoot("homeAdministrator", 712, 630);
     }
 
     @FXML
@@ -160,7 +160,7 @@ public class RegisterUserController implements Initializable {
     private void actionRegisterAuthors(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("registerAuthor", 768, 574);
+        App.setRoot("registerAuthor", 712, 632);
     }
     
     private void showMessage(String message, String typeMessage) {

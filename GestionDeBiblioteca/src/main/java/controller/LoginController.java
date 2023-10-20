@@ -117,7 +117,7 @@ public class LoginController implements Initializable {
                     {
                         Stage stage = (Stage) buttonLogin.getScene().getWindow();
                         stage.close();
-                        App.setRoot("homeAdministrator", 600, 400);
+                        App.setRoot("homeAdministrator", 712, 630);
                         break;
                     }
                 case "us":
