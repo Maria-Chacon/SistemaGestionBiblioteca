@@ -131,7 +131,7 @@ public class HomeController implements Initializable {
     private void searchEquipment(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("equipment", 600, 400);
+        App.setRoot("equipment", 767, 640);
     }
 
     @FXML

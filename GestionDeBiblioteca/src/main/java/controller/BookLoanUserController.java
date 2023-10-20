@@ -42,8 +42,6 @@ public class BookLoanUserController implements Initializable {
     @FXML
     private Button btnSearchEquipment;
     @FXML
-    private Button btnSearchEquipment1;
-    @FXML
     private Button btnClose;
     @FXML
     private TableColumn<?, ?> title;
@@ -58,6 +56,8 @@ public class BookLoanUserController implements Initializable {
     private TableView<BookLoan> bookLoans;
     @FXML
     private Label labelUser;
+    @FXML
+    private Button btnSearchBook;
 
     /**
      * Initializes the controller class.
@@ -144,7 +144,7 @@ public class BookLoanUserController implements Initializable {
     private void searchEquipment(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("equipment", 768, 574);
+        App.setRoot("equipment", 767, 640);
     }
 
     @FXML
@@ -247,6 +247,13 @@ public class BookLoanUserController implements Initializable {
         } finally {
             connection.desconectar();
         }
+    }
+
+    @FXML
+    private void searchBook(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        App.setRoot("home", 768, 624);
     }
 
 }

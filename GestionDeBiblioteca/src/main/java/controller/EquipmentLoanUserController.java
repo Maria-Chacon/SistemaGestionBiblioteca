@@ -124,7 +124,7 @@ public class EquipmentLoanUserController implements Initializable {
     private void searchBook(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("home", 768, 574);
+        App.setRoot("home", 768, 624);
     }
 
     @FXML

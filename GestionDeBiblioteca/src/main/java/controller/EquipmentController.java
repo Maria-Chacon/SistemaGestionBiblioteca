@@ -151,7 +151,7 @@ public class EquipmentController implements Initializable {
     private void searchEquipment(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("equipment", 760, 576);
+        App.setRoot("equipment", 767, 640);
     }
 
     @FXML
@@ -188,7 +188,7 @@ public class EquipmentController implements Initializable {
     private void searchBook(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
-        App.setRoot("home", 760, 576);
+        App.setRoot("home", 768, 624);
     }
 
     @FXML
