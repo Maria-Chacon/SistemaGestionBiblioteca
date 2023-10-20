@@ -31,9 +31,9 @@ public class LibraryTest {
     @Before
     public void setUp() {
 
-        Book book1 = new Book(false, 5, "Author 1", "Genre 1", "B1", "Book 1");
-        Book book2 = new Book(true, 3, "Author 2", "Genre 2", "B2", "Book 2");
-        Book book3 = new Book(false, 2, "Author 3", "Genre 3", "B3", "Book 3");
+        Book book1 = new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml");
+        Book book2 = new Book("6", "Author 2", "Genre 2", "loaned", "B2", "Book 2", "repro", "publ", "url", "perml");
+        Book book3 = new Book("7", "Author 3", "Genre 3", "loaned", "B3", "Book 3", "repro", "publ", "url", "perml");
 
         ArrayList<Book> bookList = new ArrayList<>();
         bookList.add(book1);

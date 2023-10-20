@@ -42,7 +42,7 @@ public class UserTest {
     @Test
     public void testGetLoanedBooks() {
         ArrayList<Book> loanedBooks = new ArrayList<>();
-        loanedBooks.add(new Book(true, 1, "Author1", "Genre1", "2", "Title1"));
+        loanedBooks.add(new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml"));
         User instance = new User("maria@gmail.com", "password123", "Estudiante",loanedBooks,1, new Date(), "12345", "chacon", "maria", "123456789");
         ArrayList<Book> expResult = loanedBooks;
         ArrayList<Book> result = instance.getLoanedBooks();

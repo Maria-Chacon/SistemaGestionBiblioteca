@@ -19,57 +19,51 @@ public class BookTest {
     public BookTest() {
     }
 
-    @Test
+ @Test
     public void testIsLoaned() {
-        Book instance = new Book(true, 5, "Dayana", "Miedo","1","oscuridad");
-        boolean expResult = true;
-        boolean result = instance.isLoaned();
+        Book instance = new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml");
+        String expResult = "loaned";
+        String result = instance.getLoaned();
         assertEquals(expResult, result);
     }
-
 
     @Test
     public void testGetQuantity() {
-        Book instance = new Book(true, 5, "Dayana", "Miedo","1","oscuridad");;
+        Book instance = new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml");
         int expResult = 5;
-        int result = instance.getQuantity();
+        int result = Integer.parseInt(instance.getQuantity());
         assertEquals(expResult, result);
     }
-
 
     @Test
     public void testGetAuthor() {
-        Book instance = new Book(true, 5, "Dayana", "Miedo","1","oscuridad");;
-        String expResult = "Dayana";
-        String result = instance.getAuthor();
+        Book instance = new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml");
+        String expResult = "Author 1";
+        String result = instance.getNameAuthor();
         assertEquals(expResult, result);
     }
 
-
     @Test
     public void testGetGenre() {
-        Book instance = new Book(true, 5, "Dayana", "Miedo","1","oscuridad");;
-        String expResult = "Miedo";
+        Book instance = new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml");
+        String expResult = "Genre 1";
         String result = instance.getGenre();
         assertEquals(expResult, result);
     }
 
-
     @Test
     public void testGetIdBook() {
-        Book instance = new Book(true, 5, "Dayana", "Miedo","1","oscuridad");;
-        String expResult = "1";
+        Book instance = new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml");
+        String expResult = "B1";
         String result = instance.getIdBook();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testGetTitle() {
-        Book instance = new Book(true, 5, "Dayana", "Miedo","1","oscuridad");
-        String expResult = "oscuridad";
+        Book instance = new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml");
+        String expResult = "Book 1";
         String result = instance.getTitle();
         assertEquals(expResult, result);
     }
-
-    
 }

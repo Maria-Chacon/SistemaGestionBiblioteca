@@ -28,9 +28,9 @@ private ArrayList<Book> books;
     public void setUp() {
      
         books = new ArrayList<>();
-        books.add(new Book(true, 2, "author1", "genero1", "1", "title1"));
-        books.add(new Book(false, 5, "author2", "genero2", "2", "title2"));
-        books.add(new Book(true, 3, "author3", "genero3", "3", "title3"));
+        books.add(new Book("5", "Author 1", "Genre 1","s", "B1", "Book 1","repro","publ","url","perml"));
+        books.add(new Book("6", "Author 2", "Genre 2","s", "B2", "Book 2","repro","publ","url","perml"));
+        books.add(new Book("4", "Author 3", "Genre 3","s", "B3", "Book 3","repro","publ","url","perml"));
         
         catalog = new BookCatalog(books);
     }

@@ -23,8 +23,9 @@ public class AuthorTest {
 
     @Test
     public void testGetBooks() {
-        Book book1 = new Book(false, 5, "Author 1", "Genre 1", "B1", "Book 1");
-        Book book2 = new Book(true, 3, "Author 2", "Genre 2", "B2", "Book 2");
+        
+        Book book1 = new Book("5", "Author 1", "Genre 1","s", "B1", "Book 1","repro","publ","url","perml");
+        Book book2 = new Book("3", "Author 2", "Genre 2", "s","B2", "Book 2","repro","publ","url","perml");
 
         
         ArrayList<Book> books = new ArrayList<>();

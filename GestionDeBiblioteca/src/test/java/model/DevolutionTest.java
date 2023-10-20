@@ -26,7 +26,7 @@ private Devolution devolution;
     @Before
     public void setUp() {
         
-        Book book = new Book(true, 3, "author3", "genero3", "3", "title3");
+        Book book = new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml");
         User user = new User(); 
         Date returnDate = new Date(); 
 

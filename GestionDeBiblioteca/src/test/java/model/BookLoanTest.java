@@ -24,14 +24,13 @@ public class BookLoanTest {
 
     @Before
     public void setUp() {
-        
-        Book book = new Book(true, 3, "author3", "genero3", "3", "title3");
-        Date devolutionDate = new Date(); 
+        Book book = new Book("5", "Author 1", "Genre 1", "loaned1", "idBook 1", "title 1", "reproduction 1", "publication 1", "url 1", "permanenLink1");
+        Date devolutionDate = new Date();
         Date loanedDate = new Date();
-        Suspension suspension = new Suspension(true,500, 3, "1", "fecha");
+        Suspension suspension = new Suspension(true, 500, 3, "1", "fecha");
         User user = new User();
 
-        bookLoan = new BookLoan(1, book, devolutionDate, loanedDate, suspension, user);
+        bookLoan = new BookLoan(1, book.getTitle(), devolutionDate, loanedDate, suspension, user);
     }
 
     @Test
@@ -40,34 +39,34 @@ public class BookLoanTest {
     }
 
     @Test
-    public void testGetBook() {
-        Book book = bookLoan.getBook();
-        assertNotNull(book);
-        assertTrue(book.isLoaned());
-        assertEquals(3, book.getQuantity());
-        assertEquals("author3", book.getAuthor());
-        assertEquals("genero3", book.getGenre());
-        assertEquals("3", book.getIdBook());
-        assertEquals("title3", book.getTitle());
+    public void testGetTitle() {
+        String title = bookLoan.getTitle();
+        assertNotNull(title);
+        assertEquals("title 1", title);
     }
 
     @Test
     public void testGetDevolutionDate() {
         Date devolutionDate = bookLoan.getDevolutionDate();
         assertNotNull(devolutionDate);
-        }
+    }
 
     @Test
-    public void testGetLoanedDate() {
-        Date loanedDate = bookLoan.getLoanedDate();
+    public void testGetLoanDate() {
+        Date loanedDate = bookLoan.getLoanDate();
         assertNotNull(loanedDate);
-        }
+    }
 
     @Test
     public void testGetSuspension() {
         Suspension suspension = bookLoan.getSuspension();
         assertNotNull(suspension);
-        assertEquals("1", suspension.getIdSuspension()); }
+        assertTrue(suspension.isEnable()); 
+        assertEquals(500.0f, suspension.getAmount(), 0.0f);
+        assertEquals(3, suspension.getDaysLate());
+        assertEquals("1", suspension.getIdSuspension());
+        assertEquals("fecha", suspension.getReason());
+    }
 
     @Test
     public void testGetUser() {

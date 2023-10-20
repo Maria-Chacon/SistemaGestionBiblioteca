@@ -30,8 +30,8 @@ public class LogBookTest {
 
     @Before
     public void setUp() {
-        book = new Book(true, 5, "J.K. Rowling", "Fantasia", "B001", "Harry Potter");
-        bookLoan = new BookLoan(1, book, new Date(), new Date(), null, null);
+        book = new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml");
+        bookLoan = new BookLoan(1, book.getTitle(), new Date(), new Date(), null, null);
         registerDate = new Date();
         devolution = new Devolution("D001", book, new Date(), null);
         user = new User("maria@gmail.com", "password","Estudiante", new ArrayList<>(),1, new Date(), "ID001", "chacon", "maria", "88888888");
@@ -47,8 +47,8 @@ public class LogBookTest {
         assertEquals(devolution, logBook.getDevolution());
         assertEquals(user, logBook.getUser());
 
-        Book newBook = new Book(false, 3, "George", "susto", "B002", "1984");
-        BookLoan newBookLoan = new BookLoan(2, newBook, new Date(), new Date(), null, null);
+        Book newBook = new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml");
+        BookLoan newBookLoan = new BookLoan(2, newBook.getTitle(), new Date(), new Date(), null, null);
         Date newRegisterDate = new Date();
         Devolution newDevolution = new Devolution("D002", newBook, new Date(), null);
         User newUser = new User("dayana@gmail.com", "password","Estudiante", new ArrayList<>(),1, new Date(), "ID002", "monge", "dayana", "88888888");
