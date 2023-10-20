@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Author;
@@ -53,6 +54,8 @@ public class RegisterAuthorController implements Initializable {
     private TextField textFieldPhone;
     @FXML
     private DatePicker datePickerBirthDay;
+    @FXML
+    private Label labelUser;
 
     /**
      * Initializes the controller class.
@@ -145,7 +148,6 @@ public class RegisterAuthorController implements Initializable {
         }
     }
     
-    @FXML
     private void showMessage(String message, String typeMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR); 
         alert.setTitle(typeMessage); 

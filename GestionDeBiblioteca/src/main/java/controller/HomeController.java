@@ -4,9 +4,13 @@
  */
 package controller;
 
+import Conexion.Conexion;
 import com.mycompany.gestiondebiblioteca.App;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -16,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -24,6 +29,8 @@ import javafx.stage.Stage;
 import model.Book;
 import model.Equipment;
 import model.Library;
+import static model.User.getUserIdentificationByEmail;
+import model.Verification;
 
 
 //Universidad Nacional, Coto
@@ -64,6 +71,10 @@ public class HomeController implements Initializable {
     private Button btnBookLoan;
     @FXML
     private Button btnEquipmentLoan;
+
+    String userIdentification;
+    @FXML
+    private Label labelUser;
 
     /**
      * Initializes the controller class.
@@ -132,19 +143,72 @@ public class HomeController implements Initializable {
 
     @FXML
     private void search(ActionEvent event) {
-        String searchTerm = name.getText(); 
-        String selectedFilter = filter.getValue(); 
+        String searchTerm = name.getText();
+        String selectedFilter = filter.getValue();
 
         if (selectedFilter != null && searchTerm != null && !searchTerm.isEmpty()) {
             ArrayList<Book> searchResults = bookCatalog.searchBooks(selectedFilter, searchTerm);
-            searchBook.setItems(FXCollections.observableArrayList(searchResults));
+            ObservableList<Book> observableSearchResults = FXCollections.observableArrayList(searchResults);
 
+            // Configura los resultados en el TableView
+            searchBook.setItems(observableSearchResults);
         }
-
     }
 
     @FXML
     private void loan(ActionEvent event) {
+        userIdentification = getUserIdentificationByEmail(Verification.getId());
+        System.out.println("Identificación del usuario: " + userIdentification);
+        Book selectedBook = searchBook.getSelectionModel().getSelectedItem();
+        if (selectedBook == null) {
+            System.err.println("No se seleccionó ningún libro.");
+            return;
+        }
+
+        int updatedQuantity = Integer.parseInt(selectedBook.getQuantity()) - 1;
+        if (updatedQuantity < 0) {
+            System.err.println("No hay suficiente cantidad disponible para el libro seleccionado.");
+            return;
+        }
+
+        Conexion connection = new Conexion();
+        try {
+            connection.conectar();
+
+            // Actualiza la cantidad disponible en la base de datos
+            String updateQuery = "UPDATE tbl_books SET quantity = ? WHERE id = ?";
+            PreparedStatement updateStatement = connection.preparedStatement(updateQuery);
+            updateStatement.setInt(1, updatedQuantity);
+            updateStatement.setString(2, selectedBook.getIdBook()); // Asumiendo que "idBook" es el campo de ID en la tabla de libros
+            updateStatement.executeUpdate();
+
+            // Calcular las fechas de préstamo y devolución
+            LocalDate loanDate = LocalDate.now();
+            LocalDate devolutionDate = loanDate.plusDays(7);
+
+            // Convertir las fechas a objetos Date de SQL
+            java.sql.Date sqlLoanDate = java.sql.Date.valueOf(loanDate);
+            java.sql.Date sqlDevolutionDate = java.sql.Date.valueOf(devolutionDate);
+
+            String insertQuery = "INSERT INTO tbl_bookLoan (nameBook, devolutionDate, loanDate, penalty, identificationUser) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement insertStatement = connection.preparedStatement(insertQuery);
+            insertStatement.setString(1, selectedBook.getTitle()); 
+            insertStatement.setDate(2, sqlDevolutionDate);
+            insertStatement.setDate(3, sqlLoanDate);
+            insertStatement.setString(4, "Sin penalización");
+
+            insertStatement.setString(5, userIdentification);
+
+            insertStatement.executeUpdate();
+
+            searchBook.getItems().remove(selectedBook);
+
+            System.out.println("Préstamo de libro realizado con éxito.");
+        } catch (SQLException ex) {
+            System.err.println("Error al realizar el préstamo: " + ex.getMessage());
+        } finally {
+            connection.desconectar();
+        }
     }
 
     @FXML

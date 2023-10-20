@@ -20,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -57,6 +58,8 @@ public class EquipmentLoanUserController implements Initializable {
     private TableView<EquipmentLoan> equipmentLoans;
 
     String identification = "";
+    @FXML
+    private Label labelUser;
 
     /**
      * Initializes the controller class.
@@ -257,8 +260,7 @@ public class EquipmentLoanUserController implements Initializable {
             processResults(resultSet, userLoans);
         }
     }
-
-    @FXML
+    
     private void showMessage(String message, String typeMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(typeMessage);
