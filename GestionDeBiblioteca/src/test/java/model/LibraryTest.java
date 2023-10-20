@@ -35,6 +35,13 @@ public class LibraryTest {
         Book book2 = new Book("6", "Author 2", "Genre 2", "loaned", "B2", "Book 2", "repro", "publ", "url", "perml");
         Book book3 = new Book("7", "Author 3", "Genre 3", "loaned", "B3", "Book 3", "repro", "publ", "url", "perml");
 
+        
+         ArrayList<Book> loanedBooks1 = new ArrayList<>();
+        ArrayList<Book> loanedBooks2 = new ArrayList<>();
+        User user1 = new User("maria@gmail.com", "password1","Estudiante", loanedBooks1,1, new Date(), "ID001", "chacon", "maria", "88888888");
+        User user2 = new User("dayana@gmail.com", "password2", "Estudiante",loanedBooks2,2, new Date(), "ID002", "gamboa", "dayana", "77777777");
+
+        
         ArrayList<Book> bookList = new ArrayList<>();
         bookList.add(book1);
         bookList.add(book2);
@@ -52,19 +59,14 @@ public class LibraryTest {
         techEquipmentList.add(techEquipment1);
 
         equipmentCatalog = new EquipmentCatalog(schoolEquipmentList, techEquipmentList);
-
-        LogBook log1 = new LogBook("L1", book1, null, new Date(), null, null);
-        LogBook log2 = new LogBook("L2", book2, null, new Date(), null, null);
+        LogBook log1 = new LogBook(book1,1, new Date(), new Date(), user1.getIdentification());
+        LogBook log2 = new LogBook(book2,2, new Date(), new Date(), user2.getIdentification());
 
         logBook = new ArrayList<>();
         logBook.add(log1);
         logBook.add(log2);
 
-        ArrayList<Book> loanedBooks1 = new ArrayList<>();
-        ArrayList<Book> loanedBooks2 = new ArrayList<>();
-        User user1 = new User("maria@gmail.com", "password1","Estudiante", loanedBooks1,1, new Date(), "ID001", "chacon", "maria", "88888888");
-        User user2 = new User("dayana@gmail.com", "password2", "Estudiante",loanedBooks2,2, new Date(), "ID002", "gamboa", "dayana", "77777777");
-
+       
         users = new ArrayList<>();
         users.add(user1);
         users.add(user2);

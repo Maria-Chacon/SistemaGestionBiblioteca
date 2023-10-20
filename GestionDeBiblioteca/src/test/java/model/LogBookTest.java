@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package model;
 
 import java.util.ArrayList;
@@ -10,61 +6,49 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 
-
-//Universidad Nacional, Coto
-//Desarrollado por:
-//María José Chacón Mora
-//Dayana Gamboa Monge
-//2023
-
 public class LogBookTest {
 
-    public LogBookTest() {
-    }
+
     private LogBook logBook;
     private Book book;
-    private BookLoan bookLoan;
     private Date registerDate;
-    private Devolution devolution;
+    private Date devolution;
     private User user;
 
     @Before
     public void setUp() {
         book = new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml");
-        bookLoan = new BookLoan(1, book.getTitle(), new Date(), new Date(), null, null);
         registerDate = new Date();
-        devolution = new Devolution("D001", book, new Date(), null);
-        user = new User("maria@gmail.com", "password","Estudiante", new ArrayList<>(),1, new Date(), "ID001", "chacon", "maria", "88888888");
-        logBook = new LogBook("LB001", book, bookLoan, registerDate, devolution, user);
+        devolution = new Date();
+        user = new User("maria@gmail.com", "password", "Estudiante", new ArrayList<>(), 1,new Date(), "ID001", "chacon", "maria", "88888888");
+        logBook = new LogBook(book, 1, registerDate, devolution, user.getIdentification());
     }
 
     @Test
     public void testGettersAndSetters() {
-        assertEquals("LB001", logBook.getIdLogBook());
+        // Test getters
         assertEquals(book, logBook.getBook());
-        assertEquals(bookLoan, logBook.getBookLoan());
+        assertEquals(1, logBook.getBookLoan());
         assertEquals(registerDate, logBook.getRegisterDate());
         assertEquals(devolution, logBook.getDevolution());
-        assertEquals(user, logBook.getUser());
+        assertEquals(user.getIdentification(), logBook.getIdentificationUser());
 
-        Book newBook = new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml");
-        BookLoan newBookLoan = new BookLoan(2, newBook.getTitle(), new Date(), new Date(), null, null);
+        // Test setters
+        Book newBook = new Book("6", "Author 2", "Genre 2", "available", "B2", "Book 2", "repro", "publ", "url", "perml");
         Date newRegisterDate = new Date();
-        Devolution newDevolution = new Devolution("D002", newBook, new Date(), null);
-        User newUser = new User("dayana@gmail.com", "password","Estudiante", new ArrayList<>(),1, new Date(), "ID002", "monge", "dayana", "88888888");
-
-        logBook.setIdLogBook("LB002");
+        Date newDevolution = new Date();
+        User newUser = new User("dayana@gmail.com", "password", "Estudiante", new ArrayList<>(), 1, new Date(),"ID002", "monge", "dayana", "88888888");
         logBook.setBook(newBook);
-        logBook.setBookLoan(newBookLoan);
+        logBook.setBookLoan(2);
         logBook.setRegisterDate(newRegisterDate);
         logBook.setDevolution(newDevolution);
-        logBook.setUser(newUser);
+        logBook.setIdentificationUser(newUser.getIdentification());
 
-        assertEquals("LB002", logBook.getIdLogBook());
+        // Verify the changes
         assertEquals(newBook, logBook.getBook());
-        assertEquals(newBookLoan, logBook.getBookLoan());
+        assertEquals(2, logBook.getBookLoan());
         assertEquals(newRegisterDate, logBook.getRegisterDate());
         assertEquals(newDevolution, logBook.getDevolution());
-        assertEquals(newUser, logBook.getUser());
+        assertEquals(newUser.getIdentification(), logBook.getIdentificationUser());
     }
 }
