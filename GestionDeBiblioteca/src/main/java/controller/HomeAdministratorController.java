@@ -76,10 +76,8 @@ public class HomeAdministratorController implements Initializable {
 
         Author selectedAuthor = ComboBoxAuthor.getValue();
 
-        // Crear un nuevo objeto Book
         Book newBook = new Book(quantity, selectedAuthor.getName(), genre, "", "", title, "", "", "", "");
 
-        // Insertar el libro en la base de datos
         Book.insertBookIntoDatabase(newBook);
         ArrayList<Book> booksFromDatabase = Book.getBooksFromDatabase();
         ArrayList<Book> sortedBooks = Book.sortBooksByTitle(booksFromDatabase);

@@ -89,7 +89,6 @@ public class RegisterEquipmentController implements Initializable {
 
         String description = textFieldDescription.getText();
         String name = textFieldName.getText();
-        // Parse availability as a boolean (assuming "true" or "false" as valid input)
 
         String availabilityValue = (String) comboBoxAvailability.getValue();
         if (availabilityValue == null) {

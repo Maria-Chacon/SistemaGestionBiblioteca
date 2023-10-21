@@ -44,9 +44,8 @@ public class Verification {
     public static String verifyUserAndGetUserName(String email) {
         Conexion connection = Conexion.getInstance();
         try {
-            connection.conectar(); // Reemplaza 'Conexion.getConnection()' con tu método para obtener una conexión a la base de datos.
+            connection.conectar();
 
-            // Consulta SQL para obtener el nombre del usuario basado en el correo electrónico.
             String query = "SELECT name FROM tbl_users WHERE email = ?";
             PreparedStatement statement = connection.preparedStatement(query);
             statement.setString(1, email);
@@ -58,7 +57,7 @@ public class Verification {
             }
         } catch (SQLException ex) {
             System.err.println("Error al obtener el nombre del usuario por correo electrónico: " + ex.getMessage());
-            // Maneja cualquier excepción de SQL, como la falta de conexión a la base de datos.
+
         } finally {
             connection.desconectar();
         }

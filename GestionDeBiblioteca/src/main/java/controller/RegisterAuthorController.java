@@ -117,7 +117,7 @@ public class RegisterAuthorController implements Initializable {
         newAuthor.setLastName(lastName);
         newAuthor.setIdentification(identification);
         newAuthor.setPhone(phone);
-        newAuthor.setBirthDay(sqlBirthDay); // Convierte LocalDate a java.sql.Date
+        newAuthor.setBirthDay(sqlBirthDay); 
 
         String insertUserQuery = "INSERT INTO tbl_authors (name, lastName, identification, birthDay, phone) VALUES (?, ?, ?, ?, ?)";
 

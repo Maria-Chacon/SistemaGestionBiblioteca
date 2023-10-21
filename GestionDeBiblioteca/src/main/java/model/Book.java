@@ -40,7 +40,9 @@ public class Book {
         this.title = title;
     }
 
-    public Book(String quantity, String nameAuthor, String genre, String loaned, String idBook, String title, String reproduction, String publication, String url, String permanenLink) {
+    public Book(String quantity, String nameAuthor, String genre, String loaned,
+            String idBook, String title, String reproduction,
+            String publication, String url, String permanenLink) {
         this.quantity = quantity;
         this.nameAuthor = nameAuthor;
         this.genre = genre;

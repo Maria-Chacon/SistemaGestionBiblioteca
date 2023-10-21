@@ -35,13 +35,11 @@ import model.Person;
 import model.User;
 import model.Verification;
 
-
 //Universidad Nacional, Coto
 //Desarrollado por:
 //María José Chacón Mora
 //Dayana Gamboa Monge
 //2023
-
 public class EquipmentController implements Initializable {
 
     @FXML
@@ -111,11 +109,11 @@ public class EquipmentController implements Initializable {
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         TableColumn<Equipment, String> idEquipmentCol = new TableColumn<>("Id");
-        idEquipmentCol.setMinWidth(120);
+        idEquipmentCol.setMinWidth(72);
         idEquipmentCol.setCellValueFactory(new PropertyValueFactory<>("idEquipment"));
 
         TableColumn<Equipment, Integer> quantityCol = new TableColumn<>("Cantidad");
-        quantityCol.setMinWidth(72);
+        quantityCol.setMinWidth(120);
         quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
         searchEquipment.getColumns().addAll(availabilityCol, nameCol, descriptionCol, idEquipmentCol, quantityCol);
@@ -168,7 +166,6 @@ public class EquipmentController implements Initializable {
         System.out.println("Quantity: " + quantity + ", Description: " + description
                 + ", Name: " + name + ", Availability: " + availability);
 
-        // Llama recursivamente para procesar el siguiente resultado
         processResults(resultSet, searchResults);
     }
 
@@ -208,7 +205,6 @@ public class EquipmentController implements Initializable {
 
             ResultSet resultSet = statement.executeQuery();
 
-            // Llama a la función recursiva para procesar los resultados
             processResults(resultSet, searchResults);
         } catch (SQLException ex) {
             System.err.println("Error al buscar equipos: " + ex.getMessage());
@@ -246,11 +242,9 @@ public class EquipmentController implements Initializable {
             updateStatement.setString(2, selectedEquipment.getIdEquipment());
             updateStatement.executeUpdate();
 
-            // Calcular las fechas de préstamo y devolución
             LocalDate loanDate = LocalDate.now();
             LocalDate devolutionDate = loanDate.plusDays(7);
 
-            // Convertir las fechas a objetos Date de SQL
             java.sql.Date sqlLoanDate = java.sql.Date.valueOf(loanDate);
             java.sql.Date sqlDevolutionDate = java.sql.Date.valueOf(devolutionDate);
 
@@ -265,7 +259,6 @@ public class EquipmentController implements Initializable {
 
             insertStatement.executeUpdate();
 
-            // Actualizar la vista
             searchEquipment.getItems().remove(selectedEquipment);
 
             System.out.println("Préstamo realizado con éxito.");
@@ -279,8 +272,7 @@ public class EquipmentController implements Initializable {
     private String getUserIdentificationByEmail(String email) {
         String userIdentification = "";
 
-        // Realizar la consulta a la base de datos para obtener la identificación del usuario
-        Conexion connection = Conexion.getInstance(); 
+        Conexion connection = Conexion.getInstance();
         try {
             connection.conectar();
 

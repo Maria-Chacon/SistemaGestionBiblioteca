@@ -68,7 +68,7 @@ public class LogBookController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         tableLogBook.setItems(getLogBook());
         ConfigTableView();
         labelUser.setText(Verification.getName());
@@ -176,7 +176,6 @@ public class LogBookController implements Initializable {
 
             logBook.add(log);
 
-            // Llamada recursiva para procesar el siguiente resultado
             processResults(resultSet, logBook);
         }
     }

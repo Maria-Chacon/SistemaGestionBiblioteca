@@ -152,7 +152,6 @@ public class HomeController implements Initializable {
             ArrayList<Book> searchResults = bookCatalog.searchBooks(selectedFilter, searchTerm);
             ObservableList<Book> observableSearchResults = FXCollections.observableArrayList(searchResults);
 
-            // Configura los resultados en el TableView
             searchBook.setItems(observableSearchResults);
         }
     }
@@ -177,18 +176,15 @@ public class HomeController implements Initializable {
         try {
             connection.conectar();
 
-            // Actualiza la cantidad disponible en la base de datos
             String updateQuery = "UPDATE tbl_books SET quantity = ? WHERE id = ?";
             PreparedStatement updateStatement = connection.preparedStatement(updateQuery);
             updateStatement.setInt(1, updatedQuantity);
-            updateStatement.setString(2, selectedBook.getIdBook()); // Asumiendo que "idBook" es el campo de ID en la tabla de libros
+            updateStatement.setString(2, selectedBook.getIdBook());
             updateStatement.executeUpdate();
 
-            // Calcular las fechas de préstamo y devolución
             LocalDate loanDate = LocalDate.now();
             LocalDate devolutionDate = loanDate.plusDays(7);
 
-            // Convertir las fechas a objetos Date de SQL
             java.sql.Date sqlLoanDate = java.sql.Date.valueOf(loanDate);
             java.sql.Date sqlDevolutionDate = java.sql.Date.valueOf(devolutionDate);
 
@@ -240,7 +236,7 @@ public class HomeController implements Initializable {
     }
 
     private int getLastBookLoanId(Conexion connection) {
-        int bookLoanId = -1; // Valor predeterminado en caso de que no se pueda obtener el ID
+        int bookLoanId = -1;
 
         try {
             String query = "SELECT id FROM tbl_bookLoan ORDER BY id DESC LIMIT 1";

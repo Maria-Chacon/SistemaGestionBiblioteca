@@ -72,7 +72,6 @@ public class User extends Person{
     public static String getUserIdentificationByEmail(String email) {
         String userIdentification = "";
 
-        // Realizar la consulta a la base de datos para obtener la identificación del usuario
         Conexion connection = Conexion.getInstance(); 
         try {
             connection.conectar();

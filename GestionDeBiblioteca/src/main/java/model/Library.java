@@ -13,13 +13,11 @@ import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-
 //Universidad Nacional, Coto
 //Desarrollado por:
 //María José Chacón Mora
 //Dayana Gamboa Monge
 //2023
-
 public class Library {
 
     private BookCatalog bookCatalog;
@@ -28,11 +26,11 @@ public class Library {
     private ArrayList<User> users;
 
     public Library() {
-        // Inicializa bookCatalog y otros campos si es necesario
-        bookCatalog = new BookCatalog(); // Ejemplo de inicialización
-        equipmentCatalog = new EquipmentCatalog(); // Ejemplo de inicialización
-        logBook = new ArrayList<>(); // Ejemplo de inicialización
-        users = new ArrayList<>(); // Ejemplo de inicialización
+
+        bookCatalog = new BookCatalog();
+        equipmentCatalog = new EquipmentCatalog();
+        logBook = new ArrayList<>();
+        users = new ArrayList<>();
     }
 
     public Library(BookCatalog bookCatalog, EquipmentCatalog equipmentCatalog, ArrayList<LogBook> logBook, ArrayList<User> users) {

@@ -257,7 +257,6 @@ public class EquipmentLoanUserController implements Initializable {
 
             userLoans.add(loan);
 
-            // Llamada recursiva para procesar el siguiente resultado
             processResults(resultSet, userLoans);
         }
     }
