@@ -15,5 +15,4 @@ module com.mycompany.gestiondebiblioteca {
     exports controller;
     
     exports Conexion;
-    exports services;
 }
