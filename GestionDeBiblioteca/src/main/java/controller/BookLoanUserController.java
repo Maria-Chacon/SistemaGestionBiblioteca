@@ -70,6 +70,7 @@ public class BookLoanUserController implements Initializable {
 
         bookLoans.setItems(getUserBookLoans(identification));
         ConfigTableView();
+        labelUser.setText(Verification.getName());
     }
 
     private void ConfigTableView() {

@@ -89,6 +89,7 @@ public class HomeController implements Initializable {
         );
         filter.getItems().addAll(options);
         ConfigTableView();
+        labelUser.setText(Verification.getName());
     }
 
     private void ConfigTableView() {

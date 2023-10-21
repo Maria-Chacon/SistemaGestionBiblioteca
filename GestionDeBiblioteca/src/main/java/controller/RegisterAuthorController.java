@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Author;
+import model.Verification;
 
 //Universidad Nacional, Coto
 //Desarrollado por:
@@ -62,7 +63,7 @@ public class RegisterAuthorController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        labelUser.setText(Verification.getName());
     }
 
     @FXML

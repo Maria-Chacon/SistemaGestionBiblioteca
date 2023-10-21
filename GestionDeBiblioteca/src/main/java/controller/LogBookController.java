@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 import model.Book;
 import model.BookLoan;
 import model.LogBook;
+import model.Verification;
 
 /**
  * FXML Controller class
@@ -70,6 +71,7 @@ public class LogBookController implements Initializable {
         
         tableLogBook.setItems(getLogBook());
         ConfigTableView();
+        labelUser.setText(Verification.getName());
     }
 
     @FXML
