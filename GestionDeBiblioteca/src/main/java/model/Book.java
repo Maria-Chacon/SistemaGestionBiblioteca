@@ -135,7 +135,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" + "quantity=" + quantity + ", nameAuthor=" + nameAuthor + ", genre=" + genre + ", loaned=" + loaned + ", idBook=" + idBook + ", title=" + title + ", reproduction=" + reproduction + ", publication=" + publication + ", url=" + url + ", permanenLink=" + permanenLink + '}';
+        return title;
     }
 
     public static ArrayList<Book> getBooksFromDatabase() {

@@ -133,7 +133,7 @@ public class LogBookController implements Initializable {
         devolutionDateCol.setMinWidth(145);
         devolutionDateCol.setCellValueFactory(new PropertyValueFactory<>("devolution"));
 
-        TableColumn<LogBook, Date> identificationUserCol = new TableColumn<>("Identificación de Usuario");
+        TableColumn<LogBook, String> identificationUserCol = new TableColumn<>("Identificación de Usuario");
         identificationUserCol.setMinWidth(184);
         identificationUserCol.setCellValueFactory(new PropertyValueFactory<>("identificationUser"));
 
