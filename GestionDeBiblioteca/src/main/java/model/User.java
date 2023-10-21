@@ -74,7 +74,7 @@ public class User extends Person{
 
         Conexion connection = Conexion.getInstance(); 
         try {
-            connection.conectar();
+            connection.connect();
 
             PreparedStatement statement = connection.preparedStatement("SELECT * FROM tbl_users WHERE email = ?");
             statement.setString(1, email);
@@ -87,7 +87,7 @@ public class User extends Person{
         } catch (SQLException ex) {
             System.err.println("Error al obtener la identificación del usuario por correo electrónico: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
 
         return userIdentification;
@@ -98,8 +98,5 @@ public class User extends Person{
         return "User{" + "email=" + email + ", password=" + password + ", type=" + type + ", loanedBooks=" + loanedBooks + '}';
     }
     
-    
-
-
     
 }

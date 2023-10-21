@@ -85,7 +85,7 @@ public class LogBook {
         Conexion connection = Conexion.getInstance();
 
         try {
-            connection.conectar();
+            connection.connect();
 
             String insertLogBookQuery = "INSERT INTO tbl_logBook (title, idBookLoan, loanDate, devolutionDate, identificationUser)"
                     + "VALUES (?, ?, ?, ?, ?)";
@@ -103,7 +103,7 @@ public class LogBook {
         } catch (SQLException ex) {
             System.err.println("Error al insertar el prestamo de libro en bitácora: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 

@@ -174,7 +174,7 @@ public class HomeController implements Initializable {
 
         Conexion connection = new Conexion();
         try {
-            connection.conectar();
+            connection.connect();
 
             String updateQuery = "UPDATE tbl_books SET quantity = ? WHERE id = ?";
             PreparedStatement updateStatement = connection.preparedStatement(updateQuery);
@@ -215,7 +215,7 @@ public class HomeController implements Initializable {
         } catch (SQLException ex) {
             System.err.println("Error al realizar el préstamo: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 

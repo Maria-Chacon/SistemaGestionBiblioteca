@@ -115,7 +115,7 @@ public class RegisterEquipmentController implements Initializable {
         String insertUserQuery = "INSERT INTO tbl_equipments (quantity, description, name, availability) VALUES (?, ?, ?, ?)";
 
         try {
-            connection.conectar();
+            connection.connect();
 
             PreparedStatement statement = connection.preparedStatement(insertUserQuery);
             statement.setInt(1, newEquipment.getQuantity());
@@ -138,7 +138,7 @@ public class RegisterEquipmentController implements Initializable {
         } catch (SQLException ex) {
             System.err.println("Error al insertar el equipo: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 

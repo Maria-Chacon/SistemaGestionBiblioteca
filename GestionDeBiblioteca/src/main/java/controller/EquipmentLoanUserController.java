@@ -153,7 +153,7 @@ public class EquipmentLoanUserController implements Initializable {
         Conexion connection = new Conexion();
 
         try {
-            connection.conectar();
+            connection.connect();
 
             String updateQuery = "UPDATE tbl_equipments SET quantity = quantity + 1 WHERE name = ?";
             PreparedStatement updateStatement = connection.preparedStatement(updateQuery);
@@ -166,7 +166,7 @@ public class EquipmentLoanUserController implements Initializable {
             System.err.println("Error al actualizar la cantidad de equipo: " + ex.getMessage());
             return false;
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 
@@ -174,7 +174,7 @@ public class EquipmentLoanUserController implements Initializable {
         Conexion connection = new Conexion();
 
         try {
-            connection.conectar();
+            connection.connect();
 
             String deleteQuery = "DELETE FROM tbl_equipmentLoan WHERE identificationUser = ? AND nameEquipment = ? AND loanDate = ?";
             PreparedStatement deleteStatement = connection.preparedStatement(deleteQuery);
@@ -189,7 +189,7 @@ public class EquipmentLoanUserController implements Initializable {
             System.err.println("Error al eliminar el préstamo de equipo: " + ex.getMessage());
             return false;
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 
@@ -199,7 +199,7 @@ public class EquipmentLoanUserController implements Initializable {
         String insertUserQuery = "INSERT INTO tbl_equipmentdevolution (returnedEquipment, returnedDate, identificationUser) VALUES (?, ?, ?)";
 
         try {
-            connection.conectar();
+            connection.connect();
 
             PreparedStatement statement = connection.preparedStatement(insertUserQuery);
             statement.setString(1, equipmentName);
@@ -221,7 +221,7 @@ public class EquipmentLoanUserController implements Initializable {
             System.err.println("Error al guardar el registro de devolución de equipo: " + ex.getMessage());
             return false;
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 
@@ -230,7 +230,7 @@ public class EquipmentLoanUserController implements Initializable {
         Conexion connection = new Conexion();
 
         try {
-            connection.conectar();
+            connection.connect();
 
             String query = "SELECT nameEquipment, loanDate, devolutionDate FROM tbl_equipmentLoan WHERE identificationUser = ?";
             PreparedStatement statement = connection.preparedStatement(query);
@@ -242,7 +242,7 @@ public class EquipmentLoanUserController implements Initializable {
         } catch (SQLException ex) {
             System.err.println("Error al obtener préstamos del usuario: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
 
         return userLoans;
