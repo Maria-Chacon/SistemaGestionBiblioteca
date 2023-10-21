@@ -31,7 +31,7 @@ public class Conexion {
         return INSTANCE;
     }
     
-    public void conectar()  {
+    public void connect()  {
        try{
         Class.forName("com.mysql.cj.jdbc.Driver");
         connection = DriverManager.getConnection("jdbc:mysql://localhost/bd_biblioteca", "root", "");
@@ -40,7 +40,7 @@ public class Conexion {
        }
     }
     
-    public void desconectar(){
+    public void disconnect(){
         try {
             connection.close();
         } catch (Exception ex) {
