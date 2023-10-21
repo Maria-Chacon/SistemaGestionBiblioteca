@@ -36,6 +36,10 @@ public class Book {
     public Book() {
     }
 
+    public Book(String title) {
+        this.title = title;
+    }
+
     public Book(String quantity, String nameAuthor, String genre, String loaned, String idBook, String title, String reproduction, String publication, String url, String permanenLink) {
         this.quantity = quantity;
         this.nameAuthor = nameAuthor;
@@ -184,7 +188,7 @@ public class Book {
             connection.desconectar();
         }
 
-        return new ArrayList<>(); 
+        return new ArrayList<>();
     }
 
     public static void insertBookIntoDatabase(Book book) {

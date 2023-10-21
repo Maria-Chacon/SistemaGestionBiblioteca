@@ -23,6 +23,10 @@ public class LogBook {
     private Date devolution;
     private String identificationUser;
 
+    public LogBook() {
+    }
+    
+
     public LogBook(Book book, int bookLoan, Date registerDate, Date devolution, String identificationUser) {
 
         this.book = book;
