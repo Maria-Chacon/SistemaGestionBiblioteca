@@ -72,7 +72,7 @@ public class LibraryTest {
 
         
         searchResults = library.searchBooks("Autor", "Pablo");
-        assertEquals(2, searchResults.size());
+        assertEquals(3, searchResults.size());
 
         
         searchResults = library.searchBooks("Género", "Genre 1");
