@@ -139,6 +139,7 @@ public class LogBookController implements Initializable {
 
         tableLogBook.getColumns().addAll(titleCol, idBookLoanCol, dateLoanCol, devolutionDateCol, identificationUserCol);
     }
+    //hola
 
     public ObservableList<LogBook> getLogBook() {
         ObservableList<LogBook> logBook = FXCollections.observableArrayList();
