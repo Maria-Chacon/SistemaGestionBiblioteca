@@ -13,13 +13,12 @@ import java.util.ArrayList;
 //2023
 
 public class EquipmentCatalog {
+
     private ArrayList<SchoolEquipment> schoolEquipment;
     private ArrayList<TechnologicalEquipment> technologicalEquipment;
 
     public EquipmentCatalog() {
     }
-    
-    
 
     public EquipmentCatalog(ArrayList<SchoolEquipment> schoolEquipment, ArrayList<TechnologicalEquipment> technologicalEquipment) {
         this.schoolEquipment = schoolEquipment;
@@ -42,17 +41,9 @@ public class EquipmentCatalog {
         this.technologicalEquipment = technologicalEquipment;
     }
 
-    
-    public void addEquipment(Equipment equipment){
-        
-    }
-    public void removeEquipment(Equipment equipment){
-        
-    }
-
     @Override
     public String toString() {
         return "EquipmentCatalog{" + "schoolEquipment=" + schoolEquipment + ", technologicalEquipment=" + technologicalEquipment + '}';
     }
-    
+
 }

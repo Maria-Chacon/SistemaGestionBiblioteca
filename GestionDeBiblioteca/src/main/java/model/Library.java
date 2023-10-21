@@ -8,16 +8,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 //Universidad Nacional, Coto
 //Desarrollado por:
 //María José Chacón Mora
 //Dayana Gamboa Monge
 //2023
+
 public class Library {
 
     private BookCatalog bookCatalog;
@@ -70,26 +67,6 @@ public class Library {
 
     public void setUsers(ArrayList<User> users) {
         this.users = users;
-    }
-
-    public void registerDevolution(Devolution devolution) {
-
-    }
-
-    public void registerBookLoan(BookLoan bookLoan) {
-
-    }
-
-    public void addUser(User user) {
-
-    }
-
-    public void removeUser(User user) {
-
-    }
-
-    public void updateUser(User user) {
-
     }
 
     public ArrayList<Book> searchBooks(String searchBy, String searchTerm) {
