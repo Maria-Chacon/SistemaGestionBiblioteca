@@ -12,10 +12,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Author;
 import model.Book;
+import model.Verification;
 
 //Universidad Nacional, Coto
 //Desarrollado por:
@@ -46,6 +48,8 @@ public class HomeAdministratorController implements Initializable {
     private Button btnRegisterAuthor;
     @FXML
     private Button bntLogBokk;
+    @FXML
+    private Label labelUser;
 
     /**
      * Initializes the controller class.
@@ -54,6 +58,7 @@ public class HomeAdministratorController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ArrayList<Author> authors = Author.getAuthorsFromDatabase();
         ComboBoxAuthor.getItems().addAll(authors);
+        labelUser.setText(Verification.getName());
     }
 
     @FXML

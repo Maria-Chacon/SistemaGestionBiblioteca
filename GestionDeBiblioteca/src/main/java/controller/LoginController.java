@@ -107,7 +107,9 @@ public class LoginController implements Initializable {
             userType = getUserType(email);
             
             Verification.setId(email);
+            Verification.setId(Verification.verifyUserAndGetUserName(email));
             System.out.println(Verification.getId());
+            System.out.println(Verification.getName());
 
         }
         if (userType != null) {

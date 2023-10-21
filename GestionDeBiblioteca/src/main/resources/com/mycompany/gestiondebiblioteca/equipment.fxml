@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EquipmentController">
+<AnchorPane id="AnchorPane" prefHeight="641.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EquipmentController">
    <children>
       <ComboBox fx:id="filter" layoutX="527.0" layoutY="78.0" prefWidth="150.0" />
       <TextField fx:id="nameSearch" layoutX="276.0" layoutY="78.0" prefHeight="27.0" prefWidth="242.0" promptText="Escriba el nombre">
@@ -37,11 +37,11 @@
       </Label>
       <TableView fx:id="searchEquipment" layoutX="241.0" layoutY="200.0" prefHeight="380.0" prefWidth="526.0" styleClass="table" stylesheets="@../../../css/styles.css">
          <columns>
-            <TableColumn fx:id="availability" prefWidth="74.0" text="Disponible" />
-            <TableColumn fx:id="name" prefWidth="154.0" text="Nombre" />
-            <TableColumn fx:id="description" prefWidth="130.0" text="Descripción" />
-            <TableColumn fx:id="quantity" prefWidth="66.0" text="Cantidad" />
-            <TableColumn fx:id="idEquipment" prefWidth="168.0" text="Id" />
+            <TableColumn fx:id="availability" prefWidth="88.0" text="Disponible" />
+            <TableColumn fx:id="name" prefWidth="112.0" text="Nombre" />
+            <TableColumn fx:id="description" prefWidth="132.0" text="Descripción" />
+            <TableColumn fx:id="quantity" minWidth="0.0" prefWidth="120.0" text="Cantidad" />
+            <TableColumn fx:id="idEquipment" prefWidth="72.0" text="Id" />
          </columns>
       </TableView>
       <Label alignment="CENTER" layoutX="241.0" layoutY="160.0" prefHeight="16.0" prefWidth="107.0" text="Resultados:">

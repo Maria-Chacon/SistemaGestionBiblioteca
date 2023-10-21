@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Equipment;
+import model.Verification;
 
 //Universidad Nacional, Coto
 //Desarrollado por:
@@ -63,6 +64,7 @@ public class RegisterEquipmentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         comboBoxAvailability.getItems().addAll("Sí", "No");
+        labelUser.setText(Verification.getName());
     }
 
     @FXML

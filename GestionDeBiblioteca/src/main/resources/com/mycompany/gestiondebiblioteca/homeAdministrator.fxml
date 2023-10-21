@@ -30,7 +30,7 @@
                   <Font name="Georgia Bold" size="24.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="44.0" prefWidth="233.0" text="Usuario" textAlignment="CENTER" textFill="#f8f6f6">
+            <Label fx:id="labelUser" alignment="CENTER" prefHeight="44.0" prefWidth="233.0" text="Usuario" textAlignment="CENTER" textFill="#f8f6f6">
                <font>
                   <Font name="Georgia Bold" size="20.0" />
                </font>

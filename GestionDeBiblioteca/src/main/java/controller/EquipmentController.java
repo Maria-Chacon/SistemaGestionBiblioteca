@@ -91,19 +91,7 @@ public class EquipmentController implements Initializable {
         );
         filter.getItems().addAll(options);
         ConfigTableView();
-//        System.out.println(Verification.getId());
-//
-//        String email = Verification.getId();
-//
-//        if (email != null) {
-//            // Realizar una consulta a la base de datos para obtener la identificación del usuario
-//            userIdentification = getUserIdentificationByEmail(email);
-//
-//            if (userIdentification != null) {
-//                // Ahora tienes la identificación del usuario y puedes usarla según tus necesidades
-//                System.out.println("Identificación del usuario: " + userIdentification);
-//            }
-//        }
+        labelUser.setText(Verification.getName());
 
     }
 
@@ -111,23 +99,23 @@ public class EquipmentController implements Initializable {
         searchEquipment.getColumns().clear();
 
         TableColumn<Equipment, Boolean> availabilityCol = new TableColumn<>("Disponible");
-        availabilityCol.setMinWidth(150);
+        availabilityCol.setMinWidth(88);
         availabilityCol.setCellValueFactory(new PropertyValueFactory<>("availability"));
 
         TableColumn<Equipment, String> nameCol = new TableColumn<>("Nombre");
-        nameCol.setMinWidth(250);
+        nameCol.setMinWidth(112);
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         TableColumn<Equipment, String> descriptionCol = new TableColumn<>("Descripción");
-        descriptionCol.setMinWidth(250);
+        descriptionCol.setMinWidth(132);
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         TableColumn<Equipment, String> idEquipmentCol = new TableColumn<>("Id");
-        idEquipmentCol.setMinWidth(150);
+        idEquipmentCol.setMinWidth(120);
         idEquipmentCol.setCellValueFactory(new PropertyValueFactory<>("idEquipment"));
 
         TableColumn<Equipment, Integer> quantityCol = new TableColumn<>("Cantidad");
-        quantityCol.setMinWidth(150);
+        quantityCol.setMinWidth(72);
         quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
         searchEquipment.getColumns().addAll(availabilityCol, nameCol, descriptionCol, idEquipmentCol, quantityCol);

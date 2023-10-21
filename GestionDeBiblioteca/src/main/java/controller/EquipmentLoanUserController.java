@@ -71,6 +71,7 @@ public class EquipmentLoanUserController implements Initializable {
 
         equipmentLoans.setItems(getUserEquipmentLoans(identification));
         ConfigTableView();
+        labelUser.setText(Verification.getName());
     }
 
     private void ConfigTableView() {
