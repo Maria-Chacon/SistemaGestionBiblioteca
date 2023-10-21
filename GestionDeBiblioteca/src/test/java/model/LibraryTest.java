@@ -67,12 +67,12 @@ public class LibraryTest {
         library.setBookCatalog(bookCatalog);
 
         
-        ArrayList<Book> searchResults = library.searchBooks("Titulo", "Book 1");
-        assertEquals(0, searchResults.size());
+        ArrayList<Book> searchResults = library.searchBooks("Titulo", "Sin reconocer tu mirada");
+        assertEquals(1, searchResults.size());
 
         
-        searchResults = library.searchBooks("Autor", "Author 2");
-        assertEquals(0, searchResults.size());
+        searchResults = library.searchBooks("Autor", "Pablo");
+        assertEquals(2, searchResults.size());
 
         
         searchResults = library.searchBooks("Género", "Genre 1");
