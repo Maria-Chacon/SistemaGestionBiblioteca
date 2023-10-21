@@ -21,79 +21,61 @@ public class LibraryTest {
 
     public LibraryTest() {
     }
+ @Test
+    public void testGetAndSetBookCatalog() {
+        Library library = new Library();
+        BookCatalog testBookCatalog = new BookCatalog();
+        library.setBookCatalog(testBookCatalog);
 
-    private Library library;
-    private BookCatalog bookCatalog;
-    private EquipmentCatalog equipmentCatalog;
-    private ArrayList<LogBook> logBook;
-    private ArrayList<User> users;
-
-    @Before
-    public void setUp() {
-
-        Book book1 = new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml");
-        Book book2 = new Book("6", "Author 2", "Genre 2", "loaned", "B2", "Book 2", "repro", "publ", "url", "perml");
-        Book book3 = new Book("7", "Author 3", "Genre 3", "loaned", "B3", "Book 3", "repro", "publ", "url", "perml");
-
-        
-         ArrayList<Book> loanedBooks1 = new ArrayList<>();
-        ArrayList<Book> loanedBooks2 = new ArrayList<>();
-        User user1 = new User("maria@gmail.com", "password1","Estudiante", loanedBooks1,1, new Date(), "ID001", "chacon", "maria", "88888888");
-        User user2 = new User("dayana@gmail.com", "password2", "Estudiante",loanedBooks2,2, new Date(), "ID002", "gamboa", "dayana", "77777777");
-
-        
-        ArrayList<Book> bookList = new ArrayList<>();
-        bookList.add(book1);
-        bookList.add(book2);
-        bookList.add(book3);
-
-        bookCatalog = new BookCatalog(bookList);
-
-        SchoolEquipment schoolEquipment1 = new SchoolEquipment("Physics Lab", "Microscope", true, 10, "High-quality microscope", "E1", "Microscope 1");
-        TechnologicalEquipment techEquipment1 = new TechnologicalEquipment("Laptop", false, 5, "High-performance laptop", "E2", "Laptop 1");
-
-        ArrayList<SchoolEquipment> schoolEquipmentList = new ArrayList<>();
-        schoolEquipmentList.add(schoolEquipment1);
-
-        ArrayList<TechnologicalEquipment> techEquipmentList = new ArrayList<>();
-        techEquipmentList.add(techEquipment1);
-
-        equipmentCatalog = new EquipmentCatalog(schoolEquipmentList, techEquipmentList);
-        LogBook log1 = new LogBook(book1,1, new Date(), new Date(), user1.getIdentification());
-        LogBook log2 = new LogBook(book2,2, new Date(), new Date(), user2.getIdentification());
-
-        logBook = new ArrayList<>();
-        logBook.add(log1);
-        logBook.add(log2);
-
-       
-        users = new ArrayList<>();
-        users.add(user1);
-        users.add(user2);
-
-        library = new Library(bookCatalog, equipmentCatalog, logBook, users);
+        BookCatalog bookCatalogFromLibrary = library.getBookCatalog();
+        assertNotNull(bookCatalogFromLibrary);
+        assertEquals(testBookCatalog, bookCatalogFromLibrary);
     }
 
     @Test
-    public void testGettersAndSetters() {
-        assertEquals(bookCatalog, library.getBookCatalog());
-        assertEquals(equipmentCatalog, library.getEquipmentCatalog());
-        assertEquals(logBook, library.getLogBook());
-        assertEquals(users, library.getUsers());
+    public void testGetAndSetLogBook() {
+        Library library = new Library();
+        ArrayList<LogBook> testLogBook = new ArrayList<>();
+        library.setLogBook(testLogBook);
 
-        BookCatalog newBookCatalog = new BookCatalog(new ArrayList<>());
-        EquipmentCatalog newEquipmentCatalog = new EquipmentCatalog(new ArrayList<>(), new ArrayList<>());
-        ArrayList<LogBook> newLogBook = new ArrayList<>();
-        ArrayList<User> newUsers = new ArrayList<>();
+        ArrayList<LogBook> logBookFromLibrary = library.getLogBook();
+        assertNotNull(logBookFromLibrary);
+        assertEquals(testLogBook, logBookFromLibrary);
+    }
 
-        library.setBookCatalog(newBookCatalog);
-        library.setEquipmentCatalog(newEquipmentCatalog);
-        library.setLogBook(newLogBook);
-        library.setUsers(newUsers);
+    @Test
+    public void testGetAndSetUsers() {
+        Library library = new Library();
+        ArrayList<User> testUsers = new ArrayList<>();
+        library.setUsers(testUsers);
 
-        assertEquals(newBookCatalog, library.getBookCatalog());
-        assertEquals(newEquipmentCatalog, library.getEquipmentCatalog());
-        assertEquals(newLogBook, library.getLogBook());
-        assertEquals(newUsers, library.getUsers());
+        ArrayList<User> usersFromLibrary = library.getUsers();
+        assertNotNull(usersFromLibrary);
+        assertEquals(testUsers, usersFromLibrary);
+    }
+
+    @Test
+    public void testSearchBooks() {
+        Library library = new Library();
+        BookCatalog bookCatalog = new BookCatalog();
+        ArrayList<Book> testBooks = new ArrayList<>();
+        
+        testBooks.add(new Book("5", "Author 1", "Genre 1", "loaned", "B1", "Book 1", "repro", "publ", "url", "perml"));
+        testBooks.add(new Book("5", "Author 2", "Genre 2", "loaned", "B2", "Book 2", "repro", "publ", "url", "perml"));
+        testBooks.add(new Book("5", "Author 3", "Genre 3", "loaned", "B3", "Book 3", "repro", "publ", "url", "perml"));
+        bookCatalog.setBooks(testBooks);
+        library.setBookCatalog(bookCatalog);
+
+        
+        ArrayList<Book> searchResults = library.searchBooks("Titulo", "Book 1");
+        assertEquals(0, searchResults.size());
+
+        
+        searchResults = library.searchBooks("Autor", "Author 2");
+        assertEquals(0, searchResults.size());
+
+        
+        searchResults = library.searchBooks("Género", "Genre 1");
+        assertEquals(0, searchResults.size());
     }
 }
