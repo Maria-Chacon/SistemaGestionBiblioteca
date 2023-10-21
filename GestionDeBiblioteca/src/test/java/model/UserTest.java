@@ -49,6 +49,12 @@ public class UserTest {
         assertEquals(expResult, result);
     }
 
-   
+   @Test
+    public void testGetUserIdentificationByEmail() {
+        String email = "monge@gmail.com";
+        String result = User.getUserIdentificationByEmail(email);
+        String expectedIdentification = "604720910";
+        assertEquals(expectedIdentification, result);
+    }
 
 }
