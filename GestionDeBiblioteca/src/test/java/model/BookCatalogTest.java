@@ -9,29 +9,27 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 
-
 //Universidad Nacional, Coto
 //Desarrollado por:
 //María José Chacón Mora
 //Dayana Gamboa Monge
 //2023
-
 public class BookCatalogTest {
-    
+
     public BookCatalogTest() {
     }
 
-private ArrayList<Book> books;
+    private ArrayList<Book> books;
     private BookCatalog catalog;
 
     @Before
     public void setUp() {
-     
+
         books = new ArrayList<>();
-        books.add(new Book("5", "Author 1", "Genre 1","s", "B1", "Book 1","repro","publ","url","perml"));
-        books.add(new Book("6", "Author 2", "Genre 2","s", "B2", "Book 2","repro","publ","url","perml"));
-        books.add(new Book("4", "Author 3", "Genre 3","s", "B3", "Book 3","repro","publ","url","perml"));
-        
+        books.add(new Book("5", "Author 1", "Genre 1", "s", "B1", "Book 1", "repro", "publ", "url", "perml"));
+        books.add(new Book("6", "Author 2", "Genre 2", "s", "B2", "Book 2", "repro", "publ", "url", "perml"));
+        books.add(new Book("4", "Author 3", "Genre 3", "s", "B3", "Book 3", "repro", "publ", "url", "perml"));
+
         catalog = new BookCatalog(books);
     }
 
@@ -39,9 +37,15 @@ private ArrayList<Book> books;
     public void testGetBooks() {
         ArrayList<Book> catalogBooks = catalog.getBooks();
         assertEquals(3, catalogBooks.size());
-        
+
         assertEquals(books, catalogBooks);
     }
 
-    
+    @Test
+    public void testLoadBooksFromDatabase() {
+        catalog.loadBooksFromDatabase();
+        ArrayList<Book> loadedBooks = catalog.getBooks();
+        assertTrue(loadedBooks.size() > 0);
+    }
+
 }

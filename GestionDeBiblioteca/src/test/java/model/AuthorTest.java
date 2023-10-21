@@ -40,5 +40,9 @@ public class AuthorTest {
 
         assertEquals(books, resultBooks);
     }
-    
+    @Test
+    public void testGetAuthorsFromDatabase() {
+        ArrayList<Author> authors = Author.getAuthorsFromDatabase();
+        assertTrue(authors.size() > 0);
+    }
 }
