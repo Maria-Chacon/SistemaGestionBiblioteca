@@ -119,19 +119,19 @@ public class LogBookController implements Initializable {
 
         TableColumn<LogBook, String> titleCol = new TableColumn<>("Nombre libro");
         titleCol.setMinWidth(101);
-        titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("book"));
 
         TableColumn<LogBook, Integer> idBookLoanCol = new TableColumn<>("ID Libro prestado");
         idBookLoanCol.setMinWidth(127);
-        idBookLoanCol.setCellValueFactory(new PropertyValueFactory<>("idBookLoan"));
+        idBookLoanCol.setCellValueFactory(new PropertyValueFactory<>("bookLoan"));
 
         TableColumn<LogBook, Date> dateLoanCol = new TableColumn<>("Fecha de Prestamo");
         dateLoanCol.setMinWidth(133);
-        dateLoanCol.setCellValueFactory(new PropertyValueFactory<>("dateLoan"));
+        dateLoanCol.setCellValueFactory(new PropertyValueFactory<>("registerDate"));
 
         TableColumn<LogBook, Date> devolutionDateCol = new TableColumn<>("Fecha de Devolución");
         devolutionDateCol.setMinWidth(145);
-        devolutionDateCol.setCellValueFactory(new PropertyValueFactory<>("devolutionDate"));
+        devolutionDateCol.setCellValueFactory(new PropertyValueFactory<>("devolution"));
 
         TableColumn<LogBook, Date> identificationUserCol = new TableColumn<>("Identificación de Usuario");
         identificationUserCol.setMinWidth(184);
