@@ -34,26 +34,6 @@ public class BookCatalog {
         this.books = books;
     }
     
-    public ArrayList<Book> getBookLoaned(){
-        
-        return null;  
-    }
-    public ArrayList<Book> SearchBookByTitle(String title){
-        
-        return null;
-        
-    }
-    public ArrayList<Book> SearchBookByAuthor(String author){
-        
-        return null;
-        
-    }
-    public ArrayList<Book> SearchBookByGenre(String genre){
-        
-        return null;
-        
-    }
-    
     public void loadBooksFromDatabase() {
         this.books = Book.getBooksFromDatabase();
     }

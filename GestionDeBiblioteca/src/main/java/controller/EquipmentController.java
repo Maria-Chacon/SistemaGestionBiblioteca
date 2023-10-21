@@ -197,7 +197,7 @@ public class EquipmentController implements Initializable {
         Conexion connection = new Conexion();
 
         try {
-            connection.conectar();
+            connection.connect();
 //REVISAR
 
             PreparedStatement statement = connection.preparedStatement(searchQuery);
@@ -209,7 +209,7 @@ public class EquipmentController implements Initializable {
         } catch (SQLException ex) {
             System.err.println("Error al buscar equipos: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
 
         searchEquipment.setItems(searchResults);
@@ -234,7 +234,7 @@ public class EquipmentController implements Initializable {
         Conexion connection = new Conexion();
         try {
 
-            connection.conectar();
+            connection.connect();
 
             String updateQuery = "UPDATE tbl_equipments SET quantity = ? WHERE id = ?";
             PreparedStatement updateStatement = connection.preparedStatement(updateQuery);
@@ -265,7 +265,7 @@ public class EquipmentController implements Initializable {
         } catch (SQLException ex) {
             System.err.println("Error al realizar el préstamo: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 
@@ -274,7 +274,7 @@ public class EquipmentController implements Initializable {
 
         Conexion connection = Conexion.getInstance();
         try {
-            connection.conectar();
+            connection.connect();
 
             PreparedStatement statement = connection.preparedStatement("SELECT * FROM tbl_users WHERE email = ?");
             statement.setString(1, email);
@@ -287,7 +287,7 @@ public class EquipmentController implements Initializable {
         } catch (SQLException ex) {
             System.err.println("Error al obtener la identificación del usuario por correo electrónico: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
 
         return userIdentification;

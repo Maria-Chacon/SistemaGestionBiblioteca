@@ -59,7 +59,7 @@ public class LoginController implements Initializable {
     private boolean autenticarUsuarioEnBaseDeDatos(String email, String password) {
         Conexion connection = new Conexion();
         try {
-            connection.conectar(); 
+            connection.connect(); 
 
             
             PreparedStatement statement = connection.preparedStatement("SELECT * FROM tbl_users WHERE email = ? AND password = ?");
@@ -75,7 +75,7 @@ public class LoginController implements Initializable {
             System.err.println("Error al autenticar al usuario: " + ex.getMessage());
             return false;
         } finally {
-            connection.desconectar(); 
+            connection.disconnect(); 
         }
     }
 
@@ -142,7 +142,7 @@ public class LoginController implements Initializable {
     private String getUserType(String email) {
         Conexion connection = new Conexion();
         try {
-            connection.conectar(); 
+            connection.connect(); 
 
             
             PreparedStatement statement = connection.preparedStatement("SELECT type FROM tbl_users WHERE email = ?");
@@ -156,7 +156,7 @@ public class LoginController implements Initializable {
         } catch (SQLException ex) {
             System.err.println("Error al obtener el tipo de usuario: " + ex.getMessage());
         } finally {
-            connection.desconectar(); 
+            connection.disconnect(); 
         }
 
         return null; 

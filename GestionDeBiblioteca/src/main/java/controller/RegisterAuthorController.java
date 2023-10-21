@@ -122,7 +122,7 @@ public class RegisterAuthorController implements Initializable {
         String insertUserQuery = "INSERT INTO tbl_authors (name, lastName, identification, birthDay, phone) VALUES (?, ?, ?, ?, ?)";
 
         try {
-            connection.conectar();
+            connection.connect();
 
             PreparedStatement statement = connection.preparedStatement(insertUserQuery);
             statement.setString(1, newAuthor.getName());
@@ -148,7 +148,7 @@ public class RegisterAuthorController implements Initializable {
 
             System.err.println("Error al insertar el autor: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 

@@ -144,7 +144,7 @@ public class Book {
         Conexion connection = Conexion.getInstance();
 
         try {
-            connection.conectar();
+            connection.connect();
             PreparedStatement statement = connection.preparedStatement("SELECT * FROM tbl_books");
             ResultSet result = statement.executeQuery();
 
@@ -187,7 +187,7 @@ public class Book {
         } catch (SQLException ex) {
             System.err.println("Error al obtener libros desde la base de datos: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
 
         return new ArrayList<>();
@@ -196,7 +196,7 @@ public class Book {
     public static void insertBookIntoDatabase(Book book) {
         Conexion connection = Conexion.getInstance();
         try {
-            connection.conectar();
+            connection.connect();
 
             String query = "INSERT INTO tbl_books (title, reproduction, publication, url, permanenLink, loaned, quantity, nameAuthor, genre) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -219,7 +219,7 @@ public class Book {
         } catch (SQLException ex) {
             System.err.println("Error al insertar el libro en la base de datos: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 
@@ -232,7 +232,7 @@ public class Book {
         Conexion connection = Conexion.getInstance();
 
         try {
-            connection.conectar();
+            connection.connect();
 
             String truncateQuery = "TRUNCATE TABLE tbl_books";
             PreparedStatement truncateStatement = connection.preparedStatement(truncateQuery);
@@ -242,7 +242,7 @@ public class Book {
         } catch (SQLException ex) {
             System.err.println("Error al actualizar la base de datos: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 

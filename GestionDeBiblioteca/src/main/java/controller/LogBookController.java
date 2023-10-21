@@ -148,7 +148,7 @@ public class LogBookController implements Initializable {
         Conexion connection = new Conexion();
 
         try {
-            connection.conectar();
+            connection.connect();
 
             String query = "SELECT * FROM tbl_logBook";
             PreparedStatement statement = connection.preparedStatement(query);
@@ -159,7 +159,7 @@ public class LogBookController implements Initializable {
         } catch (SQLException ex) {
             System.err.println("Error al obtener Bitácora: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
 
         return logBook;

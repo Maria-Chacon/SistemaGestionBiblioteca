@@ -42,7 +42,7 @@ public class Author extends Person {
         Conexion connection = Conexion.getInstance();
 
         try {
-            connection.conectar();
+            connection.connect();
 
             PreparedStatement statement = connection.preparedStatement("SELECT * FROM tbl_authors");
             ResultSet result = statement.executeQuery();
@@ -52,7 +52,7 @@ public class Author extends Person {
         } catch (SQLException ex) {
             System.err.println("Error al obtener autores desde la base de datos: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
 
         return authors;

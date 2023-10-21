@@ -96,7 +96,7 @@ public class BookLoanUserController implements Initializable {
         Conexion connection = new Conexion();
 
         try {
-            connection.conectar();
+            connection.connect();
 
             String query = "SELECT title, loanDate, devolutionDate FROM tbl_bookloan WHERE identificationUser = ?";
             PreparedStatement statement = connection.preparedStatement(query);
@@ -108,7 +108,7 @@ public class BookLoanUserController implements Initializable {
         } catch (SQLException ex) {
             System.err.println("Error al obtener préstamos de libros del usuario: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
 
         return userLoans;
@@ -181,7 +181,7 @@ public class BookLoanUserController implements Initializable {
         Conexion connection = new Conexion();
 
         try {
-            connection.conectar();
+            connection.connect();
 
             String updateQuery = "UPDATE tbl_books SET quantity = quantity + 1 WHERE title = ?";
             PreparedStatement updateStatement = connection.preparedStatement(updateQuery);
@@ -194,7 +194,7 @@ public class BookLoanUserController implements Initializable {
             System.err.println("Error al actualizar la cantidad de libros en inventario: " + ex.getMessage());
             return false;
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 
@@ -202,7 +202,7 @@ public class BookLoanUserController implements Initializable {
         Conexion connection = new Conexion();
 
         try {
-            connection.conectar();
+            connection.connect();
 
             String deleteQuery = "DELETE FROM tbl_bookloan WHERE identificationUser = ? AND title = ? AND loanDate = ?";
             PreparedStatement deleteStatement = connection.preparedStatement(deleteQuery);
@@ -217,7 +217,7 @@ public class BookLoanUserController implements Initializable {
             System.err.println("Error al eliminar el préstamo de libro: " + ex.getMessage());
             return false;
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 
@@ -227,7 +227,7 @@ public class BookLoanUserController implements Initializable {
         String insertDevolutionQuery = "INSERT INTO tbl_bookdevolution (returnedBook, returnedDate, identificationUser) VALUES (?, ?, ?)";
 
         try {
-            connection.conectar();
+            connection.connect();
 
             PreparedStatement statement = connection.preparedStatement(insertDevolutionQuery);
             statement.setString(1, bookTitle);
@@ -249,7 +249,7 @@ public class BookLoanUserController implements Initializable {
             System.err.println("Error al guardar el registro de devolución de libro: " + ex.getMessage());
             return false;
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 

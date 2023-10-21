@@ -44,7 +44,7 @@ public class Verification {
     public static String verifyUserAndGetUserName(String email) {
         Conexion connection = Conexion.getInstance();
         try {
-            connection.conectar();
+            connection.connect();
 
             String query = "SELECT name FROM tbl_users WHERE email = ?";
             PreparedStatement statement = connection.preparedStatement(query);
@@ -59,7 +59,7 @@ public class Verification {
             System.err.println("Error al obtener el nombre del usuario por correo electrónico: " + ex.getMessage());
 
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
 
         return name;

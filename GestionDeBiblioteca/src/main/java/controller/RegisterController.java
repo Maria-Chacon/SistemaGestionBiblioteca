@@ -91,7 +91,7 @@ public class RegisterController implements Initializable {
         String insertUserQuery = "INSERT INTO tbl_users (name, lastName, identification, birthDay, phone, email, password, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
-            connection.conectar();
+            connection.connect();
 
             PreparedStatement statement = connection.preparedStatement(insertUserQuery);
             statement.setString(1, newUser.getName());
@@ -123,7 +123,7 @@ public class RegisterController implements Initializable {
 
             System.err.println("Error al insertar el usuario: " + ex.getMessage());
         } finally {
-            connection.desconectar();
+            connection.disconnect();
         }
     }
 
